@@ -99,14 +99,11 @@ class Camera extends Component {
 
   poseDetectionFrame(canvasContext) {
     const {
-      algorithm,
       imageScaleFactor,
       flipHorizontal,
       outputStride,
       minPoseConfidence,
       minPartConfidence,
-      maxPoseDetections,
-      nmsRadius,
       videoWidth,
       videoHeight,
       showVideo,
@@ -114,38 +111,20 @@ class Camera extends Component {
       showSkeleton,
       skeletonColor,
       skeletonLineWidth
-      } = this.props
+    } = this.props
 
     const posenetModel = this.posenet
     const video = this.video
 
     const findPoseDetectionFrame = async () => {
       let poses = []
-
-      switch (algorithm) {
-        case 'multi-pose': {
-          poses = await posenetModel.estimateMultiplePoses(
-          video,
-          imageScaleFactor,
-          flipHorizontal,
-          outputStride,
-          maxPoseDetections,
-          minPartConfidence,
-          nmsRadius
-          )
-          break
-        }
-        case 'single-pose': {
-          const pose = await posenetModel.estimateSinglePose(
-          video,
-          imageScaleFactor,
-          flipHorizontal,
-          outputStride
-          )
-          poses.push(pose)
-          break
-        }
-      }
+      const pose = await posenetModel.estimateSinglePose(
+        video,
+        imageScaleFactor,
+        flipHorizontal,
+        outputStride
+      )
+      poses.push(pose)
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -194,7 +173,6 @@ class Camera extends Component {
     )
   }
 }
-
 
 export default Camera
 //export default connect(mapState, mapDispatch)(Camera)
