@@ -91,34 +91,25 @@ export function placeHat(
   canvasContext,
   scale = 1
 ) {
-  console.log('keypoints:', keypoints)
   const rightEarX = keypoints[4].position.x
-  const rightEarY = keypoints[4].position.y
-  console.log('leftEyeY:', rightEarY)
   keypoints.forEach(keypoint => {
     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-      const {x, y} = keypoint.position // x and y of nose
+      const {x, y} = keypoint.position
       const difference = rightEarX - x
       let hatImg = document.getElementById('hat')
-
-      console.log('difference:', difference)
       const drawImgDifference = hatImg.height - difference
       canvasContext.beginPath()
-      // console.log('hatImg:', hatImg)
       canvasContext.drawImage(
         hatImg,
         0,
         0,
-        hatImg.width,
-        hatImg.height,
+        hatImg.naturalWidth,
+        hatImg.naturalHeight,
         x - hatImg.width / 2,
-        y - drawImgDifference,
+        y - drawImgDifference + 50, // not dynamic, hardcoded for formation hat
         hatImg.width,
         hatImg.height
       ) // x and y are currently where we want the (0,0)
-      // console.log('width:', hatImg.width)
-      // console.log('height:', hatImg.height)
-      // console.log('y:', y)
       canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
       canvasContext.fillStyle = skeletonColor
       canvasContext.fill()
