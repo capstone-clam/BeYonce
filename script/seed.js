@@ -1,7 +1,130 @@
 'use strict'
 
 const db = require('../server/db')
-const {User } = require('../server/db/models') 
+const {User, Inventory, Category} = require('../server/db/models')
+
+const seedInventory = [
+  {
+    singleProduct: 'Hat 1',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Hat'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Hat 2',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Hat'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Hat 3',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Hat'
+      }
+    ]
+  },
+  {
+    singleProduct: 'bodysuit 1',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Bodysuit'
+      }
+    ]
+  },
+  {
+    singleProduct: 'bodysuit 2',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Bodysuit'
+      }
+    ]
+  },
+  {
+    singleProduct: 'bodysuit 3',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Bodysuit'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Dress 1',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Dress'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Dress 2',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Dress'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Dress 3',
+    filePath: '/DarkenedFormation.png',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Dress'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Song 1',
+    filePath: '/DarkenedFormation.mp3',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Song'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Song 2',
+    filePath: '/DarkenedFormation.mp3',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Song'
+      }
+    ]
+  },
+  {
+    singleProduct: 'Song 3',
+    filePath: '/DarkenedFormation.mp3',
+    url: 'www.google.cl',
+    category: [
+      {
+        name: 'Song'
+      }
+    ]
+  }
+]
 
 async function seed() {
   await db.sync({force: true})
@@ -11,6 +134,12 @@ async function seed() {
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'})
   ])
+
+  await Promise.all(
+    seedInventory.map(singleProduct => {
+      return Inventory.create(singleProduct, {include: [Category]})
+    })
+  )
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
