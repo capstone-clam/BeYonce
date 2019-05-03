@@ -34,3 +34,7 @@ form div {
   -webkit-transform: scaleX(-1);
   display: none !important;
 }
+
+#hat {
+  max-width: 100px;
+}

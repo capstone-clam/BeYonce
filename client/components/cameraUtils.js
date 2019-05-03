@@ -83,3 +83,24 @@ export function drawSkeleton(
     )
   })
 }
+
+export function placeHat(
+  keypoints,
+  minConfidence,
+  skeletonColor,
+  canvasContext,
+  scale = 1
+) {
+  keypoints.forEach(keypoint => {
+    if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
+      const {x, y} = keypoint.position
+      canvasContext.beginPath()
+      let hatImg = document.getElementById('hat')
+      // console.log('hatImg:', hatImg)
+      canvasContext.drawImage(hatImg, x, y)
+      // canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
+      // canvasContext.fillStyle = skeletonColor
+      // canvasContext.fill()
+    }
+  })
+}
