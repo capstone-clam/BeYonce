@@ -175,7 +175,7 @@ class Camera extends Component {
     return (
       <div>
         <div>
-          <img id="hat" src="/hat-test.png" alt="Favicon" />
+          <img id="hat" src="/pie.png" alt="Favicon" />
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
         </div>
