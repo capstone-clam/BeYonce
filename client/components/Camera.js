@@ -1,4 +1,4 @@
-import {drawKeyPoints, drawSkeleton} from './cameraUtils'
+import {drawKeyPoints, drawSkeleton, placeHat} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 
@@ -24,6 +24,10 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
+    this.state = {
+      noseXCoord: null,
+      noseYCoord: null
+    }
   }
 
   getCanvas = elem => {
@@ -125,6 +129,14 @@ class Camera extends Component {
         outputStride
       )
       poses.push(pose)
+      this.setState({
+        noseXCoord: poses[0].keypoints[0].position.x,
+        noseYCoord: poses[0].keypoints[0].position.y
+      })
+      console.log(poses[0])
+      // console.log('poses[0].keypoints[0]', poses[0].keypoints[0].position)
+      // console.log('noseXCoord:', poses[0].keypoints[0].position.x)
+      // console.log('noseYCoord:', poses[0].keypoints[0].position.y)
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -139,12 +151,7 @@ class Camera extends Component {
       poses.forEach(({score, keypoints}) => {
         if (score >= minPoseConfidence) {
           if (showPoints) {
-            drawKeyPoints(
-              keypoints,
-              minPartConfidence,
-              skeletonColor,
-              canvasContext
-            )
+            placeHat(keypoints, minPartConfidence, skeletonColor, canvasContext)
           }
           if (showSkeleton) {
             drawSkeleton(
@@ -163,9 +170,12 @@ class Camera extends Component {
   }
 
   render() {
+    // console.log(logo)
+    // console.log('hatImg', hatImg)
     return (
       <div>
         <div>
+          <img id="hat" src="/hat-test.png" alt="Favicon" />
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
         </div>
