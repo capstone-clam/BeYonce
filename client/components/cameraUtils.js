@@ -106,7 +106,7 @@ export function placeHat(
         hatImg.naturalWidth,
         hatImg.naturalHeight,
         x - hatImg.width / 2,
-        y - drawImgDifference + 50, // not dynamic, hardcoded for formation hat
+        y - drawImgDifference + 200, // not dynamic, hardcoded for formation hat
         hatImg.width,
         hatImg.height
       ) // x and y are currently where we want the (0,0)
