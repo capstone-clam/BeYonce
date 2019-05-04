@@ -15,6 +15,8 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+//routes mounted on api/category/id
+
 router.get('/:id', async (req, res, next) => {
   try {
     const singleCategory = await Category.findAll({
