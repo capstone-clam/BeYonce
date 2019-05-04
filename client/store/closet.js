@@ -21,7 +21,7 @@ const getCloset = item => ({type: GET_CLOSET, item})
  */
 export const fetchCloset = () => async dispatch => {
   try {
-    const res = await axios.get('/closet')
+    const res = await axios.get(`api/closet/${id}`)
     dispatch(getCloset(res.data))
   } catch (err) {
     console.error(err)
@@ -37,6 +37,6 @@ export default function(state = closet, action) {
       return action.item
     default:
       return state
-      
+
   }
 }
