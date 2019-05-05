@@ -1,6 +1,7 @@
 import {drawKeyPoints, drawSkeleton, placeHat} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
+import Closet from './Closet'
 
 class Camera extends Component {
   static defaultProps = {
@@ -177,6 +178,7 @@ class Camera extends Component {
         <div>
           <img id="hat" src="/hat-test.png" alt="Favicon" />
           <video id="videoNoShow" playsInline ref={this.getVideo} />
+          <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
         </div>
       </div>
