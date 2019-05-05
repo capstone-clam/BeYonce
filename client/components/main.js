@@ -4,25 +4,29 @@ class Main extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <div className="col-sm" id="welcome">
-            Welcome to BeYonce!
+        <div className="intros" id="welcome">
+          <div className="row">
+            <div className="col-sm">Welcome to BeYonce!</div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-sm">
-            Take an interactive journey to dress yourself up in your favorite
-            iconic looks from Beyonce, pick a song, and let yourself unwind and
-            dance! For a few minutes you can empower yourself to BE...yonce!
+        <div className="intros">
+          <div className="row">
+            <div className="col-sm">
+              Take an interactive journey to dress yourself up in your favorite
+              iconic looks from Beyonce, pick a song, and let yourself unwind
+              and dance! For a few minutes you can empower yourself to
+              BE...yonce!
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-sm">
-            Feel free to login our make an account, or just jump in and play by
-            selecting "Camera" from the NavBar above!
+        <div className="intros">
+          <div className="row">
+            <div className="col-sm">
+              Feel free to login or make an account, or just jump in and play by
+              selecting "Camera" from the NavBar above!
+            </div>
           </div>
         </div>
-
         <div className="list-group">
           <div className="row">
             <div className="col-sm">
