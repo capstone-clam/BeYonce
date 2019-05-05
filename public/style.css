@@ -45,19 +45,43 @@ form div {
 
 .intros {
   padding: 20px;
+  background-color: darkblue;
+  color: white;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .list-group {
   padding: 20px;
 }
 
-.list-group-item {
-  margin-top: 20px;
-  /* background-color: lightblue; */
-  /* border: 10px solid black; not working */
+/* .list-group-item {
+  background-color: lightblue;
+} */
+
+.list-item {
+  border: solid 5px black;
+  background-color: darkblue;
 }
 
-/* not working */
-#welcome {
-  text-emphasis: bold;
+.welcome {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.designer-intro {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+li.list-group-item {
+  background-color: lightblue;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+li>a {
+  font-weight: normal;
+  font-size: 12px;
 }
