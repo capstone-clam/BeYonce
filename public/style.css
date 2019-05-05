@@ -38,3 +38,25 @@ form div {
 /* #hat {
   max-width: 100px;
 } */
+
+.container {
+  text-align: center;
+}
+
+.list-group {
+  padding: 20px;
+}
+
+.list-group-item {
+  margin-top: 20px;
+  border: 10px solid black;
+}
+
+li {
+  display: none;
+  border: 1px solid darkred;
+}
+
+#welcome {
+  text-emphasis: bold;
+}

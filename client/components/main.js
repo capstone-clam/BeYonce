@@ -3,27 +3,72 @@ import React, {Component} from 'react'
 class Main extends Component {
   render() {
     return (
-      <div>
-        <div>
-          Welcome to BeYonce! Take an interactive journey to dress yourself up
-          in your favorite iconic looks from Beyonce, pick a song, and let
-          yourself unwind and dance! For a few minutes you can empower yourself
-          to BE...yonce!
+      <div className="container">
+        <div className="row">
+          <div className="col-sm" id="welcome">
+            Welcome to BeYonce!
+          </div>
         </div>
-        <div>
-          Feel free to login our make an account, or just jump in and play by
-          selecting "Camera" from the NavBar above!
+        <div className="row">
+          <div className="col-sm">
+            Take an interactive journey to dress yourself up in your favorite
+            iconic looks from Beyonce, pick a song, and let yourself unwind and
+            dance! For a few minutes you can empower yourself to BE...yonce!
+          </div>
         </div>
-        <div>
-          This experience is brought to you by four talented software engineers
-          attending the Grace Hopper Program:
+        <div className="row">
+          <div className="col-sm">
+            Feel free to login our make an account, or just jump in and play by
+            selecting "Camera" from the NavBar above!
+          </div>
         </div>
-        <ul className="list-group">
-          <li className="list-group-item">Chelsi Asulin</li>
-          <li className="list-group-item">Alex Grazier</li>
-          <li className="list-group-item">Linda Saraguro</li>
-          <li className="list-group-item">Macarena Carreno</li>
-        </ul>
+
+        <div className="list-group">
+          <div className="row">
+            <div className="col-sm">
+              This experience is brought to you by four talented software
+              engineers attending the Grace Hopper Program:
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+              <li className="list-group-item">
+                Chelsi Asulin
+                <br />
+                <a href="https://www.linkedin.com/in/chelsi-asulin/">
+                  Chelsi's LinkedIn
+                </a>
+              </li>
+            </div>
+            <div className="col-sm">
+              <li className="list-group-item">
+                Alex Grazier
+                <br />
+                <a href="https://www.linkedin.com/in/alex-grazier/">
+                  Alex's LinkedIn
+                </a>
+              </li>
+            </div>
+            <div className="col-sm">
+              <li className="list-group-item">
+                Linda Saraguro
+                <br />
+                <a href="https://www.linkedin.com/in/linda-saraguro-123524122/">
+                  Linda's LinkedIn
+                </a>
+              </li>
+            </div>
+            <div className="col-sm">
+              <li className="list-group-item">
+                Macarena Carreno
+                <br />
+                <a href="https://www.linkedin.com/in/mcarrenog/">
+                  Macarena's LinkedIn
+                </a>
+              </li>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
