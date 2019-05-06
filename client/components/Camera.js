@@ -130,10 +130,10 @@ class Camera extends Component {
         outputStride
       )
       poses.push(pose)
-      this.setState({
-        noseXCoord: poses[0].keypoints[0].position.x,
-        noseYCoord: poses[0].keypoints[0].position.y
-      })
+      // this.setState({
+      //   noseXCoord: poses[0].keypoints[0].position.x,
+      //   noseYCoord: poses[0].keypoints[0].position.y
+      // })
       console.log(poses[0])
       // console.log('poses[0].keypoints[0]', poses[0].keypoints[0].position)
       // console.log('noseXCoord:', poses[0].keypoints[0].position.x)
@@ -176,7 +176,7 @@ class Camera extends Component {
     return (
       <div>
         <div>
-          <img id="hat" src="/hat-test.png" alt="Favicon" />
+          <img id="hat" src="/DarkenedFormation.png" alt="Favicon" />
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
