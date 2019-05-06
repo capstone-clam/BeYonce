@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom'
 export class AllSongs extends Component {
     componentDidMount() {
         const id =  Number(this.props.match.params.id)
-        //  this.props.fetchCategoryFromCloset(id)
     }
 
     render() {
@@ -25,7 +24,7 @@ export class AllSongs extends Component {
                                 </div>
                             )
                         } */}
-            </div>    
+            </div>
         )
     }
 }

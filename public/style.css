@@ -58,7 +58,7 @@ form div {
 #closeth1{
   display: flex;
   align-items: center;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
 }
 
 #closetpics{
@@ -77,4 +77,50 @@ form div {
     justify-content: space-around;
     /* background-color: #0cce6b; */
     margin: 0;
+}
+.container {
+  text-align: center;
+}
+
+.intros {
+  padding: 20px;
+  background-color: darkblue;
+  color: white;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.list-group {
+  padding: 20px;
+}
+
+/* .list-group-item {
+  background-color: lightblue;
+} */
+
+.list-item {
+  border: solid 5px black;
+  background-color: darkblue;
+}
+
+.welcome {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.designer-intro {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+li.list-group-item {
+  background-color: lightblue;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+li>a {
+  font-weight: normal;
+  font-size: 12px;
 }

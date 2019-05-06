@@ -23,7 +23,7 @@ const loadingData = () => ({
 })
 
 const getCloset = item => ({
-  type: GET_CLOSET, 
+  type: GET_CLOSET,
   item
 })
 
@@ -53,7 +53,6 @@ export const fetchCategories = () => {
   return async dispatch => {
     dispatch(loadingData())
     const {data} = await axios.get('/api/category')
-    console.log("reached fecthCategories thunk")
     dispatch(getCategories(data))
   }
 }
@@ -62,9 +61,7 @@ export const fetchCategories = () => {
 export const fetchCategory = categoryId => {
   return async dispatch => {
     dispatch(loadingData())
-    const {data} = await axios.get(`/api/closet/${categoryId}`)
-    console.log("REACHES FETCHCATEGORY THUNK")
-    console.log("THUNK DATA", data)
+    const {data} = await axios.get(`/api/category/${categoryId}`)
     dispatch(getCategory(data))
   }
 }
@@ -92,7 +89,6 @@ export default function(state = initialState, action) {
       return {...state, loading: false, categories: action.categories}
     case GET_CATEGORY:
       return {...state, loading: false, category: action.category}
-
     default:
       return state
   }

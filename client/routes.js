@@ -2,9 +2,13 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Camera, Closet} from './components'
+import {Login, Signup, UserHome, Camera, Closet, Main} from './components'
 import {me} from './store'
+<<<<<<< HEAD
 import ClothingItems from './components/ClothingItems';
+=======
+import ClothingItems from './components/ClothingItems'
+>>>>>>> a4382787adda606e86daa515032b158e6a74d391
 
 /**
  * COMPONENT
@@ -20,20 +24,26 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route path="/main" component={Main} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/camera" component={Camera} />
         <Route exact path="/closet" component={Closet} />
+<<<<<<< HEAD
         <Route path="/closet/:categoryId" component={ClothingItems} />
         <Route path="/category/:categoryId" component={ClothingItems} />
+=======
+        <Route exact path="/closet/:categoryId" component={ClothingItems} />
+
+>>>>>>> a4382787adda606e86daa515032b158e6a74d391
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
+        {/* Displays our Main component as a fallback */}
+        <Route component={Main} />
       </Switch>
     )
   }
