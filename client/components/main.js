@@ -9,7 +9,6 @@ class Main extends Component {
             <div className="col-sm welcome intros">Welcome to Be-Yoncé!</div>
           </div>
         </div>
-
         <div className="intros">
           <div className="row">
             <div className="col-sm intros">
@@ -50,6 +49,15 @@ class Main extends Component {
             </div>
             <div className="col-sm list-item">
               <li className="list-group-item">
+                Macarena Carreno
+                <br />
+                <a href="https://www.linkedin.com/in/mcarrenog/" target="blank">
+                  Macarena's LinkedIn
+                </a>
+              </li>
+            </div>
+            <div className="col-sm list-item">
+              <li className="list-group-item">
                 Alex Grazier
                 <br />
                 <a
@@ -69,15 +77,6 @@ class Main extends Component {
                   target="_blank"
                 >
                   Linda's LinkedIn
-                </a>
-              </li>
-            </div>
-            <div className="col-sm list-item">
-              <li className="list-group-item">
-                Macarena Carreno
-                <br />
-                <a href="https://www.linkedin.com/in/mcarrenog/" target="blank">
-                  Macarena's LinkedIn
                 </a>
               </li>
             </div>
