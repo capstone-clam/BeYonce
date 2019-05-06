@@ -39,34 +39,33 @@ form div {
   max-width: 100px;
 } */
 
-#closet-details{
+#closet-details {
   position: fixed;
   top: 0;
   right: 0;
   width: 20%;
   height: 100%;
-  background: rgba(0,0,0,0.04);
+  background: rgba(0, 0, 0, 0.04);
   padding: 30px;
   overflow: auto;
   /* box-shadow: -2px -3px 5px rgba(0,0,0,3); */
   box-sizing: border-box;
   color: #d6c7c7;
-  color: 	#f4c0d7;
+  color: #f4c0d7;
   font-family: 'Fjalla One', sans-serif;
-
 }
-#closeth1{
+#closeth1 {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
-#closetp{
+#closetp {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-#closetpics{
+#closetpics {
   padding-bottom: 10px;
   left: 0;
   bottom: 0;
@@ -74,14 +73,15 @@ form div {
   height: 200px;
   border-radius: 50%;
   align-items: center;
+
 }
 
-#singlepic{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* background-color: #0cce6b; */
-    margin: 0;
+#singlepic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* background-color: #0cce6b; */
+  margin: 0;
 }
 .container {
   text-align: center;
@@ -125,7 +125,7 @@ li.list-group-item {
   font-size: 16px;
 }
 
-li>a {
+li > a {
   font-weight: normal;
   font-size: 12px;
 }

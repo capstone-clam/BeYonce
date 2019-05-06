@@ -73,7 +73,8 @@ const initialState = {
   loading: false,
   closet: [],
   categories: [],
-  category: []
+  category: [],
+  inventories: []
 }
 
 /**
@@ -88,7 +89,13 @@ export default function(state = initialState, action) {
     case GET_CATEGORIES:
       return {...state, loading: false, categories: action.categories}
     case GET_CATEGORY:
-      return {...state, loading: false, category: action.category}
+      return {
+        ...state,
+        loading: false,
+        category: [...state.category, action.category],
+        inventories: action.category[0].inventories
+      }
+
     default:
       return state
   }
