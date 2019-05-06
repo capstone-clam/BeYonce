@@ -26,7 +26,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/camera" component={Camera} />
-        <Route exact path="/closet" component={Closet} />
+        <Route  path="/closet" component={Closet} />
         <Route exact path="/closet/1" component={AllHats} />
         <Route exact path="/closet/2" component={AllDresses} />
         <Route exact path="/closet/3" component={AllBodysuits} />

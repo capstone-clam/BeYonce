@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 
 export class Closet extends Component {
     componentDidMount() {
+        console.log("BEFORE MOUNT")
         this.props.fetchCategories()
         console.log("DONE WITH MOUNT")
     }
@@ -15,7 +16,7 @@ export class Closet extends Component {
 
         if(loading) return <div>Loading...</div>
         
-        console.log("CAT CATEGORIES", categories)
+        console.log("CATEGORIES.DATA", categories.data)
 
         return (
         <div id="closet-details">
@@ -33,8 +34,8 @@ export class Closet extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.loading,
-        categories: state.categories
+        loading: state.closet.loading,
+        categories: state.closet.categories
     }
 }
 

@@ -178,7 +178,7 @@ class Camera extends Component {
         <div>
           <img id="hat" src="/DarkenedFormation.png" alt="Favicon" />
           <video id="videoNoShow" playsInline ref={this.getVideo} />
-          {/* <Closet /> */}
+          <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
         </div>
       </div>
