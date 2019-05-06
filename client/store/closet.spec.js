@@ -131,9 +131,9 @@ describe('thunk creators - Closet', () => {
           ]
         }
       ]
-      let id = 1
-      mockAxios.onGet(`/api/category/${id}`).replyOnce(200, fakeCategory)
-      await store.dispatch(fetchCategory(id))
+      let categoryId = 1
+      mockAxios.onGet(`/api/category/${categoryId}`).replyOnce(200, fakeCategory)
+      await store.dispatch(fetchCategory(categoryId))
       const actions = store.getActions()
 
       expect(actions[0].type).to.be.equal('LOADING_DATA')

@@ -39,8 +39,8 @@ const getCategory = category => ({
 export const fetchCloset = () => {
   return async dispatch => {
     dispatch(loadingData())
-    const res = await axios.get('/api/closet')
-    dispatch(getCloset(res))
+    const {data} = await axios.get('/api/closet')
+    dispatch(getCloset(data))
   }
 }
 
@@ -48,17 +48,17 @@ export const fetchCloset = () => {
 export const fetchCategories = () => {
   return async dispatch => {
     dispatch(loadingData())
-    const res = await axios.get('/api/category')
-    dispatch(getCategories(res))
+    const {data} = await axios.get('/api/category')
+    dispatch(getCategories(data))
   }
 }
 
 // One Category with products need the CategoryId
-export const fetchCategory = id => {
+export const fetchCategory = categoryId => {
   return async dispatch => {
     dispatch(loadingData())
-    const res = await axios.get(`/api/category/${id}`)
-    dispatch(getCategory(res))
+    const {data} = await axios.get(`/api/category/${categoryId}`)
+    dispatch(getCategory(data))
   }
 }
 
@@ -69,7 +69,7 @@ const initialState = {
   loading: false,
   closet: [],
   categories: [],
-  category: []
+  category: [],
 }
 
 /**
