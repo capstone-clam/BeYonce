@@ -28,7 +28,7 @@ export class Closet extends Component {
     return (
       <div id="closet-details">
         <h1 id="closeth1">BEYONCÉ CLOSET</h1>
-        <p id="closeth1">Please choose up to one of each</p>
+        <p id="closetp">Please choose up to one of each</p>
         {categories.map(category => (
           <div id="closetpics" key={category.id}>
             <div id="singlepic">
