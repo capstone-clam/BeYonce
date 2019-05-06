@@ -6,12 +6,17 @@ import {Link} from 'react-router-dom'
 export class Closet extends Component {
     componentDidMount() {
         this.props.fetchCategories()
+        console.log("DONE WITH MOUNT")
     }
 
     render() {
         const {loading, categories} = this.props
+        console.log("LOADING", loading)
 
         if(loading) return <div>Loading...</div>
+        
+        console.log("CAT CATEGORIES", categories)
+        
         return (
         <div id="closet-details">
             <h1 id='closeth1'>BEYONCÉ CLOSET</h1>
@@ -27,14 +32,14 @@ export class Closet extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        categories: state.categories,
-        loading: state.loading
+        loading: state.loading,
+        categories: state.categories
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchCategories: () => dispatch(fetchCategories()),
+        fetchCategories: () => dispatch(fetchCategories())
     }
 }
 

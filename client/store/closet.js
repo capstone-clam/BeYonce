@@ -51,6 +51,7 @@ export const fetchCategories = () => {
   return async dispatch => {
     dispatch(loadingData())
     const res = await axios.get('/api/category')
+    console.log("reached fecthCategories thunk")
     dispatch(getCategories(res))
   }
 }
