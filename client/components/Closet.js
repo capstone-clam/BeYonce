@@ -1,36 +1,40 @@
 import React, { Component } from 'react'
-import {fetchCategory} from '../store/closet'
+import {fetchCategories} from '../store/closet'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 export class Closet extends Component {
     componentDidMount() {
-        this.props.fetchCategory()
+        this.props.fetchCategories()
     }
 
     render() {
-        const category = this.props.category
+        const {loading, categories} = this.props
+
+        if(loading) return <div>Loading...</div>
         return (
         <div id="closet-details">
-            {
-                category.map(product =>
-                    (<div id="closetpics" key={product.id}>
-                        {product.image}
+            <h1 id='closeth1'>BEYONCÉ CLOSET</h1>
+            {/* {
+                categories.map(category =>
+                    (<div id="closetpics" key={category.id}>
+                        {category.image}
                      </div>))
-            }
+            } */}
         </div>
     )}
 }
 
 const mapStateToProps = (state) => {
     return {
-        category: state.category
+        categories: state.categories,
+        loading: state.loading
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchCategory: () => dispatch(fetchCategory()),
+        fetchCategories: () => dispatch(fetchCategories()),
     }
 }
 

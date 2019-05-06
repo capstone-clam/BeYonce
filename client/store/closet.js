@@ -21,7 +21,9 @@ const loadingData = () => ({
   type: LOADING_DATA
 })
 
-const getCloset = item => ({type: GET_CLOSET, item})
+const getCloset = item => ({
+  type: GET_CLOSET, item
+})
 
 const getCategories = categories => ({
   type: GET_CATEGORIES,
