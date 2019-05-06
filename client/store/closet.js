@@ -8,6 +8,7 @@ const LOADING_DATA = 'LOADING_DATA'
 
 // all products -- Maybe we will not use this.
 const GET_CLOSET = 'GET_CLOSET'
+const GET_CATEGORY_FROM_CLOSET = 'GET_CATEGORY_FROM_CLOSET'
 
 // by Categories and Single Category
 const GET_CATEGORIES = 'GET_CATEGORIES'
@@ -22,7 +23,13 @@ const loadingData = () => ({
 })
 
 const getCloset = item => ({
-  type: GET_CLOSET, item
+  type: GET_CLOSET, 
+  item
+})
+
+const getCategoryFromCloset = (category) => ({
+  type: GET_CATEGORY_FROM_CLOSET,
+  category
 })
 
 const getCategories = categories => ({
@@ -43,6 +50,14 @@ export const fetchCloset = () => {
     dispatch(loadingData())
     const res = await axios.get('/api/closet')
     dispatch(getCloset(res))
+  }
+}
+
+export const fetchCategoryFromCloset = (categoryid) => {
+  return async dispatch => {
+    dispatch(loadingData())
+    const res = await axios.get(`/api/closet/${categoryid}`)
+    dispatch(getCategoryFromCloset(res))
   }
 }
 
@@ -88,6 +103,8 @@ export default function(state = initialState, action) {
       return {...state, loading: false, categories: action.categories}
     case GET_CATEGORY:
       return {...state, loading: false, category: action.closet}
+    case GET_CATEGORY_FROM_CLOSET:
+      return {...state, loading: false, category: action.category}
 
     default:
       return state
