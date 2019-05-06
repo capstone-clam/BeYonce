@@ -48,16 +48,16 @@ const getCategory = category => ({
 export const fetchCloset = () => {
   return async dispatch => {
     dispatch(loadingData())
-    const res = await axios.get('/api/closet')
-    dispatch(getCloset(res))
+    const {data} = await axios.get('/api/closet')
+    dispatch(getCloset(data))
   }
 }
 
 export const fetchCategoryFromCloset = (categoryid) => {
   return async dispatch => {
     dispatch(loadingData())
-    const res = await axios.get(`/api/closet/${categoryid}`)
-    dispatch(getCategoryFromCloset(res))
+    const {data} = await axios.get(`/api/closet/${categoryid}`)
+    dispatch(getCategoryFromCloset(data))
   }
 }
 
@@ -65,9 +65,9 @@ export const fetchCategoryFromCloset = (categoryid) => {
 export const fetchCategories = () => {
   return async dispatch => {
     dispatch(loadingData())
-    const res = await axios.get('/api/category')
+    const {data} = await axios.get('/api/category')
     console.log("reached fecthCategories thunk")
-    dispatch(getCategories(res))
+    dispatch(getCategories(data))
   }
 }
 
@@ -75,8 +75,8 @@ export const fetchCategories = () => {
 export const fetchCategory = id => {
   return async dispatch => {
     dispatch(loadingData())
-    const res = await axios.get(`/api/category/${id}`)
-    dispatch(getCategory(res))
+    const {data} = await axios.get(`/api/category/${id}`)
+    dispatch(getCategory(data))
   }
 }
 
@@ -102,7 +102,7 @@ export default function(state = initialState, action) {
     case GET_CATEGORIES:
       return {...state, loading: false, categories: action.categories}
     case GET_CATEGORY:
-      return {...state, loading: false, category: action.closet}
+      return {...state, loading: false, category: action.category}
     case GET_CATEGORY_FROM_CLOSET:
       return {...state, loading: false, category: action.category}
 
