@@ -60,6 +60,11 @@ form div {
   align-items: center;
   justify-content: space-evenly;
 }
+#closetp{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
 #closetpics{
   padding-bottom: 10px;
