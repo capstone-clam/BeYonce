@@ -11,6 +11,7 @@ class Camera extends Component {
     showVideo: true,
     showSkeleton: true,
     showPoints: true,
+    showHat: true,
     minPoseConfidence: 0.1,
     minPartConfidence: 0.5,
     maxPoseDetections: 2,
@@ -112,6 +113,7 @@ class Camera extends Component {
       videoHeight,
       showVideo,
       showPoints,
+      showHat,
       showSkeleton,
       skeletonColor,
       skeletonLineWidth
@@ -133,7 +135,7 @@ class Camera extends Component {
       //   noseXCoord: poses[0].keypoints[0].position.x,
       //   noseYCoord: poses[0].keypoints[0].position.y
       // })
-      console.log(poses[0])
+      // console.log(poses[0])
       // console.log('poses[0].keypoints[0]', poses[0].keypoints[0].position)
       // console.log('noseXCoord:', poses[0].keypoints[0].position.x)
       // console.log('noseYCoord:', poses[0].keypoints[0].position.y)
@@ -149,7 +151,32 @@ class Camera extends Component {
       }
 
       poses.forEach(({score, keypoints}) => {
+        function hatPoints(filterHatPoint) {
+          const merge = (...objects) => ({...objects})
+          let hat = merge(
+            filterHatPoint[0],
+            filterHatPoint[1],
+            filterHatPoint[2]
+          )
+          return hat
+        }
+
         if (score >= minPoseConfidence) {
+          // console.log(showHat)
+          // if (showHat) {
+          //   //here i send only the leftEar,  rightear and nose into Function ShowHat.
+          //   placeHat(
+          //     hatPoints(keypoints),
+          //     minPartConfidence,
+          //     skeletonColor,
+          //     canvasContext
+          //   )
+
+          //   console.log(hatPoints(keypoints))
+          // }
+          if (showHat) {
+            placeHat(keypoints, minPartConfidence, skeletonColor, canvasContext)
+          }
           if (showPoints) {
             placeHat(keypoints, minPartConfidence, skeletonColor, canvasContext)
           }

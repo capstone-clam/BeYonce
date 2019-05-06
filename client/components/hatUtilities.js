@@ -1,4 +1,5 @@
 import * as posenet from '@tensorflow-models/posenet'
+import {get} from 'http'
 
 const pointRadius = 3
 
@@ -84,74 +85,15 @@ export function drawSkeleton(
   })
 }
 
-export function placeHat(
-  keypoints,
-  minConfidence,
-  skeletonColor,
-  canvasContext,
-  scale = 1
-) {
-  const rightEarX = keypoints[4].position.x
-  keypoints.forEach(keypoint => {
-    if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-      const {x, y} = keypoint.position
-      const difference = rightEarX - x
-      let hatImg = document.getElementById('hat')
-      const drawImgDifference = hatImg.height - difference
-      canvasContext.beginPath()
-      canvasContext.drawImage(
-        hatImg,
-        0,
-        0,
-        hatImg.naturalWidth,
-        hatImg.naturalHeight,
-        x - hatImg.width / 2,
-        y - drawImgDifference - 10, // not dynamic, hardcoded for formation hat
-        hatImg.width,
-        hatImg.height
-      ) // x and y are currently where we want the (0,0)
-      canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
-      canvasContext.fillStyle = skeletonColor
-      canvasContext.fill()
-    }
-  })
-}
 
-
-export function placeHat(
-  keypoints,
-  minConfidence,
-  skeletonColor,
-  canvasContext,
-  scale = 1
-) {
-  const rightEarX = keypoints[4].position.x
-  keypoints.forEach(keypoint => {
-    if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-      const {x, y} = keypoint.position
-      const difference = rightEarX - x
-      let hatImg = document.getElementById('hat')
-      const drawImgDifference = hatImg.height - difference
-      canvasContext.beginPath()
-      canvasContext.drawImage(
-        hatImg,
-        0,
-        0,
-        hatImg.naturalWidth,
-        hatImg.naturalHeight,
-        x - hatImg.width / 2,
-        y - drawImgDifference - 10, // not dynamic, hardcoded for formation hat
-        hatImg.width,
-        hatImg.height
-      ) // x and y are currently where we want the (0,0)
-      canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
-      canvasContext.fillStyle = skeletonColor
-      canvasContext.fill()
-    }
-  })
-}
-
-
+  //Function to select LeftEar, RightEar & Nose. Only the Hat
+  function hatPoints(hatPoint) {
+    const merge = (...objects) => ({...objects})
+    let hat = merge(hatPoint[0], hatPoint[1], hatPoint[2])
+    return hat
+  }
+  const hatKeypoints = hatPoints(keypoints)
+  console.log(hatKeypoints)
 
 export function showPoints(
   keypoints,
@@ -160,7 +102,8 @@ export function showPoints(
   canvasContext,
   scale = 1
 ) {
-  keypoints.forEach(keypoint => {
+
+  hatKeypoints.forEach(keypoint => {
     if (keypoint.score >= minConfidence) {
       const {x, y} = keypoint.position
       canvasContext.beginPath()
