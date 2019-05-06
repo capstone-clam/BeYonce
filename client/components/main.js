@@ -6,7 +6,7 @@ class Main extends Component {
       <div className="container">
         <div className="intros">
           <div className="row">
-            <div className="col-sm welcome intros">Welcome to BeYonce!</div>
+            <div className="col-sm welcome intros">Welcome to Be-Yoncé!</div>
           </div>
         </div>
 
@@ -14,9 +14,9 @@ class Main extends Component {
           <div className="row">
             <div className="col-sm intros">
               Take an interactive journey to dress yourself up in your favorite
-              iconic looks from Beyonce, pick a song, and let yourself unwind
+              iconic looks from Beyoncé, pick a song, and let yourself unwind
               and dance! For a few minutes you can empower yourself to
-              BE...yonce!
+              BE...yoncé!
             </div>
           </div>
         </div>
