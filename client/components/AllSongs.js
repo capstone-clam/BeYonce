@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {fetchCategoryFromCloset} from '../store/closet'
+// import {fetchCategoryFromCloset} from '../store/closet'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 export class AllSongs extends Component {
     componentDidMount() {
         const id =  Number(this.props.match.params.id)
-         this.props.fetchCategoryFromCloset(id)
+        //  this.props.fetchCategoryFromCloset(id)
     }
 
     render() {
@@ -18,13 +18,13 @@ export class AllSongs extends Component {
         return(
             <div className='allSongs'>
                         <h2>Songs: </h2>
-                        {
+                        {/* {
                             category.map(item =>
                                 <div id="songlinks" key={item.id}>
                                     <url>{item.url}</url>
                                 </div>
                             )
-                        }
+                        } */}
             </div>    
         )
     }
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchCategoryFromCloset: (categoryId) => dispatch(fetchCategoryFromCloset(categoryId))
+        // fetchCategoryFromCloset: (categoryId) => dispatch(fetchCategoryFromCloset(categoryId))
     }
 }
 

@@ -27,11 +27,6 @@ const getCloset = item => ({
   item
 })
 
-const getCategoryFromCloset = (category) => ({
-  type: GET_CATEGORY_FROM_CLOSET,
-  category
-})
-
 const getCategories = categories => ({
   type: GET_CATEGORIES,
   categories
@@ -53,14 +48,6 @@ export const fetchCloset = () => {
   }
 }
 
-export const fetchCategoryFromCloset = (categoryid) => {
-  return async dispatch => {
-    dispatch(loadingData())
-    const {data} = await axios.get(`/api/closet/${categoryid}`)
-    dispatch(getCategoryFromCloset(data))
-  }
-}
-
 // All Categories
 export const fetchCategories = () => {
   return async dispatch => {
@@ -72,10 +59,12 @@ export const fetchCategories = () => {
 }
 
 // One Category with products need the CategoryId
-export const fetchCategory = id => {
+export const fetchCategory = categoryId => {
   return async dispatch => {
     dispatch(loadingData())
-    const {data} = await axios.get(`/api/category/${id}`)
+    const {data} = await axios.get(`/api/closet/${categoryId}`)
+    console.log("REACHES FETCHCATEGORY THUNK")
+    console.log("THUNK DATA", data)
     dispatch(getCategory(data))
   }
 }
@@ -102,8 +91,6 @@ export default function(state = initialState, action) {
     case GET_CATEGORIES:
       return {...state, loading: false, categories: action.categories}
     case GET_CATEGORY:
-      return {...state, loading: false, category: action.category}
-    case GET_CATEGORY_FROM_CLOSET:
       return {...state, loading: false, category: action.category}
 
     default:

@@ -39,8 +39,10 @@ export class Closet extends Component {
                 categories.map(category =>
                     (<div id="closetpics" key={category.id}>
                         <div id="singlepic">
-                        <img id="closetpics" src={category.image}  onClick= {this.handleClick}/>
-                        {this.state.showClothingItem ? <ClothingItems id={category.id} categoryName={category.name}/>: null}
+                        {/* <img id="closetpics" src={category.image}  onClick= {this.handleClick}/> */}
+                        {/* <ClothingItems id={category.id} key={category.id} categoryName={category.name}/> */}
+                        <Link to={`/closet/${category.id}`}><div><img id="closetpics" src={category.image}  onClick= {this.handleClick}/></div></Link> 
+                        {/* {this.state.showClothingItem ? <Link to={`/closet/${category.id}`}><div><img id="closetpics" src={category.image}  onClick= {this.handleClick}/></div></Link> : null} */}
                         </div>
                       </div>))
             }
