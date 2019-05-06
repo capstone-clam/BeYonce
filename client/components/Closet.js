@@ -16,18 +16,18 @@ export class Closet extends Component {
 
         if(loading) return <div>Loading...</div>
         
-        console.log("CATEGORIES.DATA", categories.data)
+        console.log("CATEGORIES.DATA", categories)
 
         return (
         <div id="closet-details">
             <h1 id='closeth1'>BEYONCÉ CLOSET</h1>
-            {/* {
-                categories.map(category =>
+            {
+                categories.data.map(category =>
                     (<div id="closetpics" key={category.id}>
                         <img src={category.image} />
-                        <Link  to={`/category/${category.id}`}></Link>
+                        {/* <Link  to={`/category/${category.id}`}></Link> */}
                      </div>))
-            } */}
+            }
         </div>
     )}
 }
