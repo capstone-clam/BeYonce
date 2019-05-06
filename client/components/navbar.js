@@ -19,6 +19,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
+          <Link to="/main">Main</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           <Link to="/camera">Camera</Link>
@@ -46,10 +47,7 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(
-  mapState,
-  mapDispatch
-)(Navbar)
+export default connect(mapState, mapDispatch)(Navbar)
 
 /**
  * PROP TYPES
