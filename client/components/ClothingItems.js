@@ -12,6 +12,7 @@ export class ClothingItems extends Component {
          const id = Number(this.props.match.params.categoryId)
         //const id= this.props.id
         console.log("ID", id)
+        console.log("FUNC", this.props.fetchCategory)
          let value = this.props.fetchCategory(id)
          console.log("VALUE", value)
     }
@@ -43,7 +44,7 @@ export class ClothingItems extends Component {
 const mapStateToProps = (state) => {
     return {
         loading: state.closet.loading,
-        category: state.category
+        category: state.closet.category
     }
 }
 
