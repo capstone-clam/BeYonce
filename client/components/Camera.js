@@ -159,7 +159,7 @@ class Camera extends Component {
 
   render() {
     return (
-      <div>
+      <div className="full-width">
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
