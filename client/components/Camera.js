@@ -25,10 +25,6 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
-    this.state = {
-      noseXCoord: null,
-      noseYCoord: null
-    }
   }
 
   getCanvas = elem => {
@@ -52,7 +48,7 @@ class Camera extends Component {
       this.posenet = await posenet.load()
     } catch (error) {
       throw new Error('PoseNet failed to load')
-    } 
+    }
 
     this.detectPose()
   }
@@ -129,7 +125,6 @@ class Camera extends Component {
       poses.push(pose)
 
       console.log(poses[0])
-    
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
