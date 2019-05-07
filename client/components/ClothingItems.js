@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
-import {fetchCategory} from '../store'
+import {fetchCategory, addSelectedItem} from '../store'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 export class ClothingItems extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      redirect: false
+    }
     this.findItems = this.findItems.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.renderRedirect = this.renderRedirect.bind(this)
   }
 
   componentDidMount() {
@@ -14,16 +20,27 @@ export class ClothingItems extends Component {
   }
 
   findItems(category) {
-    if (category[0].inventories !== undefined) {
-      const inventories = category[0].inventories
+    if (category.inventories !== undefined) {
+      const inventories = category.inventories
       return inventories
     }
   }
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Link to="/closet/"> </Link>
+    }
+  }
+  handleClick(ev) {
+    ev.preventDefault()
+    let mySelection = Number(ev.target.id)
+    this.props.addSelectedItem(mySelection)
+    this.setState({redirect: true})
+    console.log('STATE', this.state)
+    this.renderRedirect()
+  }
 
   render() {
-    const {loading, inventories} = this.props
-
-    if (loading) return <div>Loading...</div>
+    const {inventories} = this.props
 
     return (
       <div id="closet-details">
@@ -31,8 +48,13 @@ export class ClothingItems extends Component {
         <p id="closetp">Please choose up to one of each</p>
 
         {inventories.map(inventory => (
-          <div id="singlepic" key={inventory.id}>
-            <img id="closetpics" src={inventory.filePath} />
+          <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
+            <img
+              className="closetpics"
+              src={inventory.filePath}
+              id={inventory.id}
+              value={inventory.item}
+            />
           </div>
         ))}
       </div>
@@ -49,7 +71,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCategory: categoryId => dispatch(fetchCategory(categoryId))
+    fetchCategory: categoryId => dispatch(fetchCategory(categoryId)),
+    addSelectedItem: inventoryId => dispatch(addSelectedItem(inventoryId))
   }
 }
 

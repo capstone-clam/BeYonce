@@ -4,8 +4,9 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import closet from './closet'
+import selection from './selection'
 
-const reducer = combineReducers({user, closet})
+const reducer = combineReducers({user, closet, selection})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
@@ -14,3 +15,4 @@ const store = createStore(reducer, middleware)
 export default store
 export * from './user'
 export * from './closet'
+export * from './selection'

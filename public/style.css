@@ -60,7 +60,7 @@ form div {
   justify-content: space-evenly;
 }
 
-#closetpics {
+.closetpics {
   padding-bottom: 10px;
   left: 0;
   bottom: 0;

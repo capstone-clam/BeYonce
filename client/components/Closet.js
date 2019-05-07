@@ -29,13 +29,14 @@ export class Closet extends Component {
       <div id="closet-details">
         <h1 id="closeth1">BEYONCÉ CLOSET</h1>
         <p id="closetp">Please choose up to one of each</p>
+
         {categories.map(category => (
           <div id="closetpics" key={category.id}>
             <div id="singlepic">
               <Link to={`/closet/${category.id}`}>
                 <div>
                   <img
-                    id="closetpics"
+                    className="closetpics"
                     src={category.image}
                     onClick={this.handleClick}
                   />
