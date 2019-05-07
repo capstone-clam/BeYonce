@@ -25,10 +25,6 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
-    this.state = {
-      noseXCoord: null,
-      noseYCoord: null
-    }
   }
 
   getCanvas = elem => {
