@@ -21,10 +21,12 @@ form div {
 }
 
 .webcam {
-  margin: 0 auto;
+  /* width: 100vw; */
+  height: 100vh;
+  /* margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
-  padding: 6px;
+  padding: 6px; */
 }
 
 #videoNoShow {
