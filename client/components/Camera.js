@@ -173,5 +173,3 @@ class Camera extends Component {
 
 export default Camera
 //export default connect(mapState, mapDispatch)(Camera)
-
-// hello world
