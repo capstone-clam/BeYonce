@@ -25,6 +25,7 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
+    this.canvas = null //tried adding this here
   }
 
   getCanvas = elem => {
@@ -37,6 +38,7 @@ class Camera extends Component {
 
   async componentDidMount() {
     try {
+      console.log('this.canvas in componentDidMount', this.canvas)
       await this.setupCamera()
     } catch (error) {
       throw new Error(
@@ -126,7 +128,7 @@ class Camera extends Component {
       //   noseXCoord: poses[0].keypoints[0].position.x,
       //   noseYCoord: poses[0].keypoints[0].position.y
       // })
-      console.log(poses[0])
+      // console.log(poses[0])
       // console.log('poses[0].keypoints[0]', poses[0].keypoints[0].position)
       // console.log('noseXCoord:', poses[0].keypoints[0].position.x)
       // console.log('noseYCoord:', poses[0].keypoints[0].position.y)
@@ -163,8 +165,9 @@ class Camera extends Component {
   }
 
   render() {
-    // console.log(logo)
-    // console.log('hatImg', hatImg)
+    console.log('this.props', this.props)
+    console.log('this.state', this.state)
+    console.log('this.canvas', this.canvas)
     return (
       <div>
         <div>
