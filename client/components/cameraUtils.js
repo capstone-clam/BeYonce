@@ -173,7 +173,7 @@ export function placeHat(
   const leftEyeX = keypoints[1].position.x
   // const rightEarX = keypoints[4].position.x
   const leftEarXrightEarX = leftEarX - rightEarX
-  const LeftEyeXRightEarX  = leftEyeX - rightEarX
+  const LeftEyeXRightEarX = leftEyeX - rightEarX
   console.log('leftEarXrightEarX:', leftEarXrightEarX)
   keypoints.forEach(keypoint => {
     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
@@ -185,14 +185,15 @@ export function placeHat(
       console.log('height:', hatImg.height)
       console.log('width:', hatImg.width)
       const drawImgDifference = fourTimesEars * 0.7 - RightEarXNoseX
+      console.log('RightEarXNoseX:', RightEarXNoseX)
       canvasContext.beginPath()
       canvasContext.drawImage(
         hatImg, // imgSource, variable set by grabbing photo by id
         0, // sourceX, start drawing image at this x
-        0, // sourceY, start drawing imahge at this y
+        0, // sourceY, start drawing image at this y
         hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
         hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
-        x - fourTimesEars * 0.7, // destinationX, x on canvas where top left corner of image sits 
+        x - fourTimesEars * 0.7, // destinationX, x on canvas where top left corner of image sits
         y - drawImgDifference + LeftEyeXRightEarX + 10, // destinationY, y on canvas where top left corner of image sits
         fourTimesEars, // dWitdth, width to draw the image as in the frame
         fourTimesEars * 0.7 // dHeight, height to draw the image as in the frame

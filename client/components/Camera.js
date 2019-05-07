@@ -53,11 +53,6 @@ class Camera extends Component {
     } catch (error) {
       throw new Error('PoseNet failed to load')
     } 
-    // finally {
-    //   setTimeout(() => {
-    //     this.setState({loading: false})
-    //   }, 200)
-    // }
 
     this.detectPose()
   }
@@ -132,14 +127,9 @@ class Camera extends Component {
         outputStride
       )
       poses.push(pose)
-      // this.setState({
-      //   noseXCoord: poses[0].keypoints[0].position.x,
-      //   noseYCoord: poses[0].keypoints[0].position.y
-      // })
+
       console.log(poses[0])
-      // console.log('poses[0].keypoints[0]', poses[0].keypoints[0].position)
-      // console.log('noseXCoord:', poses[0].keypoints[0].position.x)
-      // console.log('noseYCoord:', poses[0].keypoints[0].position.y)
+    
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -173,8 +163,6 @@ class Camera extends Component {
   }
 
   render() {
-    // console.log(logo)
-    // console.log('hatImg', hatImg)
     return (
       <div>
         <div>
