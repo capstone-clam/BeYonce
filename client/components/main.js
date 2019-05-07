@@ -26,7 +26,7 @@ class Main extends Component {
               Feel free to login or make an account, or just jump in and play by
               selecting "Camera" from the NavBar above!
               <hr/>
-              <button type="reset"><Link to="/camera">Begin</Link></button>
+              <button type="button"><Link to="/camera">Begin</Link></button>
             </div>
           </div>
         </div>
