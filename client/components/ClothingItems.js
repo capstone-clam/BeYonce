@@ -21,7 +21,7 @@ export class ClothingItems extends Component {
   }
 
   render() {
-    const {loading, category, inventories} = this.props
+    const {loading, inventories} = this.props
 
     if (loading) return <div>Loading...</div>
 
@@ -30,9 +30,9 @@ export class ClothingItems extends Component {
         <h1 id="closeth1">BEYONCÉ CLOSET</h1>
         <p id="closetp">Please choose up to one of each</p>
 
-        {inventories.map(item => (
-          <div id="singlepic" key={item.id}>
-            <img id="closetpics" src={item.filePath} />
+        {inventories.map(inventory => (
+          <div id="singlepic" key={inventory.id}>
+            <img id="closetpics" src={inventory.filePath} />
           </div>
         ))}
       </div>
@@ -43,7 +43,6 @@ export class ClothingItems extends Component {
 const mapStateToProps = state => {
   return {
     loading: state.closet.loading,
-    category: state.closet.category,
     inventories: state.closet.inventories
   }
 }

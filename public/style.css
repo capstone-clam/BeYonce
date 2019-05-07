@@ -35,10 +35,6 @@ form div {
   display: none !important;
 }
 
-/* #hat {
-  max-width: 100px;
-} */
-
 #closet-details {
   position: fixed;
   top: 0;
@@ -48,7 +44,6 @@ form div {
   background: rgba(0, 0, 0, 0.04);
   padding: 30px;
   overflow: auto;
-  /* box-shadow: -2px -3px 5px rgba(0,0,0,3); */
   box-sizing: border-box;
   color: #d6c7c7;
   color: #f4c0d7;
@@ -73,14 +68,12 @@ form div {
   height: 200px;
   border-radius: 50%;
   align-items: center;
-
 }
 
 #singlepic {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* background-color: #0cce6b; */
   margin: 0;
 }
 .container {
@@ -98,10 +91,6 @@ form div {
 .list-group {
   padding: 20px;
 }
-
-/* .list-group-item {
-  background-color: lightblue;
-} */
 
 .list-item {
   border: solid 5px black;
