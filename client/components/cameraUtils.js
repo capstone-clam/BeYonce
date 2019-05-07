@@ -16,7 +16,7 @@ export const config = {
   nmsRadius: 20,
   outputStride: 16,
   imageScaleFactor: 0.5,
-  skeletonColor: '#ffadea',
+  skeletonColor: '#ff0000',
   skeletonLineWidth: 6,
   loadingText: 'Loading...please be patient...'
 }
@@ -84,6 +84,10 @@ export function drawSkeleton(
   })
 }
 
+// Flower hat function:
+
+//https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
+
 export function placeHat(
   keypoints,
   minConfidence,
@@ -92,27 +96,41 @@ export function placeHat(
   scale = 1
 ) {
   const rightEarX = keypoints[4].position.x
+  const leftEarX = keypoints[3].position.x
+  const leftEyeX = keypoints[1].position.x
+  // const rightEarX = keypoints[4].position.x
+  const leftEarXrightEarX = leftEarX - rightEarX
+  const LeftEyeXRightEarX = leftEyeX - rightEarX
+  // console.log('leftEarXrightEarX:', leftEarXrightEarX)
   keypoints.forEach(keypoint => {
     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
       const {x, y} = keypoint.position
-      const difference = rightEarX - x
-      let hatImg = document.getElementById('hat')
-      const drawImgDifference = hatImg.height - difference
+      const RightEarXNoseX = rightEarX - x
+      let hatImg = document.getElementById('flowerHat')
+      let fourTimesEars = leftEarXrightEarX * 4
+      // let threeFourths = fourTimesEars * 0.75
+      // console.log('height:', hatImg.height)
+      // console.log('width:', hatImg.width)
+      const drawImgDifference = fourTimesEars * 0.7 - RightEarXNoseX
+      // console.log('RightEarXNoseX:', RightEarXNoseX)
       canvasContext.beginPath()
       canvasContext.drawImage(
-        hatImg,
-        0,
-        0,
-        hatImg.naturalWidth,
-        hatImg.naturalHeight,
-        x - hatImg.width / 2,
-        y - drawImgDifference - 10, // not dynamic, hardcoded for formation hat
-        hatImg.width,
-        hatImg.height
-      ) // x and y are currently where we want the (0,0)
-      canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
-      canvasContext.fillStyle = skeletonColor
-      canvasContext.fill()
+        hatImg, // imgSource, variable set by grabbing photo by id
+        0, // sourceX, start drawing image at this x
+        0, // sourceY, start drawing image at this y
+        hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
+        hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
+
+        // x - hatImg.width * 0.7, // destinationX, x on canvas where top left corner of image sits (noseX minus )
+        x - fourTimesEars * 0.7 + 10, // destinationX, x on canvas where top left corner of image sits (noseX minus )
+
+        y - drawImgDifference + LeftEyeXRightEarX + 10, // destinationY, y on canvas where top left corner of image sits
+        fourTimesEars, // dWitdth, width to draw the image as in the frame
+        fourTimesEars * 0.7 // dHeight, height to draw the image as in the frame
+      )
+      // canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
+      // canvasContext.fillStyle = skeletonColor
+      // canvasContext.fill()
     }
   })
 }
