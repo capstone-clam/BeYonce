@@ -23,11 +23,19 @@ class Main extends Component {
         <div className="intros">
           <div className="row">
             <div className="col-sm intros">
-              Feel free to login or make an account, or just jump in and play by
-              selecting "Camera" from the NavBar above!
-              <hr />
+              Feel free to login with your Instagram account or just jump in and
+              play!
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
               <button type="button">
-                <Link to="/camera">Begin</Link>
+                <Link to="/camera">Play!</Link>
+              </button>
+            </div>
+            <div className="col-sm">
+              <button type="button">
+                <Link to="/login">Login</Link>
               </button>
             </div>
           </div>
