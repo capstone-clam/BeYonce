@@ -14,12 +14,12 @@ const seedCategories = [
       },
       {
         item: 'Hat 2',
-        filePath: '/DarkenedFormation2.png',
+        filePath: '/beyflower.png',
         url: 'www.google.com'
       },
       {
         item: 'Hat 3',
-        filePath: '/DarkenedFormation3.png',
+        filePath: '/hat.png',
         url: 'www.google.com'
       }
     ]
