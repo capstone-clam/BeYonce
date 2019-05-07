@@ -1,126 +1,91 @@
 'use strict'
+const {db, User, Inventory, Category} = require('../server/db/models')
 
-const db = require('../server/db')
-const {User, Inventory, Category} = require('../server/db/models')
-
-const seedInventory = [
+const seedCategories = [
   {
-    singleProduct: 'Hat 1',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
+    name: 'Hat',
+    image:
+      'https://image.iol.co.za/image/1/process/620x349?source=https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/media/2017/11/08/iol/582/beyonce-formation-variance-magazine-7291.jpg&operation=CROP&offset=0x12&resize=838x469',
+    inventories: [
       {
-        name: 'Hat'
+        item: 'Hat 1',
+        filePath: '/DarkenedFormation.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'Hat 2',
+        filePath: '/beyflower.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'Hat 3',
+        filePath: '/hat.png',
+        url: 'www.google.com'
       }
     ]
   },
   {
-    singleProduct: 'Hat 2',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
+    name: 'Dress',
+    image:
+      'https://hips.hearstapps.com/elleuk.cdnds.net/15/37/2048x2730/2048x2730-e6-a19a-6ddc829b9cee-assets-elleuk-com-gallery-16631-1369240729-beyonce-38-aaavm465-wenn-feb2013-jpg.jpg',
+    inventories: [
       {
-        name: 'Hat'
+        item: 'Dress 1',
+        filePath: '/DarkenedFormation.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'Dress 2',
+        filePath: '/DarkenedFormation2.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'Dress 3',
+        filePath: '/DarkenedFormation3.png',
+        url: 'www.google.com'
       }
     ]
   },
   {
-    singleProduct: 'Hat 3',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
+    name: 'BodySuit',
+    image:
+      'https://cdn.fashionmagazine.com/wp-content/uploads/2013/08/Beyonce-Mrs-Carter-World-Tour-Ralph-Russo-Bodysuit-480x0-c-default.jpg',
+    inventories: [
       {
-        name: 'Hat'
+        item: 'BodySuit 1',
+        filePath: '/DarkenedFormation.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'BodySuit 2',
+        filePath: '/DarkenedFormation2.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'BodySuit 3',
+        filePath: '/DarkenedFormation3.png',
+        url: 'www.google.com'
       }
     ]
   },
   {
-    singleProduct: 'bodysuit 1',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
+    name: 'Songs',
+    image: 'https://media.timeout.com/images/105252649/630/472/image.jpg',
+    inventories: [
       {
-        name: 'Bodysuit'
-      }
-    ]
-  },
-  {
-    singleProduct: 'bodysuit 2',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
+        item: 'Beyoncé - Run the World (Girls) (Video - Main Version)',
+        filePath: '/DarkenedFormation.png',
+        url: 'https://youtu.be/VBmMU_iwe6U'
+      },
       {
-        name: 'Bodysuit'
-      }
-    ]
-  },
-  {
-    singleProduct: 'bodysuit 3',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
+        item: 'Beyoncé - Single Ladies (Put a Ring on It) (Video Version)',
+        filePath: '/DarkenedFormation2.png',
+        url: 'https://youtu.be/4m1EFMoRFvY'
+      },
       {
-        name: 'Bodysuit'
-      }
-    ]
-  },
-  {
-    singleProduct: 'Dress 1',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
-      {
-        name: 'Dress'
-      }
-    ]
-  },
-  {
-    singleProduct: 'Dress 2',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
-      {
-        name: 'Dress'
-      }
-    ]
-  },
-  {
-    singleProduct: 'Dress 3',
-    filePath: '/DarkenedFormation.png',
-    url: 'www.google.cl',
-    category: [
-      {
-        name: 'Dress'
-      }
-    ]
-  },
-  {
-    singleProduct: 'Song 1',
-    filePath: '/DarkenedFormation.mp3',
-    url: 'www.google.cl',
-    category: [
-      {
-        name: 'Song'
-      }
-    ]
-  },
-  {
-    singleProduct: 'Song 2',
-    filePath: '/DarkenedFormation.mp3',
-    url: 'www.google.cl',
-    category: [
-      {
-        name: 'Song'
-      }
-    ]
-  },
-  {
-    singleProduct: 'Song 3',
-    filePath: '/DarkenedFormation.mp3',
-    url: 'www.google.cl',
-    category: [
-      {
-        name: 'Song'
+        item: 'Beyoncé - Crazy In Love ft. JAY Z',
+        filePath: '/DarkenedFormation3.png',
+        url: 'https://youtu.be/ViwtNLUqkMY'
       }
     ]
   }
@@ -130,18 +95,24 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
+  // Seed Data Base
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  await Promise.all(
-    seedInventory.map(singleProduct => {
-      return Inventory.create(singleProduct, {include: [Category]})
+  const categories = await Promise.all(
+    seedCategories.map(category => {
+      return Category.create(category, {
+        include: [Inventory]
+      })
     })
   )
 
+  console.log(`seeded ${categories.length} categories`)
+
   console.log(`seeded ${users.length} users`)
+
   console.log(`seeded successfully`)
 }
 
