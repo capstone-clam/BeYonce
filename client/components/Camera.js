@@ -95,10 +95,11 @@ class Camera extends Component {
   detectPose() {
     const {videoWidth, videoHeight} = this.props
     const canvas = this.canvas
-    const canvasContext = canvas.getContext('2d')
+    const canvasContext = canvas.getContext('2d') // Intantiates our canvas as 2D canvas
+    // drawImage method happens on canvasContext in utility functions
 
-    canvas.width = videoWidth
-    canvas.height = videoHeight
+    canvas.width = videoWidth // canvas and width always same size
+    canvas.height = videoHeight // canvas and width always same size
 
     this.poseDetectionFrame(canvasContext)
   }
