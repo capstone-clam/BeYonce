@@ -18,7 +18,7 @@ class Camera extends Component {
     nmsRadius: 20,
     outputStride: 16,
     imageScaleFactor: 0.5,
-    skeletonColor: '#ffadea',
+    skeletonColor: '#ff0000',
     skeletonLineWidth: 6,
     loadingText: 'Loading...please be patient...'
   }
@@ -86,10 +86,11 @@ class Camera extends Component {
   detectPose() {
     const {videoWidth, videoHeight} = this.props
     const canvas = this.canvas
-    const canvasContext = canvas.getContext('2d')
+    const canvasContext = canvas.getContext('2d') // Intantiates our canvas as 2D canvas
+    // drawImage method happens on canvasContext in utility functions
 
-    canvas.width = videoWidth
-    canvas.height = videoHeight
+    canvas.width = videoWidth // canvas and width always same size
+    canvas.height = videoHeight // canvas and width always same size
 
     this.poseDetectionFrame(canvasContext)
   }
@@ -122,14 +123,8 @@ class Camera extends Component {
         outputStride
       )
       poses.push(pose)
-      // this.setState({
-      //   noseXCoord: poses[0].keypoints[0].position.x,
-      //   noseYCoord: poses[0].keypoints[0].position.y
-      // })
-      console.log(poses[0])
-      // console.log('poses[0].keypoints[0]', poses[0].keypoints[0].position)
-      // console.log('noseXCoord:', poses[0].keypoints[0].position.x)
-      // console.log('noseYCoord:', poses[0].keypoints[0].position.y)
+
+      // console.log(poses[0])
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -163,15 +158,13 @@ class Camera extends Component {
   }
 
   render() {
-    // console.log(logo)
-    // console.log('hatImg', hatImg)
     return (
       <div>
         <div>
-          <img id="hat" src="/DarkenedFormation.png" alt="Favicon" />
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
+          <img id="flowerHat" src="/beyflower.png" alt="Favicon" />
         </div>
       </div>
     )
