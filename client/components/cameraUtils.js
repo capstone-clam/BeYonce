@@ -84,6 +84,77 @@ export function drawSkeleton(
   })
 }
 
+// // For formation hat:
+// export function placeHat(
+//   keypoints,
+//   minConfidence,
+//   skeletonColor,
+//   canvasContext,
+//   scale = 1
+// ) {
+//   const rightEarX = keypoints[4].position.x
+//   const leftEarX = keypoints[3].position.x
+//   const differenceBetweenEars = leftEarX - rightEarX
+//   console.log('differenceBetweenEars:', differenceBetweenEars)
+//   keypoints.forEach(keypoint => {
+//     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
+//       const {x, y} = keypoint.position
+//       const difference = rightEarX - x
+//       let hatImg = document.getElementById('hat')
+//       let threeTimes = differenceBetweenEars * 4
+//       console.log('height:', hatImg.height)
+//       console.log('width:', hatImg.width)
+//       const drawImgDifference = threeTimes * 0.27 - difference
+//       canvasContext.beginPath()
+//       canvasContext.drawImage(
+//         hatImg,
+//         0,
+//         0,
+//         hatImg.width, // crops the image
+//         hatImg.height, // crops the image
+//         x - threeTimes / 2,
+//         y - drawImgDifference - 10, // not dynamic, hardcoded for formation hat
+//         threeTimes,
+//         threeTimes * 0.295
+//       )
+
+//orig flower hat:
+// export function placeHat(
+//   keypoints,
+//   minConfidence,
+//   skeletonColor,
+//   canvasContext,
+//   scale = 1
+// ) {
+//   const rightEarX = keypoints[4].position.x
+//   const leftEarX = keypoints[3].position.x
+//   const leftEyeX = keypoints[1].position.x
+//   // const rightEarX = keypoints[4].position.x
+//   const differenceBetweenEars = leftEarX - rightEarX
+//   const differenceLeftEyeRightEar = leftEyeX - rightEarX
+//   console.log('differenceBetweenEars:', differenceBetweenEars)
+//   keypoints.forEach(keypoint => {
+//     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
+//       const {x, y} = keypoint.position
+//       const difference = rightEarX - x
+//       let hatImg = document.getElementById('hat')
+//       let threeTimes = differenceBetweenEars * 4
+//       console.log('height:', hatImg.height)
+//       console.log('width:', hatImg.width)
+//       const drawImgDifference = threeTimes * 0.7 - difference
+//       canvasContext.beginPath()
+//       canvasContext.drawImage(
+//         hatImg,
+//         0,
+//         0,
+//         hatImg.width, // crops the image
+//         hatImg.height, // crops the image
+//         x - threeTimes / 2,
+//         y - drawImgDifference + differenceLeftEyeRightEar, // not dynamic, hardcoded for formation hat
+//         threeTimes,
+//         threeTimes * 0.7
+//       )
+
 export function placeHat(
   keypoints,
   minConfidence,
@@ -92,27 +163,38 @@ export function placeHat(
   scale = 1
 ) {
   const rightEarX = keypoints[4].position.x
+  const leftEarX = keypoints[3].position.x
+  const leftEyeX = keypoints[1].position.x
+  // const rightEarX = keypoints[4].position.x
+  const differenceBetweenEars = leftEarX - rightEarX
+  const differenceLeftEyeRightEar = leftEyeX - rightEarX
+  console.log('differenceBetweenEars:', differenceBetweenEars)
   keypoints.forEach(keypoint => {
     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
       const {x, y} = keypoint.position
       const difference = rightEarX - x
       let hatImg = document.getElementById('hat')
-      const drawImgDifference = hatImg.height - difference
+      let threeTimes = differenceBetweenEars * 4
+      let threeFourths = threeTimes * 0.75
+      console.log('height:', hatImg.height)
+      console.log('width:', hatImg.width)
+      const drawImgDifference = threeTimes * 0.7 - difference
       canvasContext.beginPath()
       canvasContext.drawImage(
         hatImg,
         0,
         0,
-        hatImg.naturalWidth,
-        hatImg.naturalHeight,
-        x - hatImg.width / 2,
-        y - drawImgDifference - 10, // not dynamic, hardcoded for formation hat
-        hatImg.width,
-        hatImg.height
-      ) // x and y are currently where we want the (0,0)
-      canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
-      canvasContext.fillStyle = skeletonColor
-      canvasContext.fill()
+        hatImg.width, // crops the image
+        hatImg.height, // crops the image
+        x - threeTimes * 0.7,
+        y - drawImgDifference + differenceLeftEyeRightEar, // not dynamic, hardcoded for formation hat
+        threeTimes,
+        threeTimes * 0.7
+      )
+
+      // canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
+      // canvasContext.fillStyle = skeletonColor
+      // canvasContext.fill()
     }
   })
 }
