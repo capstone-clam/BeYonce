@@ -18,7 +18,7 @@ class Camera extends Component {
     nmsRadius: 20,
     outputStride: 16,
     imageScaleFactor: 0.5,
-    skeletonColor: '#ffadea',
+    skeletonColor: '#ff0000',
     skeletonLineWidth: 6,
     loadingText: 'Loading...please be patient...'
   }
@@ -124,7 +124,7 @@ class Camera extends Component {
       )
       poses.push(pose)
 
-      console.log(poses[0])
+      // console.log(poses[0])
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
