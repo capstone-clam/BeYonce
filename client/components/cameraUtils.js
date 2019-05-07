@@ -101,7 +101,7 @@ export function placeHat(
   // const rightEarX = keypoints[4].position.x
   const leftEarXrightEarX = leftEarX - rightEarX
   const LeftEyeXRightEarX = leftEyeX - rightEarX
-  console.log('leftEarXrightEarX:', leftEarXrightEarX)
+  // console.log('leftEarXrightEarX:', leftEarXrightEarX)
   keypoints.forEach(keypoint => {
     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
       const {x, y} = keypoint.position
@@ -109,10 +109,10 @@ export function placeHat(
       let hatImg = document.getElementById('flowerHat')
       let fourTimesEars = leftEarXrightEarX * 4
       // let threeFourths = fourTimesEars * 0.75
-      console.log('height:', hatImg.height)
-      console.log('width:', hatImg.width)
+      // console.log('height:', hatImg.height)
+      // console.log('width:', hatImg.width)
       const drawImgDifference = fourTimesEars * 0.7 - RightEarXNoseX
-      console.log('RightEarXNoseX:', RightEarXNoseX)
+      // console.log('RightEarXNoseX:', RightEarXNoseX)
       canvasContext.beginPath()
       canvasContext.drawImage(
         hatImg, // imgSource, variable set by grabbing photo by id
