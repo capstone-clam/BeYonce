@@ -16,7 +16,7 @@ export const config = {
   nmsRadius: 20,
   outputStride: 16,
   imageScaleFactor: 0.5,
-  skeletonColor: '#ffadea',
+  skeletonColor: '#ff0000',
   skeletonLineWidth: 6,
   loadingText: 'Loading...please be patient...'
 }
@@ -155,6 +155,10 @@ export function drawSkeleton(
 //         threeTimes * 0.7
 //       )
 
+// Flower hat function:
+
+//https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
+
 export function placeHat(
   keypoints,
   minConfidence,
@@ -166,30 +170,30 @@ export function placeHat(
   const leftEarX = keypoints[3].position.x
   const leftEyeX = keypoints[1].position.x
   // const rightEarX = keypoints[4].position.x
-  const differenceBetweenEars = leftEarX - rightEarX
-  const differenceLeftEyeRightEar = leftEyeX - rightEarX
-  console.log('differenceBetweenEars:', differenceBetweenEars)
+  const leftEarXrightEarX = leftEarX - rightEarX
+  const LeftEyeXRightEarX  = leftEyeX - rightEarX
+  console.log('leftEarXrightEarX:', leftEarXrightEarX)
   keypoints.forEach(keypoint => {
     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
       const {x, y} = keypoint.position
-      const difference = rightEarX - x
-      let hatImg = document.getElementById('hat')
-      let threeTimes = differenceBetweenEars * 4
-      let threeFourths = threeTimes * 0.75
+      const RightEarXNoseX = rightEarX - x
+      let hatImg = document.getElementById('flowerHat')
+      let fourTimesEars = leftEarXrightEarX * 4
+      // let threeFourths = fourTimesEars * 0.75
       console.log('height:', hatImg.height)
       console.log('width:', hatImg.width)
-      const drawImgDifference = threeTimes * 0.7 - difference
+      const drawImgDifference = fourTimesEars * 0.7 - RightEarXNoseX
       canvasContext.beginPath()
       canvasContext.drawImage(
-        hatImg,
-        0,
-        0,
-        hatImg.width, // crops the image
-        hatImg.height, // crops the image
-        x - threeTimes * 0.7,
-        y - drawImgDifference + differenceLeftEyeRightEar, // not dynamic, hardcoded for formation hat
-        threeTimes,
-        threeTimes * 0.7
+        hatImg, // imgSource, variable set by grabbing photo by id
+        0, // sourceX, start drawing image at this x
+        0, // sourceY, start drawing imahge at this y
+        hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
+        hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
+        x - fourTimesEars * 0.7, // destinationX, x on canvas where top left corner of image sits 
+        y - drawImgDifference + LeftEyeXRightEarX + 10, // destinationY, y on canvas where top left corner of image sits
+        fourTimesEars, // dWitdth, width to draw the image as in the frame
+        fourTimesEars * 0.7 // dHeight, height to draw the image as in the frame
       )
 
       // canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)

@@ -51,11 +51,12 @@ class Camera extends Component {
       this.posenet = await posenet.load()
     } catch (error) {
       throw new Error('PoseNet failed to load')
-    } finally {
-      setTimeout(() => {
-        this.setState({loading: false})
-      }, 200)
-    }
+    } 
+    // finally {
+    //   setTimeout(() => {
+    //     this.setState({loading: false})
+    //   }, 200)
+    // }
 
     this.detectPose()
   }
@@ -177,7 +178,7 @@ class Camera extends Component {
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
-          <img id="hat" src="/beyflower.png" alt="Favicon" />
+          <img id="flowerHat" src="/beyflower.png" alt="Favicon" />
         </div>
       </div>
     )
