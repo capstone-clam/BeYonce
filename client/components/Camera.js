@@ -48,10 +48,6 @@ class Camera extends Component {
       this.posenet = await posenet.load()
     } catch (error) {
       throw new Error('PoseNet failed to load')
-    } finally {
-      setTimeout(() => {
-        this.setState({loading: false})
-      }, 200)
     }
 
     this.detectPose()
