@@ -1,4 +1,4 @@
-import {drawKeyPoints, drawSkeleton, placeHat} from './cameraUtils'
+import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import Closet from './Closet'
@@ -124,7 +124,7 @@ class Camera extends Component {
       )
       poses.push(pose)
 
-      // console.log(poses[0])
+      console.log(poses[0])
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -164,7 +164,9 @@ class Camera extends Component {
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
-          <img id="flowerHat" src="/beyflower.png" alt="Favicon" />
+          <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          {/* <img id="grammy" src="/Grammycropped.png"  /> */}
+          <img id="bodySuit" src="/BeyBarbieBodysuit.png" />
         </div>
       </div>
     )
