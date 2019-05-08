@@ -1,97 +1,65 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {Grid, Button} from '@material-ui/core'
+
+// const styles = theme => ({
+//   paper: {
+//     height: 100,
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center'
+//   }
+// })
 
 class Main extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="intros">
-          <div className="row">
-            <div className="col-sm welcome intros">Welcome to Be-Yoncé!</div>
+      <div className="mainPage">
+        <div className="container">
+          <div className="title">BE-YONCÉ</div>
+          <div className="fiveBeysDiv">
+            <img className="fiveBeys" src="/5Beys.png" />
           </div>
-        </div>
-        <div className="intros">
-          <div className="row">
-            <div className="col-sm intros">
-              Take an interactive journey to dress yourself up in your favorite
-              iconic looks from Beyoncé, pick a song, and let yourself unwind
-              and dance! For a few minutes you can empower yourself to
-              BE...yoncé!
-            </div>
+          <div className="intro">
+            Take an interactive journey to dress yourself up in your favorite
+            iconic looks from Beyoncé, pick a song, and let yourself unwind and
+            dance! For a few minutes you can empower yourself to Be...Yoncé
           </div>
-        </div>
-        <div className="intros">
-          <div className="row">
-            <div className="col-sm intros">
-              Feel free to login with your Instagram account or just jump in and
-              play!
-            </div>
+          <div className="enterButton">
+            <Button variant="contained" color="secondary" size="large">
+              <Link to="/camera">Enter</Link>
+            </Button>
           </div>
-          <div className="row">
-            <div className="col-sm">
-              <button type="button">
-                <Link to="/camera">Play!</Link>
-              </button>
-            </div>
-            <div className="col-sm">
-              <button type="button">
-                <Link to="/login">Login</Link>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="list-group">
-          <div className="row">
-            <div className="col-sm designer-intro">
-              This experience is brought to you by four talented software
-              engineers attending the Grace Hopper Program:
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm list-item">
-              <li className="list-group-item">
+          <div className="description">misc description</div>
+          <div className="namesList">
+            <div className="name">
+              <a
+                href="https://www.linkedin.com/in/chelsi-asulin/"
+                target="_blank"
+              >
                 Chelsi Asulin
-                <br />
-                <a
-                  href="https://www.linkedin.com/in/chelsi-asulin/"
-                  target="_blank"
-                >
-                  Chelsi's LinkedIn
-                </a>
-              </li>
+              </a>
             </div>
-            <div className="col-sm list-item">
-              <li className="list-group-item">
+            <div className="name">
+              <a href="https://www.linkedin.com/in/mcarrenog/" target="blank">
                 Macarena Carreno
-                <br />
-                <a href="https://www.linkedin.com/in/mcarrenog/" target="blank">
-                  Macarena's LinkedIn
-                </a>
-              </li>
+              </a>
             </div>
-            <div className="col-sm list-item">
-              <li className="list-group-item">
+            <div className="name">
+              <a
+                href="https://www.linkedin.com/in/alex-grazier/"
+                target="_blank"
+              >
                 Alex Grazier
-                <br />
-                <a
-                  href="https://www.linkedin.com/in/alex-grazier/"
-                  target="_blank"
-                >
-                  Alex's LinkedIn
-                </a>
-              </li>
+              </a>
             </div>
-            <div className="col-sm list-item">
-              <li className="list-group-item">
+            <div className="name">
+              <a
+                href="https://www.linkedin.com/in/linda-saraguro-123524122/"
+                target="_blank"
+              >
                 Linda Saraguro
-                <br />
-                <a
-                  href="https://www.linkedin.com/in/linda-saraguro-123524122/"
-                  target="_blank"
-                >
-                  Linda's LinkedIn
-                </a>
-              </li>
+              </a>
             </div>
           </div>
         </div>
