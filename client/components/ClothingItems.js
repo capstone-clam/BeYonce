@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
-import {fetchCategory} from '../store'
+import {fetchCategory, addSelectedItem} from '../store'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 export class ClothingItems extends Component {
   constructor(props) {
     super(props)
-    this.findItems = this.findItems.bind(this)
+    this.state = {
+      redirect: false
+    }
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -13,26 +17,33 @@ export class ClothingItems extends Component {
     this.props.fetchCategory(categoryId)
   }
 
-  findItems(category) {
-    if (category[0].inventories !== undefined) {
-      const inventories = category[0].inventories
-      return inventories
-    }
+  handleClick(ev) {
+    ev.preventDefault()
+    let mySelection = Number(ev.target.id)
+    this.props.addSelectedItem(mySelection)
+    this.setState({redirect: true})
+    console.log('STATE', this.state)
+    console.log("HITS ONCLICK")
   }
 
   render() {
-    const {loading, inventories} = this.props
-
-    if (loading) return <div>Loading...</div>
+    const {inventories} = this.props
 
     return (
       <div id="closet-details">
         <h1 id="closeth1">BEYONCÉ CLOSET</h1>
-        <p id="closetp">Please choose up to one of each</p>
+        <p id="closetp">Please select one</p>
 
         {inventories.map(inventory => (
-          <div id="singlepic" key={inventory.id}>
-            <img id="closetpics" src={inventory.filePath} />
+          <div id="singlepic" key={inventory.id} onClick={this.handleClick} >
+            <Link to='/closet'>
+            <img
+              className="closetpics"
+              src={inventory.filePath}
+              id={inventory.id}
+              value={inventory.item}
+            />
+            </Link>
           </div>
         ))}
       </div>
@@ -49,7 +60,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCategory: categoryId => dispatch(fetchCategory(categoryId))
+    fetchCategory: categoryId => dispatch(fetchCategory(categoryId)),
+    addSelectedItem: inventoryId => dispatch(addSelectedItem(inventoryId))
   }
 }
 

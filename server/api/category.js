@@ -29,7 +29,7 @@ router.get('/:categoryId', async (req, res, next) => {
         }
       ]
     })
-    res.json(singleCategory)
+    res.json(singleCategory[0])
   } catch (err) {
     next(err)
   }
