@@ -2,6 +2,8 @@ import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import Closet from './Closet'
+import {Link} from 'react-router-dom'
+import {Grid, Button} from '@material-ui/core'
 
 class Camera extends Component {
   static defaultProps = {
@@ -161,6 +163,9 @@ class Camera extends Component {
     return (
       <div>
         <div>
+          <Button variant="contained" color="secondary" size="large">
+              <Link to="/main">Exit</Link>
+          </Button>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
