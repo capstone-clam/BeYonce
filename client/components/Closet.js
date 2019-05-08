@@ -1,50 +1,49 @@
 import React, {Component} from 'react'
 import {fetchCategories} from '../store/closet'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 
-export class Closet extends Component {
+import Category from './Category'
+import ClothingItems from './ClothingItems'
+
+class Closet extends Component {
   constructor() {
     super()
     this.state = {
-      showClothingItem: false
+      selectedCategoryId: ''
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.pickCategory = this.pickCategory.bind(this)
   }
   componentDidMount() {
     this.props.fetchCategories()
   }
-  handleClick() {
+
+  pickCategory(categoryId) {
     return this.setState({
-      showClothingItem: !this.state.showClothingItem
+      selectedCategoryId: categoryId
+    })
+  }
+
+  deslectCategory() {
+    this.setState({
+      selectedCategoryId: ''
     })
   }
 
   render() {
-    const {loading, categories} = this.props
+    const {categories, loadingCategories} = this.props
 
-    if (loading) return <div>Loading...</div>
+    if (loadingCategories) return <div>Loading...</div>
 
     return (
       <div id="closet-details">
         <h1 id="closeth1">BEYONCÉ CLOSET</h1>
         <p id="closetp">Please choose up to one of each</p>
 
-        {categories.map(category => (
-          <div id="closetpics" key={category.id}>
-            <div id="singlepic">
-              {/* <Link to={`/closet/${category.id}`}> */}
-              <div>
-                <img
-                  className="closetpics"
-                  src={category.image}
-                  onClick={this.handleClick}
-                />
-              </div>
-              {/* </Link> */}
-            </div>
-          </div>
-        ))}
+        {this.state.selectedCategoryId ? (
+          <ClothingItems categoryId={this.state.selectedCategoryId} />
+        ) : (
+          <Category categories={categories} pickCategory={this.pickCategory} />
+        )}
       </div>
     )
   }
@@ -52,7 +51,7 @@ export class Closet extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.closet.loading,
+    loadingCategories: state.closet.loadingCategories,
     categories: state.closet.categories
   }
 }
