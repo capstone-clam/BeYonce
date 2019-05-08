@@ -40,7 +40,7 @@ export const addSelectedItem = inventoryId => {
  * INITIAL STATE
  */
 const initialState = {
-  loading: false,
+  loadingSelection: false,
   selection: {}
 }
 
@@ -50,9 +50,9 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case LOADING_DATA:
-      return {...state, loading: true}
+      return {...state, loadingSelection: false}
     case ADD_SELECTION:
-      return {...state, loading: false, selection: action.selection}
+      return {...state, loadingSelection: false, selection: action.selection}
     default:
       return state
   }
