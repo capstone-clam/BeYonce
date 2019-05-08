@@ -36,6 +36,7 @@
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "@tensorflow-models/posenet": "^1.0.2",
     "@tensorflow/tfjs": "^1.1.2",
     "axios": "^0.18.0",
