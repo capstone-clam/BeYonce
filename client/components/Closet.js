@@ -33,15 +33,15 @@ export class Closet extends Component {
         {categories.map(category => (
           <div id="closetpics" key={category.id}>
             <div id="singlepic">
-              <Link to={`/closet/${category.id}`}>
-                <div>
-                  <img
-                    className="closetpics"
-                    src={category.image}
-                    onClick={this.handleClick}
-                  />
-                </div>
-              </Link>
+              {/* <Link to={`/closet/${category.id}`}> */}
+              <div>
+                <img
+                  className="closetpics"
+                  src={category.image}
+                  onClick={this.handleClick}
+                />
+              </div>
+              {/* </Link> */}
             </div>
           </div>
         ))}
