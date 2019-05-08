@@ -164,8 +164,8 @@ class Camera extends Component {
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
-          {/* <img id="flowerHat" src="/FlowerhatBrightened75.png" /> */}
-          <img id="grammy" src="/Grammycropped.png" />
+          <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
       </div>
