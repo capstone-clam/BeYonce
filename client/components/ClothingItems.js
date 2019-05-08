@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {fetchCategory, addSelectedItem} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { Redirect } from 'react-router'
 
 export class ClothingItems extends Component {
   constructor(props) {
@@ -10,10 +9,7 @@ export class ClothingItems extends Component {
     this.state = {
       redirect: false
     }
-    // this.findItems = this.findItems.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    // this.renderRedirect = this.renderRedirect.bind(this)
-    // this.handleOnMouseDown= this.handleOnMouseDown.bind(this)
   }
 
   componentDidMount() {
@@ -21,15 +17,6 @@ export class ClothingItems extends Component {
     this.props.fetchCategory(categoryId)
   }
 
-  // findItems(category) {
-  //   if (category.inventories !== undefined) {
-  //     const inventories = category.inventories
-  //     return inventories
-  //   }
-  // }
-  // renderRedirect = () => {
-  //     return <Link to="/closet"> </Link>
-  // }
   handleClick(ev) {
     ev.preventDefault()
     let mySelection = Number(ev.target.id)
@@ -37,15 +24,8 @@ export class ClothingItems extends Component {
     this.setState({redirect: true})
     console.log('STATE', this.state)
     console.log("HITS ONCLICK")
-    // this.renderRedirect()
   }
 
-  // handleOnMouseDown(){
-  //   // this.renderRedirect()
-  //   console.log("HITS ONMOUSE!!")
-  //   return <Redirect to='/closet' />
-  //   // this.handleOnMouseDown
-  // }
   render() {
     const {inventories} = this.props
 
