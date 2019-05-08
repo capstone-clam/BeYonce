@@ -25,27 +25,6 @@ describe('thunk creators - Closet', () => {
     store.clearActions()
   })
 
-  describe('fetchCloset', () => {
-    it('dispatch Get Closet Action', async () => {
-      const fakeCloset = {
-        id: 1,
-        item: 'Dress 1',
-        filePath: '/DarkenedFormation.png',
-        url: 'www.google.com',
-        createdAt: '2019-05-04T22:20:19.815Z',
-        updatedAt: '2019-05-04T22:20:19.815Z',
-        categoryId: 1
-      }
-      mockAxios.onGet('/api/closet').replyOnce(200, fakeCloset)
-      await store.dispatch(fetchCloset())
-
-      const actions = store.getActions()
-      expect(actions[0].type).to.be.equal('LOADING_DATA')
-      expect(actions[1].type).to.be.equal('GET_CLOSET')
-      expect(actions[1].item).to.be.deep.equal(fakeCloset)
-    })
-  })
-
   describe('fetchCategories', () => {
     it('dispatch Get Categories Action', async () => {
       const fakeCategories = [
