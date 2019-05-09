@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {fetchCategories} from '../store/closet'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Songs from './Songs'
 
 import Category from './Category'
 import ClothingItems from './ClothingItems'
@@ -24,7 +25,6 @@ class Closet extends Component {
   }
 
   deslectCategory() {
-
     window.location.reload()
   }
 
@@ -33,12 +33,12 @@ class Closet extends Component {
 
     if (loadingCategories) return <div>Loading...</div>
 
-
     return (
       <div id="closet-details">
         <div>
           <h1 id="closeth1">BEYONCÉ CLOSET</h1>
         </div>
+        <Songs />
         <p id="closetp">Please choose up to one of each</p>
 
         {this.state.selectedCategoryId ? (
