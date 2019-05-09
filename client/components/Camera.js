@@ -35,6 +35,18 @@ class Camera extends Component {
     this.video = elem
   }
 
+  getPhoto = elem => {
+    this.photo = elem
+  }
+  //photo
+  //This will be a reference to the <img> element after the page is done loading.
+
+  startButton = elem => {
+    this.startbutton = elem 
+  }
+  //startbutton
+  // This will be a reference to the <button> element that's used to trigger capture. We'll get that after the page is done loading.
+
   async componentDidMount() {
     try {
       await this.setupCamera()
@@ -164,7 +176,9 @@ class Camera extends Component {
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
-          <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          {/* <img id="flowerHat" src="/FlowerhatBrightened75.png" /> */}
+          <img />
+          <button type="button" onClick={this.handleClick}>screenshot</button>
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
