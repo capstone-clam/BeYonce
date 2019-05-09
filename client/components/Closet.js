@@ -24,8 +24,7 @@ class Closet extends Component {
   }
 
   deslectCategory() {
-    // this.setState({})
-    // console.log('DESELECT CATEGORY')
+
     window.location.reload()
   }
 
@@ -34,7 +33,6 @@ class Closet extends Component {
 
     if (loadingCategories) return <div>Loading...</div>
 
-    console.log('LOCAL STATE IN CLOSET', this.state)
 
     return (
       <div id="closet-details">

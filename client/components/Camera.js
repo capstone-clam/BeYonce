@@ -127,7 +127,7 @@ class Camera extends Component {
       )
       poses.push(pose)
 
-      // console.log(poses[0])
+
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -161,9 +161,9 @@ class Camera extends Component {
   }
 
   render() {
-    console.log('PROPS IN CAMARA:::', this.props.selection)
+    
     const {selection} = this.props.selection
-    console.log('selected ITEM:::', selection.item)
+
 
     return (
       <div>
