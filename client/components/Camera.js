@@ -165,6 +165,10 @@ class Camera extends Component {
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
           <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          <audio
+            controls
+            src="https://storage.googleapis.com/juke-1379.appspot.com/juke-music/Dexter%20Britain/Creative%20Commons%20Volume%202/01%20The%20Tea%20Party.mp3"
+          />
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
