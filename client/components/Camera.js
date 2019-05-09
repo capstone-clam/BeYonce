@@ -3,6 +3,9 @@ import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
 import {connect} from 'react-redux'
+import Fab from '@material-ui/core/Fab'
+import CameraIcon from '@material-ui/icons/Camera'
+
 
 import {assertNonNull} from '@tensorflow/tfjs-core/dist/util'
 
@@ -161,29 +164,30 @@ class Camera extends Component {
     findPoseDetectionFrame()
   }
 
- takepicture(){
-    console.log("HELLO")
+  takepicture(){
     const {videoWidth, videoHeight} = this.props
     const canvas = this.canvas
-    // const video = this.video
+    console.log("CANVAS", canvas)
+    const video = this.video
+    const tempCanvas = this.canvas.getContext('2d')
     const photo = document.getElementById('photo')
+    
       var canvasContext = this.canvas.getContext('2d');
+      
       if(videoWidth && videoHeight){
           canvas.width = videoWidth;
           canvas.height = videoHeight;
-          canvasContext.drawImage(this.video, 0, 0, videoWidth, videoHeight);
+          canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
           console.log("ANYTHING")
           var data = canvas.toDataURL('image/png');
           console.log("GOT DATA")
           photo.setAttribute('src', data);
           console.log("GOT PHOTO SET ATTRIBUTE")
-          
       }else{
         console.log("CLEAR PHOTO")
-
       }
   }
-
+  
   clearphoto(){
     console.log("CLEARPHOTO")
     const canvas = this.canvas
@@ -199,20 +203,33 @@ class Camera extends Component {
     
     const {selection} = this.props.selection
 
-
     return (
-      <div >
+      <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
-          <Closet />
-          <button type="button" onClick={this.takepicture}>SCREENSHOT</button>
-          <hr/>
-          <button type="button" onClick={this.clearphoto}>CLEAR PHOTO</button>
           <canvas className="webcam" ref={this.getCanvas} />
+          <button type="button" onClick={this.clearphoto}>CLEAR PHOTO</button>
+           <Fab size="large" color="secondary" aria-label="Camera">
+            <CameraIcon
+              
+              onClick={this.takepicture}
+            />
+          </Fab>
+          {/* <button type="button" onClick={this.takepicture}>SCREENSHOT</button> */}
+
           {selection.item ? (
             <img id={selection.item} src={selection.filePath} />
           ) : (
             <img id="flowerHat" src="/FlowerhatBrightened75.png" />
           )}
+        
+          <img id='photo'/>
+          <Closet />
+         
+          {/* <Fab size="large" color="secondary" aria-label="Camera">
+            <CameraIcon
+              onClick={()=>this.takepicture}
+            />
+          </Fab> */}
 
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
