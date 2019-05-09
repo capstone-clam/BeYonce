@@ -1,43 +1,29 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCategory} from '../store'
+import {fetchSongs} from '../store'
 
 class Songs extends Component {
-  constructor(props) {
-    super(props)
-    this.randomSong = this.randomSong.bind(this)
-  }
-
   componentDidMount() {
-    console.log('this.props in componentDidMount', this.props)
-    this.props.fetchCategory(4)
-  }
-
-  randomSong(inventory) {
-    const songSelection =
-      inventory[Math.floor(Math.random() * inventory.length)]
-    console.log(songSelection)
-    return songSelection.filePath
+    this.props.fetchSongs(4)
   }
 
   render() {
-    const {inventories} = this.props
-    console.log('inventories', inventories)
+    const {inventories, loadingSongs} = this.props
+    if (loadingSongs) return <div>Loading Songs...</div>
     return <audio controls src="/SingleLadies.mp3" />
-    // return <audio controls src={this.randomSong(inventories)} />
   }
 }
 
 const mapStateToProps = state => {
   return {
-    category: state.closet.category,
-    inventories: state.closet.inventories
+    songs: state.songs.songs,
+    inventories: state.songs.inventories
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCategory: categoryId => dispatch(fetchCategory(categoryId))
+    fetchSongs: categoryId => dispatch(fetchSongs(categoryId))
   }
 }
 
