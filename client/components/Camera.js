@@ -2,6 +2,9 @@ import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
+import {connect} from 'react-redux'
+
+import {assertNonNull} from '@tensorflow/tfjs-core/dist/util'
 
 class Camera extends Component {
   static defaultProps = {
@@ -124,7 +127,7 @@ class Camera extends Component {
       )
       poses.push(pose)
 
-      // console.log(poses[0])
+
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -158,13 +161,22 @@ class Camera extends Component {
   }
 
   render() {
+    
+    const {selection} = this.props.selection
+
+
     return (
       <div>
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
-          <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          {selection.item ? (
+            <img id={selection.item} src={selection.filePath} />
+          ) : (
+            <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          )}
+
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
@@ -173,5 +185,12 @@ class Camera extends Component {
   }
 }
 
-export default Camera
-//export default connect(mapState, mapDispatch)(Camera)
+// export default Camera
+
+const mapStateToProps = state => {
+  return {
+    selection: state.selection
+  }
+}
+
+export default connect(mapStateToProps)(Camera)

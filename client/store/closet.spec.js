@@ -64,7 +64,7 @@ describe('thunk creators - Closet', () => {
       mockAxios.onGet('/api/category').replyOnce(200, fakeCategories)
       await store.dispatch(fetchCategories())
       const actions = store.getActions()
-      expect(actions[0].type).to.be.equal('LOADING_DATA')
+      expect(actions[0].type).to.be.equal('LOADING_CATEGORIES')
       expect(actions[1].type).to.be.equal('GET_CATEGORIES')
       expect(actions[1].categories).to.be.deep.equal(fakeCategories)
     })
@@ -118,7 +118,7 @@ describe('thunk creators - Closet', () => {
       await store.dispatch(fetchCategory(categoryId))
       const actions = store.getActions()
 
-      expect(actions[0].type).to.be.equal('LOADING_DATA')
+      expect(actions[0].type).to.be.equal('LOADING_CATEGORY')
       expect(actions[1].type).to.be.equal('GET_CATEGORY')
       expect(actions[1].category).to.be.deep.equal(fakeCategory)
     })

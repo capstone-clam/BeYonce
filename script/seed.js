@@ -8,12 +8,12 @@ const seedCategories = [
       'https://image.iol.co.za/image/1/process/620x349?source=https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/media/2017/11/08/iol/582/beyonce-formation-variance-magazine-7291.jpg&operation=CROP&offset=0x12&resize=838x469',
     inventories: [
       {
-        item: 'Hat 1',
-        filePath: '/DarkenedFormation.png',
+        item: 'flowerHat',
+        filePath: '/beyflower.png',
         url: 'www.google.com'
       },
       {
-        item: 'Hat 2',
+        item: 'flowerHat1',
         filePath: '/beyflower.png',
         url: 'www.google.com'
       },
