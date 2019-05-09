@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background: #fff9f2;
 }
 
 a {
@@ -78,60 +79,10 @@ form div {
   justify-content: space-around;
   margin: 0;
 }
-/* .container {
-  text-align: center;
-} */
-
-.intros {
-  padding: 20px;
-  background-color: white;
-  color: black;
-  margin: 10px;
-  border-radius: 10px;
-}
-
-.list-group {
-  padding: 20px;
-}
-
-.list-item {
-  /* border: solid 5px black; */
-  background-color: white;
-}
-
-.welcome {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.designer-intro {
-  padding-top: 20px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-li.list-group-item {
-  /* background-color: lightblue; */
-  font-weight: bold;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-li > a {
-  display: table-cell;
-  font-weight: normal;
-  font-size: 12px;
-  justify-content: center;
-}
-
-.list-item > a {
-  text-align: center;
-}
 
 .mainPage {
   height: 100vh;
-  background: #faf9fc;
+  background: #fff9f2;
   display: flex;
 }
 .container {
@@ -142,57 +93,57 @@ li > a {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.BeyCollage {
+  width: 1000px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
 .title {
   display: flex;
   text-align: center;
   justify-content: center;
-  padding: 50px;
-  padding-top: 70px;
+  padding-bottom: 50px;
   font-size: 90px;
 }
 
 .intro {
   display: flex;
+  flex-direction: column;
   text-align: center;
-  padding: 50px;
+  padding: 20px;
 }
 
-.fiveBeysDiv {
-  justify-content: center;
+.aboutText {
+  font-size: 20px;
+  padding: 30px;
 }
 
-.fiveBeys {
-  max-width: 320px;
+.enterButton {
+  display: flex;
   justify-content: center;
+  padding: 30px;
 }
 
 .description {
   display: flex;
   text-align: center;
   justify-content: center;
-  padding: 50px;
-}
-
-.enterButton {
-  display: flex;
-  /* text-align: center; */
-  justify-content: center;
-  /* align-content: center; */
-  /* align-items: center; */
+  padding: 30px;
 }
 
 .namesList {
-  /* display: flex; */
   text-align: center;
-  background: #faf9fc;
+  background: white;
   justify-content: center;
-  padding: 50px;
   flex-direction: row;
+  padding-top: 30px;
+  padding-bottom: 10px;
 }
 
 .name {
   display: flex;
   text-align: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }

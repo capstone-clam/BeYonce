@@ -16,23 +16,42 @@ class Main extends Component {
     return (
       <div className="mainPage">
         <div className="container">
+          <div>
+            {/* <img className="BeyCollage" src="/BeyLogoLighter.png" /> */}
+            <img className="BeyCollage" src="/BeyCollageBrightenedThurs.png" />
+          </div>
           <div className="title">BE-YONCÉ</div>
-          <div className="fiveBeysDiv">
-            <img className="fiveBeys" src="/5Beys.png" />
-          </div>
           <div className="intro">
-            Take an interactive journey to dress yourself up in your favorite
-            iconic looks from Beyoncé, pick a song, and let yourself unwind and
-            dance! For a few minutes you can empower yourself to Be...Yoncé
+            <h2> About </h2>
+            <div className="aboutText">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque nulla leo, congue ut ligula iaculis, eleifend
+              tincidunt nulla. Morbi vehicula ultricies nulla, eget rhoncus
+              massa vehicula a. Pellentesque ullamcorper elementum lorem quis
+              vehicula. Quisque vel urna mi. Suspendisse pellentesque metus eget
+              lectus tristique, nec hendrerit augue pharetra. Sed ut lorem sit
+              amet eros congue tempor nec sit amet magna. Vivamus congue felis
+              nisl. Maecenas consequat mauris at volutpat varius. Donec dictum
+              tempor finibus. Sed finibus sem ut elit placerat condimentum.
+              Phasellus sagittis nunc vestibulum odio lobortis, at maximus lacus
+              ultricies.
+            </div>
           </div>
+          {/* <div className="fiveBeysDiv">
+            <img className="fiveBeysImg" src="/5Beys.png" />
+          </div> */}
+
           <div className="enterButton">
             <Button variant="contained" color="secondary" size="large">
               <Link to="/camera">Enter</Link>
             </Button>
           </div>
-          <div className="description">misc description</div>
+
+          <div className="description">misc description, directions, etc</div>
           <div className="namesList">
             <div className="name">
+              <p>Created with love by:</p>
+              <p> </p>
               <a
                 href="https://www.linkedin.com/in/chelsi-asulin/"
                 target="_blank"
