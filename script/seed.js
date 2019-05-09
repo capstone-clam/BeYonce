@@ -73,19 +73,19 @@ const seedCategories = [
     image: 'https://media.timeout.com/images/105252649/630/472/image.jpg',
     inventories: [
       {
-        item: 'Beyoncé - Run the World (Girls) (Video - Main Version)',
-        filePath: '/DarkenedFormation.png',
-        url: 'https://youtu.be/VBmMU_iwe6U'
+        item: 'Single Ladies',
+        filePath: '/SingleLadies.mp3',
+        url: 'www.google.com'
       },
       {
-        item: 'Beyoncé - Single Ladies (Put a Ring on It) (Video Version)',
-        filePath: '/DarkenedFormation2.png',
-        url: 'https://youtu.be/4m1EFMoRFvY'
+        item: 'Single Ladies 2',
+        filePath: '/SingleLadies.mp3',
+        url: 'www.google.com'
       },
       {
-        item: 'Beyoncé - Crazy In Love ft. JAY Z',
-        filePath: '/DarkenedFormation3.png',
-        url: 'https://youtu.be/ViwtNLUqkMY'
+        item: 'Single Ladies 3',
+        filePath: '/SingleLadies.mp3',
+        url: 'www.google.com'
       }
     ]
   }
