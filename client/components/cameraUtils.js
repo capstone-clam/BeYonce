@@ -21,26 +21,6 @@ export const config = {
   loadingText: 'Loading...please be patient...'
 }
 
-export function takepicture(){
-  console.log
-  // const {videoWidth, videoHeight} = this.props
-  // const canvas = this.canvas
-  // const video = this.video
-  // const photo = this.photo
-  //   var canvasContext = canvas.getContext('2d');
-  //   if(videoWidth && videoHeight){
-  //       canvas.width = videoWidth;
-  //       canvas.height = videoHeight;
-  //       canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
-  //       console.log("ANYTHING")
-
-  //       var data = canvas.toDataUrl('image/png');
-  //       photo.setAttribute('src', data);
-  //   }else{
-  //       console.log('CLEARPHOTO')
-  //   }
-}
-
 function toTuple({x, y}) {
   return [x, y]
 }

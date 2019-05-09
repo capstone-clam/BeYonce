@@ -1,4 +1,4 @@
-import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy, takepicture} from './cameraUtils'
+import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import Closet from './Closet'
@@ -25,6 +25,7 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
+    this.takepicture = this.takepicture.bind(this)
   }
 
   getCanvas = elem => {
@@ -34,7 +35,7 @@ class Camera extends Component {
   getVideo = elem => {
     this.video = elem
   }
-
+  
   async componentDidMount() {
     try {
       await this.setupCamera()
@@ -82,35 +83,6 @@ class Camera extends Component {
       }
     })
   }
-
-//   clearphoto(){
-//     const {videoWidth, videoHeight} = this.props
-//     const canvas = this.canvas
-//     var canvasContext = canvas.getContext('2d');
-//     canvasContext.fillStyle = "#AAA"
-//     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-
-//     var data= canvas.toDataURL('image/png');
-//     photo.setAttribute('src', data);
-// }
-
-//  takepicture(){
-//   const {videoWidth, videoHeight} = this.props
-//   const canvas = this.canvas
-//   const video = this.video
-//   const photo = this.photo
-//     var canvasContext = canvas.getContext('2d');
-//     if(videoWidth && videoHeight){
-//         canvas.width = videoWidth;
-//         canvas.height = videoHeight;
-//         canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
-
-//         var data = canvas.toDataUrl('image/png');
-//         photo.setAttribute('src', data);
-//     }else{
-//         console.log('CLEARPHOTO')
-//     }
-// }
 
   detectPose() {
     const {videoWidth, videoHeight} = this.props
@@ -186,16 +158,51 @@ class Camera extends Component {
     findPoseDetectionFrame()
   }
 
+ takepicture(){
+    console.log("HELLO")
+    const {videoWidth, videoHeight} = this.props
+    const canvas = this.canvas
+    const video = this.video
+    const photo = document.getElementById('photo')
+      var canvasContext = this.canvas.getContext('2d');
+      if(videoWidth && videoHeight){
+          canvas.width = videoWidth;
+          canvas.height = videoHeight;
+          canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
+          console.log("ANYTHING")
+          var data = canvas.toDataURL('image/png');
+          console.log("GOT DATA")
+          photo.setAttribute('src', data);
+          console.log("GOT PHOTO SET ATTRIBUTE")
+          
+      }else{
+        console.log("CLEAR PHOTO")
+          // this.clearphoto()
+      }
+  }
+
+  clearphoto(){
+    const canvas = this.canvas
+    const photo = document.getElementById('photo')
+    var canvasContext = canvas.getContext('2d');
+    canvasContext.fillStyle = "#AAA"
+    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    var data= canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
+  }
+
   render() {
     return (
-      <div>
+      <div >
+      <button type="button" onClick={()=>this.takepicture()}>SCREENSHOT</button>
         <div>
+        
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
-          <button type="button" onClick={this.takepicture}>SCREENSHOT</button>
+          
           <canvas className="webcam" ref={this.getCanvas} />
           <img id="flowerHat" src="/FlowerhatBrightened75.png" />
-          {/* <img id="photo" ref={this.getphoto}/> */}
+          <img id="photo" />
           
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
