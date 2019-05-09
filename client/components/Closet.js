@@ -24,8 +24,9 @@ class Closet extends Component {
   }
 
   deslectCategory() {
-    this.setState({})
-    console.log('DESELECT CATEGORY')
+    // this.setState({})
+    // console.log('DESELECT CATEGORY')
+    window.location.reload()
   }
 
   render() {
@@ -33,13 +34,13 @@ class Closet extends Component {
 
     if (loadingCategories) return <div>Loading...</div>
 
-    console.log('STATE IN CLOSET', this.state)
+    console.log('LOCAL STATE IN CLOSET', this.state)
 
     return (
       <div id="closet-details">
-        <Link to="camera">
+        <div>
           <h1 id="closeth1">BEYONCÉ CLOSET</h1>
-        </Link>
+        </div>
         <p id="closetp">Please choose up to one of each</p>
 
         {this.state.selectedCategoryId ? (
