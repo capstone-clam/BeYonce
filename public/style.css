@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background: #fff9f2;
 }
 
 a {
@@ -78,6 +79,7 @@ form div {
   justify-content: space-around;
   margin: 0;
 }
+<<<<<<< HEAD
 /* .container {
   text-align: center;
 } */
@@ -88,45 +90,88 @@ form div {
   color: black;
   margin: 10px;
   border-radius: 10px;
+=======
+
+.mainPage {
+  height: 100vh;
+  background: #fff9f2;
+  display: flex;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.list-group {
-  padding: 20px;
+.BeyCollage {
+  width: 1000px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+>>>>>>> master
 }
 
+.title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 50px;
+  font-size: 90px;
+}
+
+<<<<<<< HEAD
 .list-item {
   /* border: solid 5px black; */
   background-color: white;
+=======
+.intro {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+>>>>>>> master
 }
 
-.welcome {
-  font-weight: bold;
+.aboutText {
   font-size: 20px;
+  padding: 30px;
 }
 
-.designer-intro {
-  padding-top: 20px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+.enterButton {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
 }
 
+<<<<<<< HEAD
 li.list-group-item {
   /* background-color: lightblue; */
   font-weight: bold;
   font-size: 16px;
+=======
+.description {
+>>>>>>> master
   display: flex;
-  flex-direction: column;
-}
-
-li > a {
-  display: table-cell;
-  font-weight: normal;
-  font-size: 12px;
-  justify-content: center;
-}
-
-.list-item > a {
   text-align: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.namesList {
+  text-align: center;
+  background: white;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.name {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .mainPage {

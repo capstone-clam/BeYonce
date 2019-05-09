@@ -3,49 +3,59 @@ import {fetchCategory, addSelectedItem} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-export class ClothingItems extends Component {
+import PropTypes from 'prop-types'
+import {withStyles} from '@material-ui/core/styles'
+import Fab from '@material-ui/core/Fab'
+import RefreshIcon from '@material-ui/icons/Refresh'
+import Icon from '@material-ui/core/Icon'
+
+class ClothingItems extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      redirect: false
-    }
+    this.state = {}
     this.handleClick = this.handleClick.bind(this)
   }
-
   componentDidMount() {
-    const categoryId = Number(this.props.match.params.categoryId)
-    this.props.fetchCategory(categoryId)
+    const selectedId = Number(this.props.categoryId)
+    this.props.fetchCategory(selectedId)
   }
 
   handleClick(ev) {
     ev.preventDefault()
     let mySelection = Number(ev.target.id)
     this.props.addSelectedItem(mySelection)
-    this.setState({redirect: true})
-    console.log('STATE', this.state)
-    console.log("HITS ONCLICK")
   }
 
   render() {
-    const {inventories} = this.props
+    const {loadingCategory, inventories, classes} = this.props
+    if (loadingCategory) return <div>Loading...</div>
 
     return (
-      <div id="closet-details">
-        <h1 id="closeth1">BEYONCÉ CLOSET</h1>
-        <p id="closetp">Please select one</p>
-
+      <div>
         {inventories.map(inventory => (
-          <div id="singlepic" key={inventory.id} onClick={this.handleClick} >
-            <Link to='/closet'>
-            <img
-              className="closetpics"
-              src={inventory.filePath}
-              id={inventory.id}
-              value={inventory.item}
-            />
+          <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
+            <Link to="/camera">
+              <div id="closetpics">
+                {' '}
+                <img
+                  className="closetpics"
+                  src={inventory.filePath}
+                  id={inventory.id}
+                  value={inventory.item}
+                />
+              </div>
             </Link>
           </div>
         ))}
+        <div>
+          <Fab size="medium" color="secondary" aria-label="Refresh">
+            <RefreshIcon
+              onClick={() => {
+                this.props.deslectCategory()
+              }}
+            />
+          </Fab>
+        </div>
       </div>
     )
   }
@@ -53,15 +63,16 @@ export class ClothingItems extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.closet.loading,
+    loadingCategory: state.closet.loadingCategory,
+    category: state.closet.category,
     inventories: state.closet.inventories
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCategory: categoryId => dispatch(fetchCategory(categoryId)),
-    addSelectedItem: inventoryId => dispatch(addSelectedItem(inventoryId))
+    addSelectedItem: inventoryId => dispatch(addSelectedItem(inventoryId)),
+    fetchCategory: categoryId => dispatch(fetchCategory(categoryId))
   }
 }
 
