@@ -132,7 +132,6 @@ class Camera extends Component {
       )
       poses.push(pose)
 
-
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
       if (showVideo) {
@@ -200,7 +199,6 @@ class Camera extends Component {
   }
 
   render() {
-    
     const {selection} = this.props.selection
 
     return (
