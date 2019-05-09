@@ -1,10 +1,8 @@
-import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
+import {drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
 import {connect} from 'react-redux'
-
-import {assertNonNull} from '@tensorflow/tfjs-core/dist/util'
 
 class Camera extends Component {
   static defaultProps = {
@@ -126,8 +124,7 @@ class Camera extends Component {
         outputStride
       )
       poses.push(pose)
-
-
+      console.log('POSE', pose)
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -142,7 +139,13 @@ class Camera extends Component {
       poses.forEach(({score, keypoints}) => {
         if (score >= minPoseConfidence) {
           if (showPoints) {
-            placeHat(keypoints, minPartConfidence, skeletonColor, canvasContext)
+            placeHat(
+              keypoints,
+              minPartConfidence,
+              canvasContext,
+              this.props.selection.item
+            )
+            console.log('ITEM IN CAMERA', this.props.selection.item)
           }
           if (showSkeleton) {
             drawSkeleton(
@@ -161,9 +164,7 @@ class Camera extends Component {
   }
 
   render() {
-    
     const {selection} = this.props.selection
-
 
     return (
       <div>
