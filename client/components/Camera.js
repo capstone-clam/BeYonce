@@ -1,4 +1,4 @@
-import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
+import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy, takepicture} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import Closet from './Closet'
@@ -34,18 +34,6 @@ class Camera extends Component {
   getVideo = elem => {
     this.video = elem
   }
-
-  getPhoto = elem => {
-    this.photo = elem
-  }
-  //photo
-  //This will be a reference to the <img> element after the page is done loading.
-
-  startButton = elem => {
-    this.startbutton = elem 
-  }
-  //startbutton
-  // This will be a reference to the <button> element that's used to trigger capture. We'll get that after the page is done loading.
 
   async componentDidMount() {
     try {
@@ -95,6 +83,35 @@ class Camera extends Component {
     })
   }
 
+//   clearphoto(){
+//     const {videoWidth, videoHeight} = this.props
+//     const canvas = this.canvas
+//     var canvasContext = canvas.getContext('2d');
+//     canvasContext.fillStyle = "#AAA"
+//     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+
+//     var data= canvas.toDataURL('image/png');
+//     photo.setAttribute('src', data);
+// }
+
+//  takepicture(){
+//   const {videoWidth, videoHeight} = this.props
+//   const canvas = this.canvas
+//   const video = this.video
+//   const photo = this.photo
+//     var canvasContext = canvas.getContext('2d');
+//     if(videoWidth && videoHeight){
+//         canvas.width = videoWidth;
+//         canvas.height = videoHeight;
+//         canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
+
+//         var data = canvas.toDataUrl('image/png');
+//         photo.setAttribute('src', data);
+//     }else{
+//         console.log('CLEARPHOTO')
+//     }
+// }
+
   detectPose() {
     const {videoWidth, videoHeight} = this.props
     const canvas = this.canvas
@@ -136,7 +153,7 @@ class Camera extends Component {
       )
       poses.push(pose)
 
-      console.log(poses[0])
+      // console.log(poses[0])
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
@@ -175,10 +192,11 @@ class Camera extends Component {
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
+          <button type="button" onClick={this.takepicture}>SCREENSHOT</button>
           <canvas className="webcam" ref={this.getCanvas} />
-          {/* <img id="flowerHat" src="/FlowerhatBrightened75.png" /> */}
-          <img />
-          <button type="button" onClick={this.handleClick}>screenshot</button>
+          <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          {/* <img id="photo" ref={this.getphoto}/> */}
+          
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
