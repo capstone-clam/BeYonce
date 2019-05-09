@@ -8,12 +8,12 @@ const seedCategories = [
       'https://image.iol.co.za/image/1/process/620x349?source=https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/media/2017/11/08/iol/582/beyonce-formation-variance-magazine-7291.jpg&operation=CROP&offset=0x12&resize=838x469',
     inventories: [
       {
-        item: 'Hat 1',
-        filePath: '/DarkenedFormation.png',
+        item: 'flowerHat',
+        filePath: '/beyflower.png',
         url: 'www.google.com'
       },
       {
-        item: 'Hat 2',
+        item: 'flowerHat1',
         filePath: '/beyflower.png',
         url: 'www.google.com'
       },
@@ -73,19 +73,19 @@ const seedCategories = [
     image: 'https://media.timeout.com/images/105252649/630/472/image.jpg',
     inventories: [
       {
-        item: 'Beyoncé - Run the World (Girls) (Video - Main Version)',
-        filePath: '/DarkenedFormation.png',
-        url: 'https://youtu.be/VBmMU_iwe6U'
+        item: 'Single Ladies',
+        filePath: '/SingleLadies.mp3',
+        url: 'www.google.com'
       },
       {
-        item: 'Beyoncé - Single Ladies (Put a Ring on It) (Video Version)',
-        filePath: '/DarkenedFormation2.png',
-        url: 'https://youtu.be/4m1EFMoRFvY'
+        item: 'Single Ladies 2',
+        filePath: '/SingleLadies.mp3',
+        url: 'www.google.com'
       },
       {
-        item: 'Beyoncé - Crazy In Love ft. JAY Z',
-        filePath: '/DarkenedFormation3.png',
-        url: 'https://youtu.be/ViwtNLUqkMY'
+        item: 'Single Ladies 3',
+        filePath: '/SingleLadies.mp3',
+        url: 'www.google.com'
       }
     ]
   }

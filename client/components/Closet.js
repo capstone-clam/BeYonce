@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {fetchCategories} from '../store/closet'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import Songs from './Songs'
 
 import Category from './Category'
 import ClothingItems from './ClothingItems'
@@ -8,10 +10,9 @@ import ClothingItems from './ClothingItems'
 class Closet extends Component {
   constructor() {
     super()
-    this.state = {
-      selectedCategoryId: ''
-    }
+    this.state = {}
     this.pickCategory = this.pickCategory.bind(this)
+    this.deslectCategory = this.deslectCategory.bind(this)
   }
   componentDidMount() {
     this.props.fetchCategories()
@@ -24,9 +25,7 @@ class Closet extends Component {
   }
 
   deslectCategory() {
-    this.setState({
-      selectedCategoryId: ''
-    })
+    window.location.reload()
   }
 
   render() {
@@ -36,11 +35,17 @@ class Closet extends Component {
 
     return (
       <div id="closet-details">
-        <h1 id="closeth1">BEYONCÉ CLOSET</h1>
+        <div>
+          <h1 id="closeth1">BEYONCÉ CLOSET</h1>
+        </div>
+        <Songs />
         <p id="closetp">Please choose up to one of each</p>
 
         {this.state.selectedCategoryId ? (
-          <ClothingItems categoryId={this.state.selectedCategoryId} />
+          <ClothingItems
+            categoryId={this.state.selectedCategoryId}
+            deslectCategory={this.deslectCategory}
+          />
         ) : (
           <Category categories={categories} pickCategory={this.pickCategory} />
         )}
