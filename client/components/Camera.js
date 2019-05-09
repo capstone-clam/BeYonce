@@ -2,6 +2,7 @@ import {drawKeyPoints, drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import Closet from './Closet'
+import { weightsLoaderFactory } from '@tensorflow/tfjs-core/dist/io/io';
 
 class Camera extends Component {
   static defaultProps = {
@@ -26,6 +27,7 @@ class Camera extends Component {
   constructor(props) {
     super(props, Camera.defaultProps)
     this.takepicture = this.takepicture.bind(this)
+    this.clearphoto = this.clearphoto.bind(this)
   }
 
   getCanvas = elem => {
@@ -182,10 +184,11 @@ class Camera extends Component {
   }
 
   clearphoto(){
+    console.log("CLEARPHOTO")
     const canvas = this.canvas
     const photo = document.getElementById('photo')
     var canvasContext = canvas.getContext('2d');
-    canvasContext.fillStyle = "#AAA"
+    canvasContext.fillStyle = "#FFFFFF"
     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
     var data= canvas.toDataURL('image/png');
     photo.setAttribute('src', data);
@@ -198,6 +201,8 @@ class Camera extends Component {
           <Closet />
           <canvas className="webcam" ref={this.getCanvas} />
           <button type="button" onClick={this.takepicture}>SCREENSHOT</button>
+          <hr/>
+          <button type="button" onClick={this.clearphoto}>CLEAR PHOTO</button>
           <img id="photo" />
           <img id="flowerHat" src="/FlowerhatBrightened75.png" />
           
