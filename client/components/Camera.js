@@ -162,13 +162,13 @@ class Camera extends Component {
     console.log("HELLO")
     const {videoWidth, videoHeight} = this.props
     const canvas = this.canvas
-    const video = this.video
+    // const video = this.video
     const photo = document.getElementById('photo')
       var canvasContext = this.canvas.getContext('2d');
       if(videoWidth && videoHeight){
           canvas.width = videoWidth;
           canvas.height = videoHeight;
-          canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
+          canvasContext.drawImage(this.video, 0, 0, videoWidth, videoHeight);
           console.log("ANYTHING")
           var data = canvas.toDataURL('image/png');
           console.log("GOT DATA")
@@ -177,7 +177,7 @@ class Camera extends Component {
           
       }else{
         console.log("CLEAR PHOTO")
-          // this.clearphoto()
+
       }
   }
 
@@ -194,19 +194,17 @@ class Camera extends Component {
   render() {
     return (
       <div >
-      <button type="button" onClick={()=>this.takepicture()}>SCREENSHOT</button>
-        <div>
-        
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <Closet />
-          
           <canvas className="webcam" ref={this.getCanvas} />
-          <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          <button type="button" onClick={this.takepicture}>SCREENSHOT</button>
           <img id="photo" />
+          <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+          
           
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
-        </div>
+        
       </div>
     )
   }
