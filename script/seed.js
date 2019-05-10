@@ -4,21 +4,21 @@ const {db, User, Inventory, Category} = require('../server/db/models')
 const seedCategories = [
   {
     name: 'Hat',
-    image: '/headpiece_noOutline.png',
+    image: '/icons/headpiece_noOutline.png',
     inventories: [
       {
         item: 'flowerHat',
-        filePath: '/beyflower.png',
+        filePath: '/img/hats/beyflower.png',
         url: 'www.google.com'
       },
       {
         item: 'flowerHat1',
-        filePath: '/beyflower.png',
+        filePath: '/img/hats/beyflower.png',
         url: 'www.google.com'
       },
       {
         item: 'Hat 3',
-        filePath: '/hat.png',
+        filePath: '/img/hats/hat.png',
         url: 'www.google.com'
       }
     ]
@@ -26,21 +26,21 @@ const seedCategories = [
 
   {
     name: 'BodySuit',
-    image: '/headpiece_noOutline.png',
+    image: '/icons/bodysuitIcon.png',
     inventories: [
       {
         item: 'BodySuit 1',
-        filePath: '/DarkenedFormation.png',
+        filePath: '/img/bodysuit/BeyBarbieBodysuit.png',
         url: 'www.google.com'
       },
       {
         item: 'BodySuit 2',
-        filePath: '/DarkenedFormation2.png',
+        filePath: '/img/bodysuit/BeyBarbieBodysuit.png',
         url: 'www.google.com'
       },
       {
         item: 'BodySuit 3',
-        filePath: '/DarkenedFormation3.png',
+        filePath: '/img/bodysuit/BeyBarbieBodysuit.png',
         url: 'www.google.com'
       }
     ]
@@ -51,17 +51,17 @@ const seedCategories = [
     inventories: [
       {
         item: 'Single Ladies',
-        filePath: '/SingleLadies.mp3',
+        filePath: '/music/SingleLadies.mp3',
         url: 'https://www.youtube.com/watch?v=4m1EFMoRFvY'
       },
       {
         item: 'Formation',
-        filePath: '/Formation.mp3',
+        filePath: '/music/Formation.mp3',
         url: 'https://www.youtube.com/watch?v=WDZJPJV__bQ'
       },
       {
         item: 'Run the World',
-        filePath: '/RunTheWorld.mp3',
+        filePath: '/music/RunTheWorld.mp3',
         url: 'https://www.youtube.com/watch?v=VBmMU_iwe6U'
       },
       {
