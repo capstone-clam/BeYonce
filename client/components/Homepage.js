@@ -17,7 +17,6 @@ class Homepage extends Component {
       <div className="homePage">
         <div className="container">
           <div>
-            {/* <img className="BeyCollage" src="/BeyLogoLighter.png" /> */}
             <img
               className="BeyCollage"
               src="/img/BeyCollageBrightenedThurs.png"
@@ -39,9 +38,6 @@ class Homepage extends Component {
               glass of wine in hand, and crank up the volume.
             </div>
           </div>
-          {/* <div className="fiveBeysDiv">
-            <img className="fiveBeysImg" src="/5Beys.png" />
-          </div> */}
 
           <div className="enterButton">
             <Button
@@ -54,7 +50,6 @@ class Homepage extends Component {
             </Button>
           </div>
 
-          {/* <div className="description">misc description, directions, etc</div> */}
           <div className="namesList">
             <div className="name">
               <p>Built with love by:</p>
