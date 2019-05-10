@@ -38,7 +38,7 @@ class Closet extends Component {
         <div>
           <h1 id="closeth1">BEYONCÉ CLOSET</h1>
         </div>
-        {/* <Songs /> */}
+        <Songs />
         <p id="closetp">Please choose up to one of each</p>
 
         {this.state.selectedCategoryId ? (
