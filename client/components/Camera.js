@@ -5,9 +5,11 @@ import {Closet} from '../components'
 import {connect} from 'react-redux'
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
+import store from '../store'
 
 
 import {assertNonNull} from '@tensorflow/tfjs-core/dist/util'
+let initialState = store.getState()
 
 class Camera extends Component {
   static defaultProps = {
@@ -31,9 +33,17 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
+    this.state = {
+      showCanvas: false,
+      checkedButton: false
+    }
     this.takepicture = this.takepicture.bind(this)
     this.clearphoto = this.clearphoto.bind(this)
+    this.openLightbox = this.openLightbox.bind(this)
   }
+
+
+  
 
   getCanvas = elem => {
     this.canvas = elem
@@ -59,6 +69,14 @@ class Camera extends Component {
     }
 
     this.detectPose()
+  }
+
+  componentDidUpdate(prevProps) {
+    return prevProps.showLightbox !== this.props.showLightbox
+  }
+
+  openLightbox(str) {
+    store.dispatch(takeSnapshot(str))
   }
 
   async setupCamera() {
@@ -163,39 +181,81 @@ class Camera extends Component {
     findPoseDetectionFrame()
   }
 
-  takepicture(){
-    const {videoWidth, videoHeight} = this.props
-    const canvas = this.canvas
-    console.log("CANVAS", canvas)
-    const video = this.video
-    const tempCanvas = this.canvas.getContext('2d')
-    const photo = document.getElementById('photo')
+  // takepicture(){
+  //   const {videoWidth, videoHeight} = this.props
+  //   const canvas = this.canvas
+  //   console.log("CANVAS", canvas)
+  //   const video = this.video
+  //   const tempCanvas = this.canvas.getContext('2d')
+  //   const photo = document.getElementById('photo')
     
-      var canvasContext = this.canvas.getContext('2d');
+  //     var canvasContext = this.canvas.getContext('2d');
       
-      if(videoWidth && videoHeight){
-          canvas.width = videoWidth;
-          canvas.height = videoHeight;
-          canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
-          console.log("ANYTHING")
-          var data = canvas.toDataURL('image/png');
-          console.log("GOT DATA")
-          photo.setAttribute('src', data);
-          console.log("GOT PHOTO SET ATTRIBUTE")
-      }else{
-        console.log("CLEAR PHOTO")
-      }
-  }
+  //     if(videoWidth && videoHeight){
+  //         canvas.width = videoWidth;
+  //         canvas.height = videoHeight;
+  //         canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
+  //         console.log("ANYTHING")
+  //         var data = canvas.toDataURL('image/png');
+  //         console.log("GOT DATA")
+  //         photo.setAttribute('src', data);
+  //         console.log("GOT PHOTO SET ATTRIBUTE")
+  //     }else{
+  //       console.log("CLEAR PHOTO")
+  //     }
+  // }
   
-  clearphoto(){
-    console.log("CLEARPHOTO")
-    const canvas = this.canvas
-    const photo = document.getElementById('photo')
-    var canvasContext = canvas.getContext('2d');
-    canvasContext.fillStyle = "#FFFFFF"
-    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-    var data= canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
+  // clearphoto(){
+  //   console.log("CLEARPHOTO")
+  //   const canvas = this.canvas
+  //   const photo = document.getElementById('photo')
+  //   var canvasContext = canvas.getContext('2d');
+  //   canvasContext.fillStyle = "#FFFFFF"
+  //   canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+  //   var data= canvas.toDataURL('image/png');
+  //   photo.setAttribute('src', data);
+  // }
+
+  //
+  let fullImageStr;
+
+export function saveCanvas() {
+  const backgroundCanvas = document.getElementById('background')
+  const bgCtx = backgroundCanvas.getContext('2d')
+  const canvas = document.getElementById('output')
+
+  bgCtx.drawImage(canvas, 0, 0)
+  fullImageStr = bgCtx.canvas.toDataURL('image/png')
+
+  return fullImageStr
+}
+
+//create a DOM element to hold download ref
+export function download() {
+  let element = document.createElement('a')
+  const file = fullImageStr.replace('image/png', 'image/octet-stream')
+  element.href = file
+  element.download = 'airbrush.png'
+  element.click()
+}
+  //
+  const clearCanvasZone = document
+  .getElementById('clear-button')
+  .getBoundingClientRect()
+
+const snapshotZone = document
+  .getElementById('take-snapshot')
+  .getBoundingClientRect()
+  //
+
+import store, {
+  takeSnapshot
+} from '../store'
+
+  import {saveCanvas} from './snapshot'
+  snapshot(){
+    const imgStr = saveCanvas()
+    store.dispatch(takeSnapshot(imgStr))
   }
 
   render() {
