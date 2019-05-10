@@ -4,7 +4,7 @@ const {db, User, Inventory, Category} = require('../server/db/models')
 const seedCategories = [
   {
     name: 'Hat',
-    image: '/headpiece-icon-thicker.png',
+    image: '/headpiece_noOutline.png',
     inventories: [
       {
         item: 'flowerHat',
@@ -23,31 +23,10 @@ const seedCategories = [
       }
     ]
   },
-  {
-    name: 'Dress',
-    image: '/headpiece-icon-thinner.png',
-    inventories: [
-      {
-        item: 'Dress 1',
-        filePath: '/DarkenedFormation.png',
-        url: 'www.google.com'
-      },
-      {
-        item: 'Dress 2',
-        filePath: '/DarkenedFormation2.png',
-        url: 'www.google.com'
-      },
-      {
-        item: 'Dress 3',
-        filePath: '/DarkenedFormation3.png',
-        url: 'www.google.com'
-      }
-    ]
-  },
+
   {
     name: 'BodySuit',
-    image:
-      'https://cdn.fashionmagazine.com/wp-content/uploads/2013/08/Beyonce-Mrs-Carter-World-Tour-Ralph-Russo-Bodysuit-480x0-c-default.jpg',
+    image: '/headpiece_noOutline.png',
     inventories: [
       {
         item: 'BodySuit 1',
