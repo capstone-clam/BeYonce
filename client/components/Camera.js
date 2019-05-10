@@ -178,7 +178,7 @@ class Camera extends Component {
           {selection.item ? (
             <img id={selection.item} src={selection.filePath} />
           ) : (
-            <img id="flowerHat" src="/FlowerhatBrightened75.png" />
+            <img id="flowerHat" src="/img/hats/FlowerhatBrightened75.png" />
           )}
 
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
