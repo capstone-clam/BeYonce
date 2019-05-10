@@ -36,7 +36,7 @@ form div {
   -webkit-transform: scaleX(-1);
   display: none !important;
 }
-#songinmain{
+#songinmain {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -58,8 +58,8 @@ form div {
   padding: 8px;
   overflow: auto;
   box-sizing: border-box;
-  color: #d6c7c7;
-  color: #f4c0d7;
+  color: black;
+  color: black;
   font-family: 'Fjalla One', sans-serif;
 }
 #closeth1 {
@@ -157,7 +157,6 @@ form div {
 }
 
 .homePage {
-  height: 100vh;
   background: #faf9fc;
   display: flex;
 }
@@ -233,4 +232,3 @@ canvas {
   padding: 0;
   object-fit: cover;
 }
-
