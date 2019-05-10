@@ -18,7 +18,10 @@ class Main extends Component {
         <div className="container">
           <div>
             {/* <img className="BeyCollage" src="/BeyLogoLighter.png" /> */}
-            <img className="BeyCollage" src="/BeyCollageBrightenedThurs.png" />
+            <img
+              className="BeyCollage"
+              src="/img/BeyCollageBrightenedThurs.png"
+            />
           </div>
           <div className="title">BE-YONCÉ</div>
           <div className="intro">
