@@ -1,7 +1,7 @@
 import {drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
-import {Closet} from '../components'
+import {Closet, Songs} from '../components'
 import {connect} from 'react-redux'
 import Hidden from '@material-ui/core/Hidden'
 
@@ -174,7 +174,6 @@ class Camera extends Component {
       <div>
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
-
           <canvas className="webcam" ref={this.getCanvas} />
 
           {selection.item ? (
