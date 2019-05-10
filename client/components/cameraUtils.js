@@ -1,46 +1,7 @@
 import * as posenet from '@tensorflow-models/posenet'
 
-const pointRadius = 3
-
-export const config = {
-  videoWidth: 900,
-  videoHeight: 700,
-  flipHorizontal: true,
-  algorithm: 'single-pose',
-  showVideo: true,
-  showSkeleton: true,
-  showPoints: true,
-  minPoseConfidence: 0.1,
-  minPartConfidence: 0.5,
-  maxPoseDetections: 2,
-  nmsRadius: 20,
-  outputStride: 16,
-  imageScaleFactor: 0.5,
-  skeletonColor: '#ff0000',
-  skeletonLineWidth: 6,
-  loadingText: 'Loading...please be patient...'
-}
-
 function toTuple({x, y}) {
   return [x, y]
-}
-
-export function drawKeyPoints(
-  keypoints,
-  minConfidence,
-  skeletonColor,
-  canvasContext,
-  scale = 1
-) {
-  keypoints.forEach(keypoint => {
-    if (keypoint.score >= minConfidence) {
-      const {x, y} = keypoint.position
-      canvasContext.beginPath()
-      canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI)
-      canvasContext.fillStyle = skeletonColor
-      canvasContext.fill()
-    }
-  })
 }
 
 function drawSegment(
@@ -48,7 +9,7 @@ function drawSegment(
   [nextX, nextY],
   color,
   lineWidth,
-  scale,
+  scale = 1,
   canvasContext
 ) {
   canvasContext.beginPath()
@@ -89,13 +50,7 @@ export function drawSkeleton(
 //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
 
 // Flower hat function:
-export function placeHat(
-  keypoints,
-  minConfidence,
-  skeletonColor,
-  canvasContext,
-  scale = 1
-) {
+export function placeHat(keypoints, minConfidence, canvasContext, item) {
   const rightEarX = keypoints[4].position.x
   const leftEarX = keypoints[3].position.x
   const leftEyeX = keypoints[1].position.x
@@ -107,7 +62,17 @@ export function placeHat(
     if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
       const {x, y} = keypoint.position
       const RightEarXNoseX = rightEarX - x
+      // if (!item) {
+      //   return
+      // } else {
+      //   var hatImg = document.getElementById(item)
+      //   console.log('ITEM IN PLACE HAT FUN', item)
+      // }    
+     console.log('ITEM in CAMERA UTILITIES', item)
       let hatImg = document.getElementById('flowerHat')
+      //let hatImg = item
+      console.log('hatImg in Utilities', hatImg)
+
       let fourTimesEars = leftEarXrightEarX * 4
       // let threeFourths = fourTimesEars * 0.75
       // console.log('height:', hatImg.height)
