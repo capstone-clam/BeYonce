@@ -10,7 +10,7 @@ class Songs extends Component {
   render() {
     const {inventories, loadingSongs} = this.props
     if (loadingSongs) return <div>Loading Songs...</div>
-    return <audio controls src="/music/Formation.mp3" />
+    return <audio controls src="/music/Formation.mp3" id="songinmain"/>
   }
 }
 

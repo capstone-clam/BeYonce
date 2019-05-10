@@ -45,6 +45,7 @@ export function drawSkeleton(
   })
 }
 
+
 // The following utility functions are called in Camera.js on line 142 :
 
 //https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
