@@ -11,10 +11,10 @@ import {Grid, Button} from '@material-ui/core'
 //   }
 // })
 
-class Main extends Component {
+class Homepage extends Component {
   render() {
     return (
-      <div className="mainPage">
+      <div className="homePage">
         <div className="container">
           <div>
             {/* <img className="BeyCollage" src="/BeyLogoLighter.png" /> */}
@@ -94,4 +94,4 @@ class Main extends Component {
   }
 }
 
-export default Main
+export default Homepage
