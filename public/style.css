@@ -90,6 +90,21 @@ form div {
   margin: 0;
 }
 
+<<<<<<< HEAD
+.mainPage {
+  background: #fff9f2;
+  display: flex;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+=======
+>>>>>>> master
 .BeyCollage {
   width: 1000px;
   padding-top: 40px;
@@ -101,25 +116,37 @@ form div {
   text-align: center;
   justify-content: center;
   padding-bottom: 50px;
-  font-size: 90px;
+  font-size: 100px;
 }
 
 .intro {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
+  padding: 40px;
 }
 
 .aboutText {
+  /* border: 1px solid black; */
+  max-width: 850px;
   font-size: 20px;
-  padding: 30px;
+  padding: 35px;
+  text-align: left;
+  justify-content: center;
 }
 
 .enterButton {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 25px;
+}
+
+.button {
+  width: 220px;
+  height: 70px;
 }
 
 .description {
@@ -131,7 +158,6 @@ form div {
 
 .namesList {
   text-align: center;
-  background: white;
   justify-content: center;
   flex-direction: row;
   padding-top: 30px;
