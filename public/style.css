@@ -92,7 +92,7 @@ form div {
 
 .BeyCollage {
   width: 1000px;
-  padding-top: 40px;
+  padding-top: 50px;
   padding-bottom: 10px;
 }
 
@@ -118,7 +118,7 @@ form div {
   /* border: 1px solid black; */
   max-width: 850px;
   font-size: 20px;
-  padding: 35px;
+  padding: 25px;
   text-align: left;
   justify-content: center;
 }
@@ -157,7 +157,7 @@ form div {
 }
 
 .homePage {
-  background: #faf9fc;
+  background: #fff9f2;
   display: flex;
 }
 .container {
