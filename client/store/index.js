@@ -6,6 +6,7 @@ import user from './user'
 import closet from './closet'
 import selection from './selection'
 import songs from './songs'
+import lightbox from './lightbox'
 
 const reducer = combineReducers({user, closet, selection, songs})
 const middleware = composeWithDevTools(
@@ -18,3 +19,4 @@ export * from './user'
 export * from './closet'
 export * from './selection'
 export * from './songs'
+export * from './lightbox'

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Closet, Main} from './components'
+import {Login, Signup, UserHome, Closet, Homepage, Main} from './components'
 import Camera from './components/Camera'
 import {me} from './store'
 
@@ -20,11 +20,12 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/main" component={Main} />
+        <Route path="/homepage" component={Homepage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/camera" component={Camera} />
         <Route path="/closet" component={Closet} />
+        <Route path="/main" component={Main} />
 
 
         {isLoggedIn && (
