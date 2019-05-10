@@ -26,12 +26,7 @@ form div {
 }
 
 .webcam {
-  /* width: 100vw; */
   height: 100vh;
-  /* margin: 0 auto;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 6px; */
 }
 
 #videoNoShow {
@@ -161,5 +156,4 @@ canvas {
   margin: 0;
   padding: 0;
   object-fit: cover;
-  /* transform: scaleX(-1); */
 }
