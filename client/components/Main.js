@@ -16,6 +16,7 @@ class Main extends Component {
     return (
       <div id="mainclass">
           <Camera/>
+          <Songs/>
       </div>
     )
   }
