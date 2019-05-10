@@ -121,6 +121,7 @@ class Camera extends Component {
 
     const findPoseDetectionFrame = async () => {
       let poses = []
+
       const pose = await posenetModel.estimateSinglePose(
         video,
         imageScaleFactor,
@@ -167,6 +168,7 @@ class Camera extends Component {
 
   render() {
     const {selection} = this.props.selection
+    console.log('name in camnera', selection.item)
 
     return (
       <div>
@@ -175,9 +177,9 @@ class Camera extends Component {
           <canvas className="webcam" ref={this.getCanvas} />
 
           {selection.item ? (
-            <img id={selection.item} src={selection.filePath} />
+            <img id="hat" src={selection.filePath} alt={selection.item} />
           ) : (
-            <img id="flowerHat" src="/img/hats/FlowerhatBrightened75.png" />
+            <img id="hat" src="" alt="" />
           )}
 
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
