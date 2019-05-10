@@ -64,27 +64,27 @@ export function placeHat(keypoints, minConfidence, canvasContext, item) {
   console.log('hatsVALUE', hatImg.alt)
 
   var type = hatImg.alt
-  if (type === 'hats') {
-    // if (type === 'flowerHat') {
-    keypoints.forEach(keypoint => {
-      if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-        const {x, y} = keypoint.position
-        const RightEarXNoseX = rightEarX - x
-        let fourTimesEars = leftEarXrightEarX * 4
-        const drawImgDifference = fourTimesEars * 0.7 - RightEarXNoseX
-        canvasContext.beginPath()
-        canvasContext.drawImage(
-          hatImg,
-          0,
-          0,
-          hatImg.width,
-          hatImg.height,
-          x - fourTimesEars * 0.7 + 10,
-          y - drawImgDifference + leftEyeXRightEarX + 10,
-          fourTimesEars,
-          fourTimesEars * 0.7
-        )
-      }
-    })
-  }
+  // if (id === 'hats') {
+  // if (type === 'flowerHat') {
+  keypoints.forEach(keypoint => {
+    if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
+      const {x, y} = keypoint.position
+      const RightEarXNoseX = rightEarX - x
+      let fourTimesEars = leftEarXrightEarX * 4
+      const drawImgDifference = fourTimesEars * 0.7 - RightEarXNoseX
+      canvasContext.beginPath()
+      canvasContext.drawImage(
+        hatImg,
+        0,
+        0,
+        hatImg.width,
+        hatImg.height,
+        x - fourTimesEars * 0.7 + 10,
+        y - drawImgDifference + leftEyeXRightEarX + 10,
+        fourTimesEars,
+        fourTimesEars * 0.7
+      )
+    }
+  })
+  // }
 }
