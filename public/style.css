@@ -80,7 +80,6 @@ form div {
 }
 
 .mainPage {
-  height: 100vh;
   background: #fff9f2;
   display: flex;
 }
@@ -103,25 +102,36 @@ form div {
   text-align: center;
   justify-content: center;
   padding-bottom: 50px;
-  font-size: 90px;
+  font-size: 100px;
 }
 
 .intro {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
 }
 
 .aboutText {
+  /* border: 1px solid black; */
+  max-width: 800px;
   font-size: 20px;
-  padding: 30px;
+  padding: 35px;
+  text-align: left;
+  justify-content: center;
 }
 
 .enterButton {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 25px;
+}
+
+.button {
+  width: 220px;
+  height: 70px;
 }
 
 .description {
@@ -133,7 +143,6 @@ form div {
 
 .namesList {
   text-align: center;
-  background: white;
   justify-content: center;
   flex-direction: row;
   padding-top: 30px;

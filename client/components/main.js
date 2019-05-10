@@ -25,19 +25,18 @@ class Main extends Component {
           </div>
           <div className="title">BE-YONCÉ</div>
           <div className="intro">
-            <h2> About </h2>
+            <h2 className="About"> About </h2>
             <div className="aboutText">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Pellentesque nulla leo, congue ut ligula iaculis, eleifend
-              tincidunt nulla. Morbi vehicula ultricies nulla, eget rhoncus
-              massa vehicula a. Pellentesque ullamcorper elementum lorem quis
-              vehicula. Quisque vel urna mi. Suspendisse pellentesque metus eget
-              lectus tristique, nec hendrerit augue pharetra. Sed ut lorem sit
-              amet eros congue tempor nec sit amet magna. Vivamus congue felis
-              nisl. Maecenas consequat mauris at volutpat varius. Donec dictum
-              tempor finibus. Sed finibus sem ut elit placerat condimentum.
-              Phasellus sagittis nunc vestibulum odio lobortis, at maximus lacus
-              ultricies.
+              Be Yoncé is an interactive augmented reality experience in which
+              you can channel your inner Queen by wearing some of her most
+              iconic pieces of clothing.
+              <br />
+              <br />
+              Click through and select a headpiece, a bodysuit, and a song.
+              <br />
+              <br />
+              For the optimal experience: open Be Yoncé in Google Chrome, with a
+              glass of wine in hand, and crank up the volume.
             </div>
           </div>
           {/* <div className="fiveBeysDiv">
@@ -45,15 +44,20 @@ class Main extends Component {
           </div> */}
 
           <div className="enterButton">
-            <Button variant="contained" color="secondary" size="large">
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              className="button"
+            >
               <Link to="/camera">Enter</Link>
             </Button>
           </div>
 
-          <div className="description">misc description, directions, etc</div>
+          {/* <div className="description">misc description, directions, etc</div> */}
           <div className="namesList">
             <div className="name">
-              <p>Created with love by:</p>
+              <p>Built with love by:</p>
               <p> </p>
               <a
                 href="https://www.linkedin.com/in/chelsi-asulin/"
