@@ -51,9 +51,8 @@ class Homepage extends Component {
           </div>
 
           <div className="namesList">
+            <p>Built with love by:</p>
             <div className="name">
-              <p>Built with love by:</p>
-              <p> </p>
               <a
                 href="https://www.linkedin.com/in/chelsi-asulin/"
                 target="_blank"
