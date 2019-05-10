@@ -36,7 +36,7 @@ form div {
   -webkit-transform: scaleX(-1);
   display: none !important;
 }
-#songinmain{
+#songinmain {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -58,8 +58,8 @@ form div {
   padding: 8px;
   overflow: auto;
   box-sizing: border-box;
-  color: #d6c7c7;
-  color: #f4c0d7;
+  color: black;
+  color: black;
   font-family: 'Fjalla One', sans-serif;
 }
 #closeth1 {
@@ -101,25 +101,37 @@ form div {
   text-align: center;
   justify-content: center;
   padding-bottom: 50px;
-  font-size: 90px;
+  font-size: 100px;
 }
 
 .intro {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
+  padding: 40px;
 }
 
 .aboutText {
+  /* border: 1px solid black; */
+  max-width: 850px;
   font-size: 20px;
-  padding: 30px;
+  padding: 35px;
+  text-align: left;
+  justify-content: center;
 }
 
 .enterButton {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 25px;
+}
+
+.button {
+  width: 220px;
+  height: 70px;
 }
 
 .description {
@@ -131,7 +143,6 @@ form div {
 
 .namesList {
   text-align: center;
-  background: white;
   justify-content: center;
   flex-direction: row;
   padding-top: 30px;
@@ -146,7 +157,6 @@ form div {
 }
 
 .homePage {
-  height: 100vh;
   background: #faf9fc;
   display: flex;
 }
@@ -222,4 +232,3 @@ canvas {
   padding: 0;
   object-fit: cover;
 }
-
