@@ -112,11 +112,12 @@ form div {
   justify-content: center;
   align-items: center;
   /* padding: 20px; */
+  padding: 40px;
 }
 
 .aboutText {
   /* border: 1px solid black; */
-  max-width: 800px;
+  max-width: 850px;
   font-size: 20px;
   padding: 35px;
   text-align: left;
