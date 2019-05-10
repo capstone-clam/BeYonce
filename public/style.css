@@ -49,23 +49,26 @@ form div {
 }
 
 #closet-details {
+  display: flex;
+  /* text-align: center; */
+  justify-content: center;
   position: fixed;
   top: 0;
   right: 0;
-  width: 13%;
+  width: 15%;
   height: 100%;
   background: rgba(0, 0, 0, 0.04);
   padding: 8px;
   overflow: auto;
   box-sizing: border-box;
-  color: #d6c7c7;
-  color: #f4c0d7;
+  color: black;
   font-family: 'Fjalla One', sans-serif;
 }
 #closeth1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-size: 25px
 }
 #closetp {
   display: flex;

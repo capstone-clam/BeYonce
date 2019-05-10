@@ -35,7 +35,7 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Main component as a fallback */}
-        <Route component={Main} />
+        <Route component={Homepage} />
       </Switch>
     )
   }
