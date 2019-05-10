@@ -8,17 +8,22 @@ const seedCategories = [
     inventories: [
       {
         item: 'flowerHat',
-        filePath: '/img/hats/beyflower.png',
+        filePath: '/img/hats/FlowerhatBrightened75.png',
         url: 'www.google.com'
       },
       {
-        item: 'flowerHat1',
-        filePath: '/img/hats/beyflower.png',
+        item: 'finalcrown',
+        filePath: '/img/hats/finalcrown.png',
         url: 'www.google.com'
       },
       {
-        item: 'Hat 3',
-        filePath: '/img/hats/hat.png',
+        item: 'beadedCrown',
+        filePath: '/img/hats/beadedCrown.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'orangeHat',
+        filePath: '/img/hats/OrangeHatCrop.png',
         url: 'www.google.com'
       }
     ]
@@ -47,7 +52,7 @@ const seedCategories = [
   },
   {
     name: 'Songs',
-    image: 'https://media.timeout.com/images/105252649/630/472/image.jpg',
+    image: '/icons/musicIcon.png',
     inventories: [
       {
         item: 'Single Ladies',
