@@ -1,6 +1,10 @@
 body {
   font-family: sans-serif;
   background: #fff9f2;
+  background-color: #262422;
+  color: #dcd9cd;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -146,4 +150,16 @@ form div {
   text-align: center;
   justify-content: center;
   flex-direction: column;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+  transform: scaleX(-1);
 }

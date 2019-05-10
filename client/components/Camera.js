@@ -169,7 +169,7 @@ class Camera extends Component {
       <div>
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
-          <Closet />
+
           <canvas className="webcam" ref={this.getCanvas} />
           {selection.item ? (
             <img id={selection.item} src={selection.filePath} />
@@ -180,6 +180,7 @@ class Camera extends Component {
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
+        <Closet />
       </div>
     )
   }
