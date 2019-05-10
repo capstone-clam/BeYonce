@@ -7,6 +7,10 @@ import Songs from './Songs'
 import Category from './Category'
 import ClothingItems from './ClothingItems'
 
+import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
+import {withStyles} from '@material-ui/core/styles'
+
 class Closet extends Component {
   constructor() {
     super()
@@ -36,10 +40,12 @@ class Closet extends Component {
     return (
       <div id="closet-details">
         <div>
-          <h1 id="closeth1">BEYONCÉ CLOSET</h1>
+          <Typography component="h6" variant="h6" align="center" gutterBottom>
+            BROWSE & CHOOSE ONE ITEM
+          </Typography>
         </div>
+
         <Songs />
-        <p id="closetp">Please choose up to one of each</p>
 
         {this.state.selectedCategoryId ? (
           <ClothingItems
