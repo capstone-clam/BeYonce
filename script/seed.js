@@ -75,17 +75,27 @@ const seedCategories = [
       {
         item: 'Single Ladies',
         filePath: '/SingleLadies.mp3',
-        url: 'www.google.com'
+        url: 'https://www.youtube.com/watch?v=4m1EFMoRFvY'
       },
       {
-        item: 'Single Ladies 2',
-        filePath: '/SingleLadies.mp3',
-        url: 'www.google.com'
+        item: 'Formation',
+        filePath: '/Formation.mp3',
+        url: 'https://www.youtube.com/watch?v=WDZJPJV__bQ'
       },
       {
-        item: 'Single Ladies 3',
-        filePath: '/SingleLadies.mp3',
-        url: 'www.google.com'
+        item: 'Run the World',
+        filePath: '/RunTheWorld.mp3',
+        url: 'https://www.youtube.com/watch?v=VBmMU_iwe6U'
+      },
+      {
+        item: 'XO',
+        filePath: '/XO.mp3',
+        url: 'https://www.youtube.com/watch?v=3xUfCUFPL-8&list=PLsTSfecal8Rze2uRHzw0XFgFLQUUicxaD&index=18'
+      },
+      {
+        item: 'Love On Top',
+        filePath: '/LoveOnTop.mp3',
+        url: 'https://www.youtube.com/watch?v=Ob7vObnFUJc'
       }
     ]
   }
