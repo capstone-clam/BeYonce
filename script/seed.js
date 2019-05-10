@@ -4,8 +4,7 @@ const {db, User, Inventory, Category} = require('../server/db/models')
 const seedCategories = [
   {
     name: 'Hat',
-    image:
-      'https://image.iol.co.za/image/1/process/620x349?source=https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/media/2017/11/08/iol/582/beyonce-formation-variance-magazine-7291.jpg&operation=CROP&offset=0x12&resize=838x469',
+    image: '/headpiece-icon-thicker.png',
     inventories: [
       {
         item: 'flowerHat',
@@ -26,8 +25,7 @@ const seedCategories = [
   },
   {
     name: 'Dress',
-    image:
-      'https://hips.hearstapps.com/elleuk.cdnds.net/15/37/2048x2730/2048x2730-e6-a19a-6ddc829b9cee-assets-elleuk-com-gallery-16631-1369240729-beyonce-38-aaavm465-wenn-feb2013-jpg.jpg',
+    image: '/headpiece-icon-thinner.png',
     inventories: [
       {
         item: 'Dress 1',
@@ -75,17 +73,28 @@ const seedCategories = [
       {
         item: 'Single Ladies',
         filePath: '/SingleLadies.mp3',
-        url: 'www.google.com'
+        url: 'https://www.youtube.com/watch?v=4m1EFMoRFvY'
       },
       {
-        item: 'Single Ladies 2',
-        filePath: '/SingleLadies.mp3',
-        url: 'www.google.com'
+        item: 'Formation',
+        filePath: '/Formation.mp3',
+        url: 'https://www.youtube.com/watch?v=WDZJPJV__bQ'
       },
       {
-        item: 'Single Ladies 3',
-        filePath: '/SingleLadies.mp3',
-        url: 'www.google.com'
+        item: 'Run the World',
+        filePath: '/RunTheWorld.mp3',
+        url: 'https://www.youtube.com/watch?v=VBmMU_iwe6U'
+      },
+      {
+        item: 'XO',
+        filePath: '/XO.mp3',
+        url:
+          'https://www.youtube.com/watch?v=3xUfCUFPL-8&list=PLsTSfecal8Rze2uRHzw0XFgFLQUUicxaD&index=18'
+      },
+      {
+        item: 'Love On Top',
+        filePath: '/LoveOnTop.mp3',
+        url: 'https://www.youtube.com/watch?v=Ob7vObnFUJc'
       }
     ]
   }
