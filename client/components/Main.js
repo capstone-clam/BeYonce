@@ -15,7 +15,9 @@ class Main extends Component {
 
     return (
       <div id="mainclass">
+          <div id= 'songinmain'>
         <Songs/>
+        </div>
         <Camera/>
       </div>
     )

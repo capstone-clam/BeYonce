@@ -41,6 +41,9 @@ form div {
   -webkit-transform: scaleX(-1);
   display: none !important;
 }
+#songinmain{
+  background: rgba(0, 0, 0, 0.04);
+}
 
 #closet-details {
   position: fixed;
