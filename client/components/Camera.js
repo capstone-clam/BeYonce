@@ -3,11 +3,15 @@ import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
 import {connect} from 'react-redux'
+import Hidden from '@material-ui/core/Hidden'
+
+import {withStyles} from '@material-ui/core/styles'
+import {Container} from '@tensorflow/tfjs-layers/dist/engine/container'
 
 class Camera extends Component {
   static defaultProps = {
-    videoWidth: 900,
-    videoHeight: 700,
+    videoWidth: 1280,
+    videoHeight: 720,
     flipHorizontal: true,
     algorithm: 'single-pose',
     showVideo: true,
@@ -144,7 +148,6 @@ class Camera extends Component {
               canvasContext,
               this.props.selection.item
             )
-            console.log('ITEM IN CAMERA', this.props.selection.item)
           }
           if (showSkeleton) {
             drawSkeleton(
@@ -171,6 +174,7 @@ class Camera extends Component {
           <video id="videoNoShow" playsInline ref={this.getVideo} />
 
           <canvas className="webcam" ref={this.getCanvas} />
+
           {selection.item ? (
             <img id={selection.item} src={selection.filePath} />
           ) : (
