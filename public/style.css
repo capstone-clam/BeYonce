@@ -37,7 +37,15 @@ form div {
   display: none !important;
 }
 #songinmain{
-  background: rgba(0, 0, 0, 0.04);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 20%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0);
+  padding: 8px;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 #closet-details {
