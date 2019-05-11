@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Songs from './Songs'
 import Camera from './Camera'
-import Camera2 from './Camera2'
 
 class Main extends Component {
 //   constructor() {
@@ -17,7 +16,7 @@ class Main extends Component {
     return (
       <div id="mainclass">
         <Songs/>
-        <Camera2/>
+        <Camera/>
       </div>
     )
   }
