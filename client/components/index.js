@@ -6,7 +6,7 @@
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
-export {default as Camera} from './Camera'
+export {default as Camera2} from './Camera2'
 export {default as Closet} from './Closet'
 export {default as ClothingItems} from './ClothingItems'
 export {default as Songs} from './Songs'
