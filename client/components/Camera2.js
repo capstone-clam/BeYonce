@@ -31,10 +31,10 @@ class Camera2 extends React.Component {
         <Webcam
         id="webcam"
           audio={false}
-          height={350}
+          height={1300}
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          width={350}
+          width={1300}
           videoConstraints={videoConstraints}
         />
         <button type="button" onClick={this.capture}>
