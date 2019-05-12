@@ -56,7 +56,6 @@ class Camera2 extends Component {
           screenshotFormat="image/jpeg"
           width={1300}
           videoConstraints={videoConstraints}
-          video={this.getvideo}
         />
         <Closet />
         <img id="photo" />
