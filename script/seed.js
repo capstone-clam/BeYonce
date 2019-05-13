@@ -8,23 +8,19 @@ const seedCategories = [
     inventories: [
       {
         item: 'flowerHat',
-        filePath: '/img/hats/FlowerhatBrightened75.png',
-        url: 'www.google.com'
+        filePath: '/img/hats/FlowerhatBrightened75.png'
       },
       {
         item: 'finalcrown',
-        filePath: '/img/hats/finalcrown.png',
-        url: 'www.google.com'
+        filePath: '/img/hats/finalcrown.png'
       },
       {
         item: 'beadedCrown',
-        filePath: '/img/hats/beadedCrown.png',
-        url: 'www.google.com'
+        filePath: '/img/hats/beadedCrown.png'
       },
       {
         item: 'orangeHat',
-        filePath: '/img/hats/OrangeHatCrop.png',
-        url: 'www.google.com'
+        filePath: '/img/hats/OrangeHatCrop.png'
       }
     ]
   },
@@ -35,23 +31,19 @@ const seedCategories = [
     inventories: [
       {
         item: 'barbieBodysuit',
-        filePath: '/img/bodysuit/BeyBarbieBodysuit.png',
-        url: 'www.google.com'
+        filePath: '/img/bodysuit/BeyBarbieBodysuit.png'
       },
       {
         item: 'redBodysuit',
-        filePath: '/img/bodysuit/RedBeaded_bodysuit.png',
-        url: 'www.google.com'
+        filePath: '/img/bodysuit/RedBeaded_bodysuit.png'
       },
       {
         item: 'goldBodysuit',
-        filePath: '/img/bodysuit/Gold_bodysuit.png',
-        url: 'www.google.com'
+        filePath: '/img/bodysuit/Gold_bodysuit.png'
       },
       {
         item: 'pearlBodysuit',
-        filePath: '/img/bodysuit/Pearl_bodysuit.png',
-        url: 'www.google.com'
+        filePath: '/img/bodysuit/Pearl_bodysuit.png'
       }
     ]
   },
@@ -61,29 +53,23 @@ const seedCategories = [
     inventories: [
       {
         item: 'Single Ladies',
-        filePath: '/music/SingleLadies.mp3',
-        url: 'https://www.youtube.com/watch?v=4m1EFMoRFvY'
+        filePath: '/music/SingleLadies.mp3'
       },
       {
         item: 'Formation',
-        filePath: '/music/Formation.mp3',
-        url: 'https://www.youtube.com/watch?v=WDZJPJV__bQ'
+        filePath: '/music/Formation.mp3'
       },
       {
         item: 'Run the World',
-        filePath: '/music/RunTheWorld.mp3',
-        url: 'https://www.youtube.com/watch?v=VBmMU_iwe6U'
+        filePath: '/music/RunTheWorld.mp3'
       },
       {
         item: 'XO',
-        filePath: '/XO.mp3',
-        url:
-          'https://www.youtube.com/watch?v=3xUfCUFPL-8&list=PLsTSfecal8Rze2uRHzw0XFgFLQUUicxaD&index=18'
+        filePath: '/XO.mp3'
       },
       {
         item: 'Love On Top',
-        filePath: '/LoveOnTop.mp3',
-        url: 'https://www.youtube.com/watch?v=Ob7vObnFUJc'
+        filePath: '/LoveOnTop.mp3'
       }
     ]
   }
