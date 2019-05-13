@@ -75,10 +75,9 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
   var hatImg = document.getElementById('hat')
 
   var type = hatImg.alt
-  console.log('type', type)
+
   switch (type) {
     case 'orangeHat':
-      console.log('orangeHat')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position
@@ -103,7 +102,6 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
       break
 
     case 'flowerHat':
-      console.log('Flower Hat')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position
@@ -127,7 +125,6 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
       break
 
     case 'finalcrown':
-      console.log('Crown Hat')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position
@@ -151,7 +148,6 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
       break
 
     case 'beadedCrown':
-      console.log('Beaded Crown')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position
@@ -217,6 +213,6 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
       break
 
     default:
-      console.log('nothing to say')
+      return null
   }
 }
