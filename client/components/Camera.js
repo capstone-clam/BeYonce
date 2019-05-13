@@ -165,10 +165,9 @@ class Camera extends Component {
     }
     findPoseDetectionFrame()
   }
-  //CAMERA  SCREENSHOTS HTML2CANVAS
 
+  //CAMERA  SCREENSHOTS HTML2CANVAS
   screenShoot() {
-    // this WORKS!! DONT CHANGE PLAN B
     html2canvas(document.body).then(function(canvas) {
       document.body.appendChild(canvas)
     })
@@ -195,14 +194,12 @@ class Camera extends Component {
         <div data-html2canvas-ignore="true">
           <Fab size="medium" aria-label="Camera">
             <CameraIcon
-              // id="capture"
               onClick={() => {
                 this.screenShoot()
               }}
             />
           </Fab>
         </div>
-        <img id="photo" />
 
         <div />
       </div>
