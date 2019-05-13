@@ -38,17 +38,17 @@ class Homepage extends Component {
               glass of wine in hand, and crank up the volume.
             </div>
           </div>
-{/* place link around button */}
           <div className="enterButton">
-            <Button
-              variant="contained"
-              color="secondary"
-              size="large"
-              className="button"
-            >
-            
-              <Link to="/camera">Enter</Link>
-            </Button>
+            <Link to="/camera">
+              <Button
+                variant="contained"
+                color="secondary"
+                size="large"
+                className="button"
+              >
+                Enter
+              </Button>
+            </Link>
           </div>
 
           <div className="namesList">

@@ -116,18 +116,6 @@ class Camera extends Component {
       showSkeleton,
       skeletonColor,
       skeletonLineWidth
-      // imageScaleFactor,
-      // flipHorizontal,
-      // outputStride,
-      // minPoseConfidence,
-      // minPartConfidence,
-      // videoWidth,
-      // videoHeight,
-      // showVideo,
-      // showPoints,
-      // showSkeleton,
-      // skeletonColor,
-      // skeletonLineWidth
     } = this.props
 
     const posenetModel = this.posenet
@@ -145,8 +133,6 @@ class Camera extends Component {
         minPartConfidence,
         nmsRadius
       )
-      // poses.push(pose)
-      // console.log(poses)
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
