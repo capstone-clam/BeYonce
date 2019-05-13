@@ -8,12 +8,6 @@ const Inventory = db.define('inventory', {
   },
   filePath: {
     type: Sequelize.STRING
-  },
-  url: {
-    type: Sequelize.STRING,
-    validate: {
-      isUrl: true
-    }
   }
 })
 

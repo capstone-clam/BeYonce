@@ -187,7 +187,7 @@ class Camera extends Component {
     return (
       <div>
         <div>
-          
+
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
 
@@ -205,7 +205,7 @@ class Camera extends Component {
 
         <div />
         <div data-html2canvas-ignore="true" id="camerabutton">
-          <Fab size="medium" color="secondary" aria-label="Camera"> 
+          <Fab size="medium" color="secondary" aria-label="Camera">
             <CameraIcon
               onClick={() => {
                 this.screenShoot()
