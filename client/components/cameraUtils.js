@@ -60,8 +60,8 @@ export function placeHat(keypoints, minConfidence, canvasContext, item) {
 
   var hatImg = document.getElementById('hat')
 
-  console.log('hats', hatImg)
-  console.log('hatsVALUE', hatImg.alt)
+  // console.log('hats', hatImg)
+  // console.log('hatsVALUE', hatImg.alt)
 
   var type = hatImg.alt
   // if (id === 'hats') {
