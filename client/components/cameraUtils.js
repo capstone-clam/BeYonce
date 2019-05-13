@@ -72,9 +72,9 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
   const fifthBtwShoulders = (leftShoulderX - rightShoulderX) / 5
   const forthBtwShoulders = (leftShoulderX - rightShoulderX) / 4
 
-  var hatImg = document.getElementById('hat')
+  const hatImg = document.getElementById('hat')
 
-  var type = hatImg.alt
+  const type = hatImg.alt
 
   switch (type) {
     case 'orangeHat':
