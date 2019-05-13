@@ -123,6 +123,7 @@ class Camera extends Component {
         outputStride
       )
       poses.push(pose)
+      console.log(poses)
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
