@@ -168,12 +168,12 @@ class Camera extends Component {
 
   //CAMERA  SCREENSHOTS HTML2CANVAS
   screenShoot() {
-    const photo= document.getElementById('photo')
+    const photo = document.getElementById('photo')
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
-      var data = canvas.toDataURL('image/png');
-          console.log("GOT DATA")
-          photo.setAttribute('src', data);
+      const data = canvas.toDataURL('image/png')
+      console.log('GOT DATA')
+      photo.setAttribute('src', data)
     })
   }
 
@@ -195,7 +195,7 @@ class Camera extends Component {
           <Closet />
         </div>
 
-        <img id="photo"/>
+        <img id="photo" />
 
         <div data-html2canvas-ignore="true">
           <Fab size="medium" aria-label="Camera">
