@@ -30,9 +30,13 @@ const addSelection = selection => ({
 
 export const addSelectedItem = inventoryId => {
   return async dispatch => {
-    dispatch(loadingData())
-    const {data} = await axios.get(`/api/closet/${inventoryId}`)
-    dispatch(addSelection(data))
+    try {
+      dispatch(loadingData())
+      const {data} = await axios.get(`/api/closet/${inventoryId}`)
+      dispatch(addSelection(data))
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
