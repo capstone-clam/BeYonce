@@ -3,6 +3,10 @@ import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
 import {connect} from 'react-redux'
+import html2canvas from 'html2canvas'
+
+import Fab from '@material-ui/core/Fab'
+import CameraIcon from '@material-ui/icons/Camera'
 
 class Camera extends Component {
   static defaultProps = {
@@ -26,6 +30,7 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
+    this.screenShoot = this.screenShoot.bind(this)
   }
 
   getCanvas = elem => {
@@ -161,6 +166,13 @@ class Camera extends Component {
     findPoseDetectionFrame()
   }
 
+  //CAMERA  SCREENSHOTS HTML2CANVAS
+  screenShoot() {
+    html2canvas(document.body).then(function(canvas) {
+      document.body.appendChild(canvas)
+    })
+  }
+
   render() {
     const {selection} = this.props.selection
     return (
@@ -175,7 +187,21 @@ class Camera extends Component {
             <img id="hat" src="" alt="" />
           )}
         </div>
-        <Closet />
+        <div data-html2canvas-ignore="true">
+          <Closet />
+        </div>
+
+        <div data-html2canvas-ignore="true">
+          <Fab size="medium" aria-label="Camera">
+            <CameraIcon
+              onClick={() => {
+                this.screenShoot()
+              }}
+            />
+          </Fab>
+        </div>
+
+        <div />
       </div>
     )
   }
