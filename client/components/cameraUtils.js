@@ -249,10 +249,10 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
             0, // sourceY, start drawing image at this y
             hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
             hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
-            x - twoThirds, // destinationX, x on canvas where top left corner of image sits
+            x - twoThirds - 15, // destinationX, x on canvas where top left corner of image sits
             rightShoulderY - forthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
-            shoulderDistance * 1.4,
-            halfwayBtwShoulders * 4.1
+            shoulderDistance * 1.7,
+            halfwayBtwShoulders * 4.5
           )
         }
       })
