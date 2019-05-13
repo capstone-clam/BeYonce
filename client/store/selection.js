@@ -41,6 +41,7 @@ export const addSelectedItem = inventoryId => {
  */
 const initialState = {
   loadingSelection: false,
+  //add category in arr per each category
   selection: {}
 }
 
