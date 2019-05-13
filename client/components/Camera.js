@@ -176,6 +176,7 @@ class Camera extends Component {
       photo.setAttribute('src', data)
     })
   }
+  //message pic to text
 
   render() {
     const {selection} = this.props.selection
