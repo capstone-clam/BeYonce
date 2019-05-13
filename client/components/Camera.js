@@ -172,16 +172,22 @@ class Camera extends Component {
 
   //CAMERA  SCREENSHOTS HTML2CANVAS
   screenShoot() {
+    const photo = document.getElementById('photo')
     html2canvas(document.body).then(function(canvas) {
-      document.body.appendChild(canvas)
+      // document.body.appendChild(canvas)
+      const data = canvas.toDataURL('image/png')
+      console.log('GOT DATA')
+      photo.setAttribute('src', data)
     })
   }
+  //message pic to text
 
   render() {
     const {selection} = this.props.selection
     return (
       <div>
         <div>
+          
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
 
@@ -195,8 +201,11 @@ class Camera extends Component {
           <Closet />
         </div>
 
-        <div data-html2canvas-ignore="true">
-          <Fab size="medium" aria-label="Camera">
+        <img id="photo" />
+
+        <div />
+        <div data-html2canvas-ignore="true" id="camerabutton">
+          <Fab size="medium" color="secondary" aria-label="Camera"> 
             <CameraIcon
               onClick={() => {
                 this.screenShoot()
@@ -204,8 +213,6 @@ class Camera extends Component {
             />
           </Fab>
         </div>
-
-        <div />
       </div>
     )
   }
