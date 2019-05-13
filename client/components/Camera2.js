@@ -184,15 +184,14 @@ class Camera2 extends Component {
 
   takepicture(){
     const {videoWidth, videoHeight} = this.props
-    const canvas = document.getElementById('webcam');
+    const canvas = document.getElementsByTagName('canvas');
+    console.log("CANVAS", canvas)
 
-// Get the stream
-const stream = canvas.captureStream(25);
+
     // const canvas = this.canvas
     const video = this.video
     const photo = document.getElementById('photo')
-    // const stream = this.canvas.getContext('2d');
-    console.log("STREAM", stream)
+
       
       if(videoWidth && videoHeight){
           canvas.width = videoWidth;
