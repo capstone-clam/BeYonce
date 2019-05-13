@@ -4,7 +4,6 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, Closet, Homepage, Main} from './components'
 import Camera from './components/Camera'
-import Camera2 from './components/Camera2'
 import {me} from './store'
 
 /**
@@ -24,7 +23,7 @@ class Routes extends Component {
         <Route path="/homepage" component={Homepage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/camera" component={Camera2} />
+        <Route path="/camera" component={Camera} />
         <Route path="/closet" component={Closet} />
         <Route path="/main" component={Main} />
 
