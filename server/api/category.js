@@ -15,22 +15,14 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//routes mounted on api/category/id
-// add by PK
 
 router.get('/:categoryId', async (req, res, next) => {
   try {
-    const singleCategory = await Category.findAll({
-      where: {
-        id: req.params.categoryId
-      },
-      include: [
-        {
-          model: Inventory
-        }
-      ]
+    const id = req.params.categoryId
+    const singleCategory = await Category.findByPk(id, {
+      include: [{model: Inventory}]
     })
-    res.json(singleCategory[0])
+    res.json(singleCategory)
   } catch (err) {
     next(err)
   }

@@ -15,12 +15,9 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:inventoryId', async (req, res, next) => {
   try {
-    const singleCategory = await Inventory.findAll({
-      where: {
-        id: req.params.inventoryId
-      }
-    })
-    res.json(singleCategory[0])
+    const id = req.params.inventoryId
+    const singleCategory = await Inventory.findByPk(id)
+    res.json(singleCategory)
   } catch (err) {
     next(err)
   }
