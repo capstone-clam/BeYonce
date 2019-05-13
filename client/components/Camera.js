@@ -1,12 +1,8 @@
-import {drawSkeleton, placeHat, placeGrammy} from './cameraUtils'
+import {drawSkeleton, placeHat} from './cameraUtils'
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
-import {Closet, Songs} from '../components'
+import {Closet} from '../components'
 import {connect} from 'react-redux'
-import Hidden from '@material-ui/core/Hidden'
-
-import {withStyles} from '@material-ui/core/styles'
-import {Container} from '@tensorflow/tfjs-layers/dist/engine/container'
 
 class Camera extends Component {
   static defaultProps = {
@@ -93,10 +89,8 @@ class Camera extends Component {
     const canvas = this.canvas
     const canvasContext = canvas.getContext('2d') // Intantiates our canvas as 2D canvas
     // drawImage method happens on canvasContext in utility functions
-
     canvas.width = videoWidth // canvas and width always same size
     canvas.height = videoHeight // canvas and width always same size
-
     this.poseDetectionFrame(canvasContext)
   }
 
@@ -168,8 +162,6 @@ class Camera extends Component {
 
   render() {
     const {selection} = this.props.selection
-    console.log('name in camnera', selection.item)
-
     return (
       <div>
         <div>
@@ -182,17 +174,12 @@ class Camera extends Component {
           ) : (
             <img id="hat" src="" alt="" />
           )}
-
-          {/* <img id="grammy" src="/Grammycropped.png" /> */}
-          {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
         <Closet />
       </div>
     )
   }
 }
-
-// export default Camera
 
 const mapStateToProps = state => {
   return {
