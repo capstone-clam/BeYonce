@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {nextFrame} from '@tensorflow/tfjs'
 
 /**
  * ACTION TYPES
@@ -38,18 +39,26 @@ const getCategory = category => ({
 // All Categories
 export const fetchCategories = () => {
   return async dispatch => {
-    dispatch(loadingCategories())
-    const {data} = await axios.get('/api/category')
-    dispatch(getCategories(data))
+    try {
+      dispatch(loadingCategories())
+      const {data} = await axios.get('/api/category')
+      dispatch(getCategories(data))
+    } catch (err) {
+      console.error(err)
+    }
   }
 }
 
 // One Category with products need the CategoryId
 export const fetchCategory = categoryId => {
   return async dispatch => {
-    dispatch(loadingCategory())
-    const {data} = await axios.get(`/api/category/${categoryId}`)
-    dispatch(getCategory(data))
+    try {
+      dispatch(loadingCategory())
+      const {data} = await axios.get(`/api/category/${categoryId}`)
+      dispatch(getCategory(data))
+    } catch (err) {
+      console.error(err)
+    }
   }
 }
 

@@ -18,9 +18,13 @@ const gotSongs = songs => ({
 
 export const fetchSongs = categoryId => {
   return async dispatch => {
-    dispatch(loadingSongs())
-    const {data} = await axios.get(`/api/category/${categoryId}`)
-    dispatch(gotSongs(data))
+    try {
+      dispatch(loadingSongs())
+      const {data} = await axios.get(`/api/category/${categoryId}`)
+      dispatch(gotSongs(data))
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
