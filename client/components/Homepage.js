@@ -46,7 +46,7 @@ class Homepage extends Component {
                 size="large"
                 className="button"
               >
-                Enter
+                ENTER
               </Button>
             </Link>
           </div>
