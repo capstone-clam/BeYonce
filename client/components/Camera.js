@@ -101,11 +101,14 @@ class Camera extends Component {
 
   poseDetectionFrame(canvasContext) {
     const {
+      algorithm,
       imageScaleFactor,
       flipHorizontal,
       outputStride,
       minPoseConfidence,
       minPartConfidence,
+      maxPoseDetections,
+      nmsRadius,
       videoWidth,
       videoHeight,
       showVideo,
@@ -121,14 +124,15 @@ class Camera extends Component {
     const findPoseDetectionFrame = async () => {
       let poses = []
 
-      const pose = await posenetModel.estimateSinglePose(
+      poses = await posenetModel.estimateMultiplePoses(
         video,
         imageScaleFactor,
         flipHorizontal,
-        outputStride
+        outputStride,
+        maxPoseDetections,
+        minPartConfidence,
+        nmsRadius
       )
-      poses.push(pose)
-      console.log(poses)
 
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
 
