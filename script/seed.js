@@ -34,18 +34,23 @@ const seedCategories = [
     image: '/icons/bodysuitIcon.png',
     inventories: [
       {
-        item: 'BodySuit 1',
+        item: 'barbieBodysuit',
         filePath: '/img/bodysuit/BeyBarbieBodysuit.png',
         url: 'www.google.com'
       },
       {
-        item: 'BodySuit 2',
-        filePath: '/img/bodysuit/BeyBarbieBodysuit.png',
+        item: 'redBodysuit',
+        filePath: '/img/bodysuit/RedBeaded_bodysuit.png',
         url: 'www.google.com'
       },
       {
-        item: 'BodySuit 3',
-        filePath: '/img/bodysuit/BeyBarbieBodysuit.png',
+        item: 'goldBodysuit',
+        filePath: '/img/bodysuit/Gold_bodysuit.png',
+        url: 'www.google.com'
+      },
+      {
+        item: 'pearlBodysuit',
+        filePath: '/img/bodysuit/Pearl_bodysuit.png',
         url: 'www.google.com'
       }
     ]
