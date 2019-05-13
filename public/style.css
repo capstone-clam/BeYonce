@@ -29,13 +29,13 @@ form div {
   height: 50vh;
 }
 
-/* #videoNoShow {
+#videoNoShow {
   transform: scaleX(-1);
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   display: none !important;
-} */
+}
 #songinmain {
   position: fixed;
   bottom: 0;

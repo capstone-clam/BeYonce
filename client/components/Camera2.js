@@ -182,29 +182,28 @@ class Camera2 extends Component {
 
 //   }
 
-  takepicture(){
-    const {videoWidth, videoHeight} = this.props
-    const canvas = document.getElementsByTagName('canvas');
-    console.log("CANVAS", canvas)
-
-
-    // const canvas = this.canvas
-    const video = this.video
-    const photo = document.getElementById('photo')
-
-      
-      if(videoWidth && videoHeight){
-          canvas.width = videoWidth;
-          canvas.height = videoHeight;
-          stream.drawImage(video, 0, 0, videoWidth, videoHeight);
-          const data = video.toDataURL('image/png');
-          console.log("DATAPIC", data)
-          photo.setAttribute('src', data);
-      
-      }else{
-        console.log("CLEAR PHOTO")
-      }
-  }
+takepicture(){
+  const {videoWidth, videoHeight} = this.props
+  const canvas = this.canvas
+  console.log("CANVAS", canvas)
+  const video = this.video
+  const photo = document.getElementById('photo')
+  
+    const canvasContext = this.canvas.getContext('2d');
+    
+    if(videoWidth && videoHeight){
+        canvas.width = videoWidth;
+        canvas.height = videoHeight;
+        canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
+        console.log("ANYTHING")
+        var data = canvas.toDataURL('image/png');
+        console.log("GOT DATA")
+        photo.setAttribute('src', data);
+        console.log("GOT PHOTO SET ATTRIBUTE")
+    }else{
+      console.log("CLEAR PHOTO")
+    }
+}
   
 
 
