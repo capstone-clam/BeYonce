@@ -70,6 +70,7 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
   const twoThirds = shoulderDistance * 0.7
   const halfwayBtwShoulders = (leftShoulderX - rightShoulderX) / 2
   const fifthBtwShoulders = (leftShoulderX - rightShoulderX) / 5
+  const forthBtwShoulders = (leftShoulderX - rightShoulderX) / 4
 
   var hatImg = document.getElementById('hat')
 
@@ -185,6 +186,27 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
             rightShoulderY - fifthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
             shoulderDistance * 1.5,
             halfwayBtwShoulders * 4.5
+          )
+        }
+      })
+      break
+
+    case 'goldBodysuit':
+      console.log('Gold Bodysuit')
+      keypoints.forEach(keypoint => {
+        if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
+          const {x, y} = keypoint.position
+          canvasContext.beginPath()
+          canvasContext.drawImage(
+            hatImg, // imgSource, variable set by grabbing photo by id
+            0, // sourceX, start drawing image at this x
+            0, // sourceY, start drawing image at this y
+            hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
+            hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
+            x - twoThirds, // destinationX, x on canvas where top left corner of image sits
+            rightShoulderY - forthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
+            shoulderDistance * 1.5,
+            halfwayBtwShoulders * 4.2
           )
         }
       })
