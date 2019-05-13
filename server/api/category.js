@@ -16,6 +16,7 @@ router.get('/', async (req, res, next) => {
 })
 
 //routes mounted on api/category/id
+// add by PK
 
 router.get('/:categoryId', async (req, res, next) => {
   try {

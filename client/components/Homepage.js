@@ -38,7 +38,7 @@ class Homepage extends Component {
               glass of wine in hand, and crank up the volume.
             </div>
           </div>
-
+{/* place link around button */}
           <div className="enterButton">
             <Button
               variant="contained"
@@ -46,6 +46,7 @@ class Homepage extends Component {
               size="large"
               className="button"
             >
+            
               <Link to="/camera">Enter</Link>
             </Button>
           </div>
