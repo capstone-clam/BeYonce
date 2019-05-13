@@ -30,7 +30,8 @@ class Camera2 extends Component {
 
   constructor(props) {
     super(props, Camera2.defaultProps)
-    this.takepicture =this.takepicture.bind(this)
+    this.takepicture = this.takepicture.bind(this)
+    this.captureVideo = this.captureVideo.bind(this)
   }
 
   getCanvas = elem => {
@@ -167,54 +168,56 @@ class Camera2 extends Component {
     findPoseDetectionFrame()
   }
 
-//   capture(){
-//       // Find the canvas element to capture
-// const canvasElt = document.getElementById('webcam');
+  captureVideo() {
+    // Find the canvas element to capture
+    // const canvas = document.getElementsByClassName('canvas');
+    const streamvideo = document.getElementById('streamvideo')
+    console.log("First- TAGSTREAM", streamvideo)
+    const canvas = this.canvas
+    console.log('CANVASELT', canvas)
+    // Get the stream
+    const stream = canvas.captureStream(25) // 25 FPS
+    console.log('STREAM', stream)
 
-// // Get the stream
-// const stream = canvasElt.captureStream(25); // 25 FPS
-
-// // Do things to the stream
-// // E.g. Send it to another computer using an RTCPeerConnection
-// //      pc is an RTCPeerConnection created elsewhere
-// // pc.addStream(stream);
-// console.log("STREAM", stream)
-
-//   }
-
-takepicture(){
-  const {videoWidth, videoHeight} = this.props
-  const canvas = this.canvas
-  console.log("CANVAS", canvas)
-  const video = this.video
-  const photo = document.getElementById('photo')
-  
-    const canvasContext = this.canvas.getContext('2d');
+    // Do things to the stream
+    // E.g. Send it to another computer using an RTCPeerConnection
+    //      pc is an RTCPeerConnection created elsewhere
+    // pc.addStream(stream);
+    console.log("addStream", this.addStream(stream))
+    streamvideo.addStream(stream)
+    console.log("END OF CAPTUREVID FUNC")
     
-    if(videoWidth && videoHeight){
-        canvas.width = videoWidth;
-        canvas.height = videoHeight;
-        canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
-        console.log("ANYTHING")
-        var data = canvas.toDataURL('image/png');
-        console.log("GOT DATA")
-        photo.setAttribute('src', data);
-        console.log("GOT PHOTO SET ATTRIBUTE")
-    }else{
-      console.log("CLEAR PHOTO")
-    }
-}
-  
+  }
 
+  takepicture() {
+    const {videoWidth, videoHeight} = this.props
+    const canvas = this.canvas
+    console.log('CANVAS', canvas)
+    const video = this.video
+    const photo = document.getElementById('photo')
+
+    const canvasContext = this.canvas.getContext('2d')
+
+    if (videoWidth && videoHeight) {
+      canvas.width = videoWidth
+      canvas.height = videoHeight
+      canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight)
+      console.log('ANYTHING')
+      var data = canvas.toDataURL('image/png')
+      console.log('GOT DATA')
+      photo.setAttribute('src', data)
+      console.log('GOT PHOTO SET ATTRIBUTE')
+    } else {
+      console.log('CLEAR PHOTO')
+    }
+  }
 
   render() {
     const {selection} = this.props.selection
 
-
     return (
       <div>
         <div>
-          
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
 
@@ -227,9 +230,16 @@ takepicture(){
           {/* <img id="grammy" src="/Grammycropped.png" /> */}
           {/* <img id="bodySuit" src="/BeyBarbieBodysuit.png" /> */}
         </div>
-        <button id="camerabutton"type="button" onClick={()=>this.takepicture()}>CAPTURE</button>
+        <button
+          id="camerabutton"
+          type="button"
+          onClick={() => this.captureVideo()}
+        >
+          CAPTURE
+        </button>
         <Closet />
-        <img id="photo"/>
+        <img id="photo" />
+        <video id="streamvideo"/>
       </div>
     )
   }

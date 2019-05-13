@@ -74,6 +74,21 @@ form div {
   color: black;
   font-family: 'Fjalla One', sans-serif;
 }
+
+#capture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 13%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 8px;
+  overflow: auto;
+  box-sizing: border-box;
+  color: black;
+  color: black;
+  font-family: 'Fjalla One', sans-serif;
+}
 #closeth1 {
   display: flex;
   align-items: center;
