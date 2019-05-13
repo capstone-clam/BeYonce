@@ -198,8 +198,9 @@ class Camera extends Component {
 
         <img id="photo" />
 
-        <div data-html2canvas-ignore="true">
-          <Fab size="medium" aria-label="Camera">
+        <div />
+        <div data-html2canvas-ignore="true" id="camerabutton">
+          <Fab size="medium" color="secondary" aria-label="Camera"> 
             <CameraIcon
               onClick={() => {
                 this.screenShoot()
@@ -207,8 +208,6 @@ class Camera extends Component {
             />
           </Fab>
         </div>
-
-        <div />
       </div>
     )
   }
