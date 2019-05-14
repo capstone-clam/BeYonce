@@ -15,7 +15,7 @@ class Songs extends Component {
     if (loadingSongs) return <div>Loading Songs...</div>
     return (
       <div className="musicButton">
-        <Fab size="medium" color="secondary" aria-label="Camera">
+        <Fab size="medium" color="secondary" aria-label="musicNote">
           <Icon>music_note</Icon>
           <audio src="/music/Formation.mp3" id="songinmain" />
         </Fab>
