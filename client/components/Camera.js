@@ -1,4 +1,6 @@
-import {drawSkeleton, placeHat} from './cameraUtils'
+import {drawSkeleton, placeHat} from './hatUtils'
+import {placeBodysuit} from './bodysuitUtils'
+
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
@@ -157,7 +159,15 @@ class Camera extends Component {
               keypoints,
               minPartConfidence,
               canvasContext,
-              this.props.selection.item
+              this.props.selectedHat.item
+            )
+          }
+          if (showPoints) {
+            placeBodysuit(
+              keypoints,
+              minPartConfidence,
+              canvasContext,
+              this.props.selectedBodysuit.item
             )
           }
           if (showSkeleton) {
@@ -218,6 +228,8 @@ class Camera extends Component {
 
   render() {
     const {selectedBodysuit, selectedHat} = this.props
+    console.log('camera props:', this.props)
+    console.log('selectedBodysuit:', selectedBodysuit)
     return (
       <div>
         <div>
@@ -268,7 +280,8 @@ class Camera extends Component {
 
 const mapStateToProps = state => {
   return {
-    selection: state.selection
+    selectedBodysuit: state.selection.selectedBodysuit,
+    selectedHat: state.selection.selectedHat
   }
 }
 
