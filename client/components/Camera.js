@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
+import {addCapturedScreenshot} from '../store'
 
 class Camera extends Component {
   static defaultProps = {
@@ -176,7 +177,12 @@ class Camera extends Component {
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/png')
-      console.log('GOT DATA')
+      // console.log('GOT DATA', data)
+      // let testing = new URL(data)
+      // console.log("TESTING URL", testing)
+      // console.log("JUST PNG", data.png)
+      this.props.addCapturedScreenshot(data)
+
       photo.setAttribute('src', data)
     })
   }
@@ -200,9 +206,6 @@ class Camera extends Component {
         <div data-html2canvas-ignore="true">
           <Closet />
         </div>
-
-        <img id="photo" />
-
         <div />
         <div data-html2canvas-ignore="true" id="camerabutton">
           <Fab size="medium" color="secondary" aria-label="Camera">
@@ -213,6 +216,7 @@ class Camera extends Component {
             />
           </Fab>
         </div>
+        <img id="photo" />
       </div>
     )
   }
@@ -224,4 +228,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Camera)
+const mapDispatchToProps = (dispatch) => {
+  return {
+      addCapturedScreenshot: (screenshot) => dispatch(addCapturedScreenshot(screenshot)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Camera)

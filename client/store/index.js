@@ -6,8 +6,9 @@ import user from './user'
 import closet from './closet'
 import selection from './selection'
 import songs from './songs'
+import screenshot from './screenshot'
 
-const reducer = combineReducers({user, closet, selection, songs})
+const reducer = combineReducers({user, closet, selection, songs, screenshot})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
@@ -18,3 +19,4 @@ export * from './user'
 export * from './closet'
 export * from './selection'
 export * from './songs'
+export * from './screenshot'
