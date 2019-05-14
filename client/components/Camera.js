@@ -205,17 +205,41 @@ class Camera extends Component {
   }
   //message pic to text
 
+  screenShoot() {
+    const photo = document.getElementById('photo')
+    html2canvas(document.body).then(function(canvas) {
+      // document.body.appendChild(canvas)
+      const data = canvas.toDataURL('image/png')
+      console.log('GOT DATA')
+      photo.setAttribute('src', data)
+    })
+  }
+  //message pic to text
+
   render() {
-    const {selection} = this.props.selection
+    const {selectedBodysuit, selectedHat} = this.props
     return (
       <div>
         <div>
-
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
 
-          {selection.item ? (
-            <img id="hat" src={selection.filePath} alt={selection.item} />
+          {selectedBodysuit.item ? (
+            <div>
+              <img
+                id="bodysuit"
+                src={selectedBodysuit.filePath}
+                alt={selectedBodysuit.item}
+              />
+            </div>
+          ) : (
+            <img id="bodysuit" src="" alt="" />
+          )}
+
+          {selectedHat.item ? (
+            <div>
+              <img id="hat" src={selectedHat.filePath} alt={selectedHat.item} />
+            </div>
           ) : (
             <img id="hat" src="" alt="" />
           )}
@@ -223,7 +247,9 @@ class Camera extends Component {
         <div data-html2canvas-ignore="true">
           <Closet />
         </div>
-        {/* <SimpleModalWrapped screenShoot={this.screenShoot} data={this.state.data}/> */}
+
+        <img id="photo" />
+
         <div />
         <div data-html2canvas-ignore="true" id="camerabutton">
           <Fab size="medium" color="secondary" aria-label="Camera">
@@ -234,10 +260,7 @@ class Camera extends Component {
             />
           </Fab>
         </div>
-        <div data-html2canvas-ignore="true" id="downloadbutton">
         <button id="download-icon" type="button" onClick={this.clearphoto}><i className="material-icons">vertical_align_bottom</i></button>
-        </div>
-        <img id="photo" />
       </div>
     )
   }
