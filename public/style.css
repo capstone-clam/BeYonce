@@ -257,6 +257,10 @@ canvas {
   box-sizing: border-box;
 }
 
+#stopButton {
+  left: 8%;
+}
+
 #webcam {
   width: 100%;
   height: 100%;
