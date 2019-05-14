@@ -206,6 +206,8 @@ class Camera extends Component {
   screenshot() {
     const photo = document.getElementById('photo')
     const hyper = document.getElementById('hyper')
+    photo.width = 500
+    photo.height = 273
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/png')
@@ -213,7 +215,7 @@ class Camera extends Component {
       photo.setAttribute('src', data)
       hyper.setAttribute('href', data, + encodeURIComponent('string'))
    
-      hyper.setAttribute('download', 'beyonce1.png')
+      hyper.setAttribute('download', 'beyonce.png')
       console.log("COMPLETED HYPERLINK")
     })
   }
