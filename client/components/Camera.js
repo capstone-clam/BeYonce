@@ -4,9 +4,11 @@ import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
 import {connect} from 'react-redux'
 import html2canvas from 'html2canvas'
+import SimpleModalWrapped from './Popup'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
+import Modal from '@material-ui/core/Modal';
 
 class Camera extends Component {
   static defaultProps = {
@@ -30,6 +32,9 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
+    this.state= {
+      data : null
+    }
     this.screenShoot = this.screenShoot.bind(this)
   }
 
@@ -176,6 +181,9 @@ class Camera extends Component {
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/png')
+      this.setState({
+        data
+      })
       //specify resolution 
       console.log('GOT PNG DATA', data)
       console.log('TYPEOF', typeof data)
@@ -202,11 +210,12 @@ class Camera extends Component {
         <div data-html2canvas-ignore="true">
           <Closet />
         </div>
+        <SimpleModalWrapped screenShoot={this.screenShoot} data={this.state.data}/>
 
         <img id="photo" />
 
         <div />
-        <div data-html2canvas-ignore="true" id="camerabutton">
+        {/* <div data-html2canvas-ignore="true" id="camerabutton">
           <Fab size="medium" color="secondary" aria-label="Camera">
             <CameraIcon
               onClick={() => {
@@ -214,7 +223,7 @@ class Camera extends Component {
               }}
             />
           </Fab>
-        </div>
+        </div> */}
       </div>
     )
   }
