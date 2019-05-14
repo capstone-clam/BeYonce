@@ -1,4 +1,6 @@
-import {drawSkeleton, placeHat} from './cameraUtils'
+import {drawSkeleton, placeHat} from './hatUtils'
+import {placeBodysuit} from './bodysuitUtils'
+
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
@@ -151,7 +153,15 @@ class Camera extends Component {
               keypoints,
               minPartConfidence,
               canvasContext,
-              this.props.selection.item
+              this.props.selectedHat.item
+            )
+          }
+          if (showPoints) {
+            placeBodysuit(
+              keypoints,
+              minPartConfidence,
+              canvasContext,
+              this.props.selectedBodysuit.item
             )
           }
           if (showSkeleton) {
@@ -183,16 +193,31 @@ class Camera extends Component {
   //message pic to text
 
   render() {
-    const {selection} = this.props.selection
+    const {selectedBodysuit, selectedHat} = this.props
+    console.log('camera props:', this.props)
+    console.log('selectedBodysuit:', selectedBodysuit)
     return (
       <div>
         <div>
-
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
 
-          {selection.item ? (
-            <img id="hat" src={selection.filePath} alt={selection.item} />
+          {selectedBodysuit.item ? (
+            <div>
+              <img
+                id="bodysuit"
+                src={selectedBodysuit.filePath}
+                alt={selectedBodysuit.item}
+              />
+            </div>
+          ) : (
+            <img id="bodysuit" src="" alt="" />
+          )}
+
+          {selectedHat.item ? (
+            <div>
+              <img id="hat" src={selectedHat.filePath} alt={selectedHat.item} />
+            </div>
           ) : (
             <img id="hat" src="" alt="" />
           )}
@@ -220,7 +245,8 @@ class Camera extends Component {
 
 const mapStateToProps = state => {
   return {
-    selection: state.selection
+    selectedBodysuit: state.selection.selectedBodysuit,
+    selectedHat: state.selection.selectedHat
   }
 }
 
