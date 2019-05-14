@@ -1,34 +1,29 @@
 import React, {Component} from 'react'
-import {
-  fetchCategory,
-  addSelectedItem,
-  addBodysuitThunk,
-  addHatThunk
-} from '../store'
+import {addBodysuitThunk, addHatThunk, reset} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Buttons from './Buttons'
 import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import Icon from '@material-ui/core/Icon'
 
 import Typography from '@material-ui/core/Typography'
 
 class ClothingItems extends Component {
   constructor(props) {
     super(props)
-    // this.state = {}
     this.handleClick = this.handleClick.bind(this)
+    this.backClosetClick = this.backClosetClick.bind(this)
   }
-  componentDidMount() {
-    const selectedId = Number(this.props.categoryId)
-    this.props.fetchCategory(selectedId)
+
+  backClosetClick(ev) {
+    ev.preventDefault()
+    this.props.reset()
   }
 
   // eslint-disable-next-line complexity
   handleClick(ev) {
     ev.preventDefault()
-    console.log('ev.target:', ev.target)
     let mySelection = ev.target.alt
-    console.log('mySelection:', mySelection)
     if (
       mySelection === 'flowerHat' ||
       mySelection === 'finalcrown' ||
@@ -36,7 +31,6 @@ class ClothingItems extends Component {
       mySelection === 'orangeHat'
     ) {
       let hatID = ev.target.id
-      console.log('hatID:', hatID)
       this.props.addHatThunk(hatID)
     } else if (
       mySelection === 'barbieBodysuit' ||
@@ -45,45 +39,46 @@ class ClothingItems extends Component {
       mySelection === 'pearlBodysuit'
     ) {
       let bodysuitID = ev.target.id
-      console.log('bodysuitID:', bodysuitID)
       this.props.addBodysuitThunk(bodysuitID)
     }
   }
 
+  clearButton() {}
+
   render() {
-    const {loadingCategory, inventories, category} = this.props
-    if (loadingCategory) return <div>Loading...</div>
+    const {inventories, name} = this.props.selectedCategory
+    // if (loadingCategory) return <div>Loading...</div>
 
     return (
       <div className="uppercase">
         <Typography component="h6" variant="h6" align="center" gutterBottom>
-          BROWSE & CHOOSE ONE {category.name}
+          BROWSE & CHOOSE ONE {name}
         </Typography>
 
         <div>
-          <Grid container spacing={24}>
-            <Grid item xs={12}>
-              <Buttons />
+          <Grid container spacing={16}>
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                size="small"
+                color="secondary"
+                onClick={this.backClosetClick}
+              >
+                Closet
+              </Button>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Button variant="contained" size="small" color="secondary">
+                Clear
+              </Button>
             </Grid>
           </Grid>
         </div>
         {inventories.map(inventory => (
           <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
-<<<<<<< HEAD
-            <div id="closetpics">
-              {' '}
-              <img
-                className="closetpics"
-                src={inventory.filePath}
-                id={inventory.id}
-                value={inventory.item}
-                alt={inventory.categoryId}
-              />
-            </div>
-=======
             <Link to="/camera">
               <div id="closetpics">
-                {' '}
                 <img
                   className="closetpics"
                   src={inventory.filePath}
@@ -92,7 +87,6 @@ class ClothingItems extends Component {
                 />
               </div>
             </Link>
->>>>>>> master
           </div>
         ))}
       </div>
@@ -103,8 +97,7 @@ class ClothingItems extends Component {
 const mapStateToProps = state => {
   return {
     loadingCategory: state.closet.loadingCategory,
-    category: state.closet.category, // hat, bodysuit, song
-    inventories: state.closet.inventories // hat1, hat2, hat3..
+    selectedCategory: state.selection.selectedCategory
   }
 }
 
@@ -112,7 +105,7 @@ const mapDispatchToProps = dispatch => {
   return {
     addBodysuitThunk: bodysuitID => dispatch(addBodysuitThunk(bodysuitID)),
     addHatThunk: hatID => dispatch(addHatThunk(hatID)),
-    fetchCategory: categoryId => dispatch(fetchCategory(categoryId))
+    reset: () => dispatch(reset())
   }
 }
 

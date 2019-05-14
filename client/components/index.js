@@ -11,5 +11,3 @@ export {default as ClothingItems} from './ClothingItems'
 export {default as Songs} from './Songs'
 export {default as Homepage} from './Homepage'
 export {default as Main} from './Main'
-export {default as Buttons} from './Buttons'
-

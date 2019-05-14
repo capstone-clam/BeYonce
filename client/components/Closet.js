@@ -5,42 +5,24 @@ import Songs from './Songs'
 import Category from './Category'
 import ClothingItems from './ClothingItems'
 
-
 class Closet extends Component {
-  constructor() {
-    super()
-    this.state = {}
-    this.pickCategory = this.pickCategory.bind(this)
-  }
   componentDidMount() {
     this.props.fetchCategories()
   }
 
-  pickCategory(categoryId) {
-    return this.setState({
-      selectedCategoryId: categoryId
-    })
-  }
-
   render() {
-    const {categories, loadingCategories} = this.props
-
-    if (loadingCategories) return <div>Loading...</div>
+    const {selectedCategory} = this.props
 
     return (
       <div id="closet-details">
         <Songs />
-
-        {this.state.selectedCategoryId ? (
-          <ClothingItems
-            categoryId={this.state.selectedCategoryId}
-            deslectCategory={this.deslectCategory}
-          />
+        {this.props.selection.id ? (
+          <ClothingItems category={this.props.selection} />
         ) : (
-          <Category categories={categories} pickCategory={this.pickCategory} />
+          <Category />
         )}
-
-
+        {/* <Category />
+        <ClothingItems category={selectedCategory} /> */}
       </div>
     )
   }
@@ -48,8 +30,8 @@ class Closet extends Component {
 
 const mapStateToProps = state => {
   return {
-    loadingCategories: state.closet.loadingCategories,
-    categories: state.closet.categories
+    categories: state.closet.categories,
+    selection: state.selection.selectedCategory
   }
 }
 

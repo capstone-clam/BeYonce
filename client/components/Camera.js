@@ -186,7 +186,6 @@ class Camera extends Component {
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/png')
-      console.log('GOT DATA')
       photo.setAttribute('src', data)
     })
   }
@@ -194,8 +193,7 @@ class Camera extends Component {
 
   render() {
     const {selectedBodysuit, selectedHat} = this.props
-    console.log('camera props:', this.props)
-    console.log('selectedBodysuit:', selectedBodysuit)
+
     return (
       <div>
         <div>
@@ -246,7 +244,7 @@ class Camera extends Component {
 const mapStateToProps = state => {
   return {
     selectedBodysuit: state.selection.selectedBodysuit,
-    selectedHat: state.selection.selectedHat
+    selectedHat: state.selection.selectedHat,
   }
 }
 

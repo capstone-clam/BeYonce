@@ -351,3 +351,7 @@ canvas {
   padding: 0;
   object-fit: cover;
 }
+
+div .uppercase {
+  text-transform: uppercase;
+}

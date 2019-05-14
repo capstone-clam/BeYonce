@@ -1,46 +1,81 @@
-import React from 'react'
-import Typography from '@material-ui/core/Typography'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
+import {fetchCategories, fetchCategory} from '../store/closet'
+import {addCategoryThunk} from '../store/selection'
+
+import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
 
-const Category = props => {
-  const categories = props.categories
-  const pickCategory = props.pickCategory
-  return (
-    <div className="uppercase">
-      <Typography component="h6" variant="h6" align="center" gutterBottom>
-        BROWSE & CHOOSE YOUR FAVORITE
-      </Typography>
+class Category extends Component {
+  constructor(props) {
+    super(props)
+    this.pickCategory = this.pickCategory.bind(this)
+  }
 
-      <div>
-        <Grid container spacing={20} align="center">
-          <Grid item xs={12}>
-            <Button variant="contained" size="small" color="secondary">
-              <Icon>home</Icon>
-              Home
-            </Button>
+  componentDidMount() {
+    this.props.fetchCategories()
+  }
+
+  pickCategory(ev) {
+    ev.preventDefault()
+    let categoryId = ev.target.id
+    this.props.addCategoryThunk(categoryId)
+  }
+
+  render() {
+    const categories = this.props.categories
+
+    return (
+      <div className="uppercase">
+        <Typography component="h6" variant="h6" align="center" gutterBottom>
+          BROWSE & CHOOSE YOUR FAVORITE
+        </Typography>
+
+        <div>
+          <Grid container spacing={16} align="center">
+            <Grid item xs={12}>
+              <Link to="/homepage">
+                <Button variant="contained" size="small" color="secondary">
+                  <Icon>home</Icon>
+                  Home
+                </Button>
+              </Link>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
 
-      {categories.map(category => (
-        <div id="closetpics" key={category.id}>
-          <div id="singlepic">
-            <div>
-              <img
-                className="closetpics"
-                id={category.id}
-                src={category.image}
-                onClick={() => pickCategory(category.id)}
-              />
+        {categories.map(category => (
+          <div id="closetpics" key={category.id} onClick={this.pickCategory}>
+            <div id="singlepic">
+              <div>
+                <img
+                  className="closetpics"
+                  id={category.id}
+                  src={category.image}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
-  )
+        ))}
+      </div>
+    )
+  }
+}
+const mapStateToProps = state => {
+  return {
+    loadingCategories: state.closet.loadingCategories,
+    categories: state.closet.categories
+  }
 }
 
-export default Category
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCategories: () => dispatch(fetchCategories()),
+    addCategoryThunk: categoryId => dispatch(addCategoryThunk(categoryId))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Category)
