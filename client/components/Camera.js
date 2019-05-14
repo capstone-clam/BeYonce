@@ -225,8 +225,10 @@ class Camera extends Component {
       var data = canvas.toDataURL('image/png')
       console.log('GOT DATA')
       photo.setAttribute('src', data)
-      hyper.setAttribute('href', data, +encodeURIComponent('text'))
-      hyper.setAttribute('download', 'photofile.png')
+      hyper.setAttribute('href', data, + encodeURIComponent('string'))
+   
+      hyper.setAttribute('download', 'beyonce1.png')
+      console.log("COMPLETED HYPERLINK")
     })
   }
 
