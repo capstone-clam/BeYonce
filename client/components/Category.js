@@ -15,7 +15,7 @@ const Category = props => {
       </Typography>
 
       <div>
-        <Grid container spacing={20}>
+        <Grid container spacing={20} align="center">
           <Grid item xs={12}>
             <Button variant="contained" size="small" color="secondary">
               <Icon>home</Icon>

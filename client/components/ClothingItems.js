@@ -3,13 +3,14 @@ import {fetchCategory, addSelectedItem} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Buttons from './Buttons'
+import Grid from '@material-ui/core/Grid'
 
 import Typography from '@material-ui/core/Typography'
 
 class ClothingItems extends Component {
   constructor(props) {
     super(props)
-    // this.state = {}
+    this.state = {}
     this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
@@ -21,6 +22,8 @@ class ClothingItems extends Component {
     ev.preventDefault()
     let mySelection = Number(ev.target.id)
     this.props.addSelectedItem(mySelection)
+    console.log('alt::::')
+    console.log(ev.target.alt)
   }
 
   render() {
@@ -32,22 +35,26 @@ class ClothingItems extends Component {
         <Typography component="h6" variant="h6" align="center" gutterBottom>
           BROWSE & CHOOSE ONE {category.name}
         </Typography>
-        
-        <Buttons />
 
+        <div>
+          <Grid container spacing={24}>
+            <Grid item xs={12}>
+              <Buttons />
+            </Grid>
+          </Grid>
+        </div>
         {inventories.map(inventory => (
           <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
-            <Link to="/camera">
-              <div id="closetpics">
-                {' '}
-                <img
-                  className="closetpics"
-                  src={inventory.filePath}
-                  id={inventory.id}
-                  value={inventory.item}
-                />
-              </div>
-            </Link>
+            <div id="closetpics">
+              {' '}
+              <img
+                className="closetpics"
+                src={inventory.filePath}
+                id={inventory.id}
+                value={inventory.item}
+                alt={inventory.categoryId}
+              />
+            </div>
           </div>
         ))}
       </div>

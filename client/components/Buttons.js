@@ -12,15 +12,12 @@ class Buttons extends Component {
       <div>
         <Grid container spacing={20}>
           <Grid item xs={6}>
-            <Button variant="contained" size="small" color="secondary"
-            >
-              <Icon>meeting_room</Icon>
+            <Button variant="contained" size="small" color="secondary">
               Closet
             </Button>
           </Grid>
           <Grid item xs={6}>
             <Button variant="contained" size="small" color="secondary">
-              <Icon>replay</Icon>
               Clear
             </Button>
           </Grid>
