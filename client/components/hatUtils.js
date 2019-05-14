@@ -46,6 +46,7 @@ export function drawSkeleton(
 }
 
 // HAT FUNCTIONS
+// eslint-disable-next-line complexity
 export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
   const rightEarX = keypoints[4].position.x
   const leftEarX = keypoints[3].position.x
@@ -165,90 +166,6 @@ export function placeHat(keypoints, minConfidence, canvasContext, scale = 1) {
             y - height,
             twoTimesEars,
             twoTimesEars * 1.1375
-          )
-        }
-      })
-      break
-
-    case 'barbieBodysuit':
-      console.log('Barbie Bodysuit')
-      keypoints.forEach(keypoint => {
-        if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-          const {x, y} = keypoint.position
-          canvasContext.beginPath()
-          canvasContext.drawImage(
-            hatImg, // imgSource, variable set by grabbing photo by id
-            0, // sourceX, start drawing image at this x
-            0, // sourceY, start drawing image at this y
-            hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
-            hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
-            x - twoThirds, // destinationX, x on canvas where top left corner of image sits
-            rightShoulderY - fifthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
-            shoulderDistance * 1.5,
-            halfwayBtwShoulders * 4.5
-          )
-        }
-      })
-      break
-
-    case 'goldBodysuit':
-      console.log('Gold Bodysuit')
-      keypoints.forEach(keypoint => {
-        if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-          const {x, y} = keypoint.position
-          canvasContext.beginPath()
-          canvasContext.drawImage(
-            hatImg, // imgSource, variable set by grabbing photo by id
-            0, // sourceX, start drawing image at this x
-            0, // sourceY, start drawing image at this y
-            hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
-            hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
-            x - twoThirds, // destinationX, x on canvas where top left corner of image sits
-            rightShoulderY - forthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
-            shoulderDistance * 1.5,
-            halfwayBtwShoulders * 4.2
-          )
-        }
-      })
-      break
-
-    case 'redBodysuit':
-      console.log('Red Bodysuit')
-      keypoints.forEach(keypoint => {
-        if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-          const {x, y} = keypoint.position
-          canvasContext.beginPath()
-          canvasContext.drawImage(
-            hatImg, // imgSource, variable set by grabbing photo by id
-            0, // sourceX, start drawing image at this x
-            0, // sourceY, start drawing image at this y
-            hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
-            hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
-            x - twoThirds, // destinationX, x on canvas where top left corner of image sits
-            rightShoulderY - forthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
-            shoulderDistance * 1.4,
-            halfwayBtwShoulders * 4.1
-          )
-        }
-      })
-      break
-
-    case 'pearlBodysuit':
-      console.log('Pearl Bodysuit')
-      keypoints.forEach(keypoint => {
-        if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
-          const {x, y} = keypoint.position
-          canvasContext.beginPath()
-          canvasContext.drawImage(
-            hatImg, // imgSource, variable set by grabbing photo by id
-            0, // sourceX, start drawing image at this x
-            0, // sourceY, start drawing image at this y
-            hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
-            hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
-            x - twoThirds - 15, // destinationX, x on canvas where top left corner of image sits
-            rightShoulderY - forthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
-            shoulderDistance * 1.7,
-            halfwayBtwShoulders * 4.5
           )
         }
       })

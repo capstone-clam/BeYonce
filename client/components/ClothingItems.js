@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
-import {fetchCategory, addSelectedItem} from '../store'
+import {
+  fetchCategory,
+  addSelectedItem,
+  addBodysuitThunk,
+  addHatThunk
+} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Buttons from './Buttons'
@@ -10,7 +15,7 @@ import Typography from '@material-ui/core/Typography'
 class ClothingItems extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    // this.state = {}
     this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
@@ -18,12 +23,31 @@ class ClothingItems extends Component {
     this.props.fetchCategory(selectedId)
   }
 
+  // eslint-disable-next-line complexity
   handleClick(ev) {
     ev.preventDefault()
-    let mySelection = Number(ev.target.id)
-    this.props.addSelectedItem(mySelection)
-    console.log('alt::::')
-    console.log(ev.target.alt)
+    console.log('ev.target:', ev.target)
+    let mySelection = ev.target.alt
+    console.log('mySelection:', mySelection)
+    if (
+      mySelection === 'flowerHat' ||
+      mySelection === 'finalcrown' ||
+      mySelection === 'beadedCrown' ||
+      mySelection === 'orangeHat'
+    ) {
+      let hatID = ev.target.id
+      console.log('hatID:', hatID)
+      this.props.addHatThunk(hatID)
+    } else if (
+      mySelection === 'barbieBodysuit' ||
+      mySelection === 'redBodysuit' ||
+      mySelection === 'goldBodysuit' ||
+      mySelection === 'pearlBodysuit'
+    ) {
+      let bodysuitID = ev.target.id
+      console.log('bodysuitID:', bodysuitID)
+      this.props.addBodysuitThunk(bodysuitID)
+    }
   }
 
   render() {
@@ -45,6 +69,7 @@ class ClothingItems extends Component {
         </div>
         {inventories.map(inventory => (
           <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
+<<<<<<< HEAD
             <div id="closetpics">
               {' '}
               <img
@@ -55,6 +80,19 @@ class ClothingItems extends Component {
                 alt={inventory.categoryId}
               />
             </div>
+=======
+            <Link to="/camera">
+              <div id="closetpics">
+                {' '}
+                <img
+                  className="closetpics"
+                  src={inventory.filePath}
+                  id={inventory.id}
+                  alt={inventory.item}
+                />
+              </div>
+            </Link>
+>>>>>>> master
           </div>
         ))}
       </div>
@@ -65,14 +103,15 @@ class ClothingItems extends Component {
 const mapStateToProps = state => {
   return {
     loadingCategory: state.closet.loadingCategory,
-    category: state.closet.category,
-    inventories: state.closet.inventories
+    category: state.closet.category, // hat, bodysuit, song
+    inventories: state.closet.inventories // hat1, hat2, hat3..
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addSelectedItem: inventoryId => dispatch(addSelectedItem(inventoryId)),
+    addBodysuitThunk: bodysuitID => dispatch(addBodysuitThunk(bodysuitID)),
+    addHatThunk: hatID => dispatch(addHatThunk(hatID)),
     fetchCategory: categoryId => dispatch(fetchCategory(categoryId))
   }
 }
