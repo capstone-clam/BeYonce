@@ -22,7 +22,7 @@ class Category extends Component {
 
   pickCategory(ev) {
     ev.preventDefault()
-    let categoryId = ev.target.id
+    const categoryId = ev.target.id
     this.props.addCategoryThunk(categoryId)
   }
 
