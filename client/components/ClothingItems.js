@@ -2,17 +2,14 @@ import React, {Component} from 'react'
 import {fetchCategory, addSelectedItem} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Buttons from './Buttons'
 
-import PropTypes from 'prop-types'
-import {withStyles} from '@material-ui/core/styles'
-import Fab from '@material-ui/core/Fab'
-import RefreshIcon from '@material-ui/icons/Refresh'
-import Icon from '@material-ui/core/Icon'
+import Typography from '@material-ui/core/Typography'
 
 class ClothingItems extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    // this.state = {}
     this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
@@ -27,11 +24,17 @@ class ClothingItems extends Component {
   }
 
   render() {
-    const {loadingCategory, inventories, classes} = this.props
+    const {loadingCategory, inventories, category} = this.props
     if (loadingCategory) return <div>Loading...</div>
 
     return (
-      <div>
+      <div className="uppercase">
+        <Typography component="h6" variant="h6" align="center" gutterBottom>
+          BROWSE & CHOOSE ONE {category.name}
+        </Typography>
+        
+        <Buttons />
+
         {inventories.map(inventory => (
           <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
             <Link to="/camera">
@@ -47,15 +50,6 @@ class ClothingItems extends Component {
             </Link>
           </div>
         ))}
-        <div>
-          <Fab size="medium" color="secondary" aria-label="Refresh">
-            <RefreshIcon
-              onClick={() => {
-                this.props.deslectCategory()
-              }}
-            />
-          </Fab>
-        </div>
       </div>
     )
   }

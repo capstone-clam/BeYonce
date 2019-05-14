@@ -52,7 +52,8 @@ form div {
   position: fixed;
   top: 0;
   right: 0;
-  width: 13%;
+  max-width: 15%;
+  min-width: 12%;
   height: 100%;
   background: rgba(0, 0, 0, 0.04);
   padding: 8px;
@@ -62,6 +63,53 @@ form div {
   color: black;
   font-family: 'Fjalla One', sans-serif;
 }
+
+@media only screen and (max-width: 100px) {
+  #closet-details {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 15%;
+    min-width: 12%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 8px;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .closet-details {
+    background: green;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .closet-details {
+    background: blue;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .closet-details {
+    background: orange;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .closet-details {
+    background: pink;
+  }
+}
+
 #closeth1 {
   display: flex;
   align-items: center;
@@ -254,4 +302,8 @@ canvas {
   margin: 0;
   padding: 0;
   object-fit: cover;
+}
+
+div.uppercase {
+  text-transform: uppercase;
 }
