@@ -15,6 +15,7 @@ class Closet extends Component {
 
     return (
       <div id="closet-details">
+        <Songs />
         {this.props.selection.id ? (
           <ClothingItems category={this.props.selection} />
         ) : (
