@@ -151,7 +151,7 @@ class Camera extends Component {
               keypoints,
               minPartConfidence,
               canvasContext,
-              this.props.selection.item
+              this.props.selectedBodysuit
             )
           }
           if (showSkeleton) {
@@ -183,16 +183,21 @@ class Camera extends Component {
   //message pic to text
 
   render() {
-    const {selection} = this.props.selection
+    console.log('CAMERA PROPS:', this.props)
+    const {selectedBodysuit} = this.props
+    const {selectedHat} = this.props
     return (
       <div>
         <div>
-
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
 
-          {selection.item ? (
-            <img id="hat" src={selection.filePath} alt={selection.item} />
+          {selectedBodysuit ? (
+            <img
+              id="hat"
+              src={selectedBodysuit.filePath}
+              alt={selectedBodysuit.item}
+            />
           ) : (
             <img id="hat" src="" alt="" />
           )}
@@ -220,7 +225,8 @@ class Camera extends Component {
 
 const mapStateToProps = state => {
   return {
-    selection: state.selection
+    selectedBodysuit: state.selectedBodysuit,
+    selectedHat: state.selectedHat
   }
 }
 
