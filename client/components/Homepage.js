@@ -56,7 +56,7 @@ class Homepage extends Component {
             <div className="name">
               <a
                 href="https://www.linkedin.com/in/chelsi-asulin/"
-                target="_blank"
+                target="blank"
               >
                 Chelsi Asulin
               </a>
@@ -69,7 +69,7 @@ class Homepage extends Component {
             <div className="name">
               <a
                 href="https://www.linkedin.com/in/alex-grazier/"
-                target="_blank"
+                target="blank"
               >
                 Alex Grazier
               </a>
@@ -77,7 +77,7 @@ class Homepage extends Component {
             <div className="name">
               <a
                 href="https://www.linkedin.com/in/linda-saraguro-123524122/"
-                target="_blank"
+                target="blank"
               >
                 Linda Saraguro
               </a>
