@@ -176,7 +176,9 @@ class Camera extends Component {
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/png')
-      console.log('GOT DATA')
+      //specify resolution 
+      console.log('GOT PNG DATA', data)
+      console.log('TYPEOF', typeof data)
       photo.setAttribute('src', data)
     })
   }
