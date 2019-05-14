@@ -295,7 +295,17 @@ canvas {
   padding: 8px;
   overflow: auto;
   box-sizing: border-box;
-
+}
+.download{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0);
+  padding: 8px;
+  overflow: auto;
+  box-sizing: border-box;
 }
 /* #photo{
   width: 100%;

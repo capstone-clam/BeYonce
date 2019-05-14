@@ -13,6 +13,7 @@ import CameraIcon from '@material-ui/icons/Camera'
 import Modal from '@material-ui/core/Modal'
 import Icon from '@material-ui/core/Icon'
 import Typography from '@material-ui/core/Typography'
+import { AvailablePhoneNumberCountryContext } from 'twilio/lib/rest/api/v2010/account/availablePhoneNumber';
 
 class Camera extends Component {
   static defaultProps = {
@@ -39,7 +40,7 @@ class Camera extends Component {
     this.state = {
       data: null
     }
-    this.screenShoot = this.screenShoot.bind(this)
+    this.screenshot = this.screenshot.bind(this)
     this.clearphoto = this.clearphoto.bind(this)
   }
 
@@ -196,34 +197,19 @@ class Camera extends Component {
     var canvasContext = canvas.getContext('2d')
     canvasContext.fillStyle = '#FFFFFF'
     canvasContext.fillRect(0, 0, canvas.width, canvas.height)
-    var data = canvas.toDataURL('image/png')
+    const data = canvas.toDataURL('image/jpg', .8)
     photo.setAttribute('src', data)
+    // const photo = document.getElementById('photo')
+    // document.body.removeChild(photo)
   }
 
-  screenShoot() {
-    const photo = document.getElementById('photo')
-    html2canvas(document.body).then(function(canvas) {
-      document.body.appendChild(canvas)
-      // const data = canvas.toDataURL('image/png')
-      const data = canvas.toDataURL('image/png')
-      // this.setState({
-      //   data
-      // })
-      //specify resolution
-      console.log('GOT PNG DATA', data)
-      // console.log('TYPEOF', typeof data)
-      photo.setAttribute('src', data)
-    })
-  }
-  //message pic to text
-
-  screenShoot() {
+  screenshot() {
     const photo = document.getElementById('photo')
     const hyper = document.getElementById('hyper')
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
-      var data = canvas.toDataURL('image/png')
-      console.log('GOT DATA')
+      const data = canvas.toDataURL('image/png')
+      console.log('GOT DATA', data)
       photo.setAttribute('src', data)
       hyper.setAttribute('href', data, + encodeURIComponent('string'))
    
@@ -271,7 +257,7 @@ class Camera extends Component {
           <Fab size="medium" color="secondary" aria-label="Camera">
             <CameraIcon
               onClick={() => {
-                this.screenShoot()
+                this.screenshot()
               }}
             />
           </Fab>
@@ -282,9 +268,8 @@ class Camera extends Component {
             <Typography variant="srOnly">clear</Typography>
           </Fab>
         </div>
-
-        <div data-html2canvas-ignore="true">
-          <img id="photo" />
+        <img id="photo" />
+        <div data-html2canvas-ignore="true" className="download">
           <a id="hyper">
             <i className="material-icons">vertical_align_bottom</i>
           </a>
