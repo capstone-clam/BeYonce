@@ -244,6 +244,7 @@ canvas {
   overflow: auto;
   box-sizing: border-box;
 }
+
 #download-icon {
   position: fixed;
   top: 0;
@@ -283,3 +284,23 @@ canvas {
   padding: 0;
   object-fit: cover;
 }
+
+.remove-icon{
+  position: fixed;
+  bottom: 0;
+  left: 56%;
+  width: 20%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0);
+  padding: 8px;
+  overflow: auto;
+  box-sizing: border-box;
+
+}
+/* #photo{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0
+} */

@@ -10,7 +10,9 @@ import SimpleModalWrapped from './Popup'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
-import Modal from '@material-ui/core/Modal';
+import Modal from '@material-ui/core/Modal'
+import Icon from '@material-ui/core/Icon'
+import Typography from '@material-ui/core/Typography'
 
 class Camera extends Component {
   static defaultProps = {
@@ -34,8 +36,8 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
-    this.state= {
-      data : null
+    this.state = {
+      data: null
     }
     this.screenShoot = this.screenShoot.bind(this)
     this.clearphoto = this.clearphoto.bind(this)
@@ -187,15 +189,15 @@ class Camera extends Component {
   }
 
   //CAMERA  SCREENSHOTS HTML2CANVAS
-  clearphoto(){
-    console.log("CLEARPHOTO")
+  clearphoto() {
+    console.log('CLEARPHOTO')
     const canvas = this.canvas
     const photo = document.getElementById('photo')
-    var canvasContext = canvas.getContext('2d');
-    canvasContext.fillStyle = "#FFFFFF"
-    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-    var data= canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
+    var canvasContext = canvas.getContext('2d')
+    canvasContext.fillStyle = '#FFFFFF'
+    canvasContext.fillRect(0, 0, canvas.width, canvas.height)
+    var data = canvas.toDataURL('image/png')
+    photo.setAttribute('src', data)
   }
 
   screenShoot() {
@@ -203,11 +205,11 @@ class Camera extends Component {
     html2canvas(document.body).then(function(canvas) {
       document.body.appendChild(canvas)
       // const data = canvas.toDataURL('image/png')
-      const data = canvas.toDataURL('image/png');
+      const data = canvas.toDataURL('image/png')
       // this.setState({
       //   data
       // })
-      //specify resolution 
+      //specify resolution
       console.log('GOT PNG DATA', data)
       // console.log('TYPEOF', typeof data)
       photo.setAttribute('src', data)
@@ -217,14 +219,16 @@ class Camera extends Component {
 
   screenShoot() {
     const photo = document.getElementById('photo')
+    const hyper = document.getElementById('hyper')
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
-      const data = canvas.toDataURL('image/png')
+      var data = canvas.toDataURL('image/png')
       console.log('GOT DATA')
       photo.setAttribute('src', data)
+      hyper.setAttribute('href', data, +encodeURIComponent('text'))
+      hyper.setAttribute('download', 'photofile.png')
     })
   }
-  //message pic to text
 
   render() {
     const {selectedBodysuit, selectedHat} = this.props
@@ -260,8 +264,6 @@ class Camera extends Component {
           <Closet />
         </div>
 
-        <img id="photo" />
-
         <div />
         <div data-html2canvas-ignore="true" id="camerabutton">
           <Fab size="medium" color="secondary" aria-label="Camera">
@@ -272,7 +274,19 @@ class Camera extends Component {
             />
           </Fab>
         </div>
-        <button id="download-icon" type="button" onClick={this.clearphoto}><i className="material-icons">vertical_align_bottom</i></button>
+        <div data-html2canvas-ignore="true" className="remove-icon">
+          <Fab size="medium" color="secondary" onClick={this.clearphoto}>
+            <Icon>remove_circle_outline</Icon>
+            <Typography variant="srOnly">clear</Typography>
+          </Fab>
+        </div>
+
+        <div data-html2canvas-ignore="true">
+          <img id="photo" />
+          <a id="hyper">
+            <i className="material-icons">vertical_align_bottom</i>
+          </a>
+        </div>
       </div>
     )
   }
