@@ -8,7 +8,6 @@ import SimpleModalWrapped from './Popup'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
-import DownloadIcon from '@material-ui/icons/Download'
 import Modal from '@material-ui/core/Modal';
 
 class Camera extends Component {
@@ -37,6 +36,7 @@ class Camera extends Component {
       data : null
     }
     this.screenShoot = this.screenShoot.bind(this)
+    this.clearphoto = this.clearphoto.bind(this)
   }
 
   getCanvas = elem => {
@@ -177,14 +177,23 @@ class Camera extends Component {
   }
 
   //CAMERA  SCREENSHOTS HTML2CANVAS
-
+  clearphoto(){
+    console.log("CLEARPHOTO")
+    const canvas = this.canvas
+    const photo = document.getElementById('photo')
+    var canvasContext = canvas.getContext('2d');
+    canvasContext.fillStyle = "#FFFFFF"
+    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    var data= canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
+  }
 
   screenShoot() {
     const photo = document.getElementById('photo')
     html2canvas(document.body).then(function(canvas) {
       document.body.appendChild(canvas)
       // const data = canvas.toDataURL('image/png')
-      const data = canvas.toDataURL('image/jpeg', .01);
+      const data = canvas.toDataURL('image/png');
       // this.setState({
       //   data
       // })
@@ -215,9 +224,6 @@ class Camera extends Component {
           <Closet />
         </div>
         {/* <SimpleModalWrapped screenShoot={this.screenShoot} data={this.state.data}/> */}
-
-        <img id="photo" src=''/>
-
         <div />
         <div data-html2canvas-ignore="true" id="camerabutton">
           <Fab size="medium" color="secondary" aria-label="Camera">
@@ -229,11 +235,9 @@ class Camera extends Component {
           </Fab>
         </div>
         <div data-html2canvas-ignore="true" id="downloadbutton">
-          <Fab size="medium" color="secondary" aria-label="Download">
-            <DownloadIcon
-            />
-          </Fab>
+        <button id="download-icon" type="button" onClick={this.clearphoto}><i className="material-icons">vertical_align_bottom</i></button>
         </div>
+        <img id="photo" />
       </div>
     )
   }
