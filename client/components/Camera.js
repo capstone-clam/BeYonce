@@ -8,6 +8,7 @@ import SimpleModalWrapped from './Popup'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
+import DownloadIcon from '@material-ui/icons/Download'
 import Modal from '@material-ui/core/Modal';
 
 class Camera extends Component {
@@ -176,17 +177,20 @@ class Camera extends Component {
   }
 
   //CAMERA  SCREENSHOTS HTML2CANVAS
+
+
   screenShoot() {
     const photo = document.getElementById('photo')
     html2canvas(document.body).then(function(canvas) {
-      // document.body.appendChild(canvas)
-      const data = canvas.toDataURL('image/png')
-      this.setState({
-        data
-      })
+      document.body.appendChild(canvas)
+      // const data = canvas.toDataURL('image/png')
+      const data = canvas.toDataURL('image/jpeg', .01);
+      // this.setState({
+      //   data
+      // })
       //specify resolution 
       console.log('GOT PNG DATA', data)
-      console.log('TYPEOF', typeof data)
+      // console.log('TYPEOF', typeof data)
       photo.setAttribute('src', data)
     })
   }
@@ -210,12 +214,12 @@ class Camera extends Component {
         <div data-html2canvas-ignore="true">
           <Closet />
         </div>
-        <SimpleModalWrapped screenShoot={this.screenShoot} data={this.state.data}/>
+        {/* <SimpleModalWrapped screenShoot={this.screenShoot} data={this.state.data}/> */}
 
-        <img id="photo" />
+        <img id="photo" src=''/>
 
         <div />
-        {/* <div data-html2canvas-ignore="true" id="camerabutton">
+        <div data-html2canvas-ignore="true" id="camerabutton">
           <Fab size="medium" color="secondary" aria-label="Camera">
             <CameraIcon
               onClick={() => {
@@ -223,7 +227,13 @@ class Camera extends Component {
               }}
             />
           </Fab>
-        </div> */}
+        </div>
+        <div data-html2canvas-ignore="true" id="downloadbutton">
+          <Fab size="medium" color="secondary" aria-label="Download">
+            <DownloadIcon
+            />
+          </Fab>
+        </div>
       </div>
     )
   }
