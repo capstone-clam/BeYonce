@@ -6,7 +6,7 @@ import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
 import {connect} from 'react-redux'
 import html2canvas from 'html2canvas'
-import SimpleModalWrapped from './Popup'
+import SimplePopover from './Popup'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
@@ -210,11 +210,11 @@ class Camera extends Component {
     photo.height = 273
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
-      const data = canvas.toDataURL('image/png')
+      const data = canvas.toDataURL('image/jpeg')
+      //make image smaller
       console.log('GOT DATA', data)
       photo.setAttribute('src', data)
-      hyper.setAttribute('href', data, + encodeURIComponent('string'))
-   
+      hyper.setAttribute('href', data, + encodeURIComponent('string'))   
       hyper.setAttribute('download', 'beyonce.png')
       console.log("COMPLETED HYPERLINK")
     })
@@ -276,6 +276,7 @@ class Camera extends Component {
             <i className="material-icons">vertical_align_bottom</i>
           </a>
         </div>
+        <SimplePopover onClick={this.screenshot} />
       </div>
     )
   }
