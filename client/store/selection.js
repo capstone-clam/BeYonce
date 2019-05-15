@@ -10,6 +10,7 @@ const ADD_BODYSUIT = 'ADD_BODYSUIT'
 const ADD_HAT = 'ADD_HAT'
 const ADD_CATEGORY = 'ADD_CATEGORY'
 const REMOVE_CATEGORY = 'REMOVE_CATEGORY'
+const REMOVE_ALL = 'REMOVE_ALL'
 
 /**
  * ACTION CREATORS
@@ -37,6 +38,8 @@ const addCategory = selectedCategory => ({
 })
 
 export const reset = () => ({type: REMOVE_CATEGORY})
+
+export const removeAll = () => ({type: REMOVE_ALL})
 
 /**
  * THUNKS
@@ -115,6 +118,9 @@ export default function(state = initialState, action) {
       }
     case REMOVE_CATEGORY:
       return {...state, selectedCategory: {}}
+
+    case REMOVE_ALL:
+      return {...state, selectedBodysuit: {}, selectedHat: {}}
     default:
       return state
   }

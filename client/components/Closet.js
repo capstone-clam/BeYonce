@@ -11,8 +11,6 @@ class Closet extends Component {
   }
 
   render() {
-    const {selectedCategory} = this.props
-
     return (
       <div id="closet-details">
         <Songs />
