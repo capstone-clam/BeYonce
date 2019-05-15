@@ -61,7 +61,7 @@ class ClothingItems extends Component {
         </Typography>
 
         <div>
-          <Grid container spacing={16}>
+          <Grid container spacing={16} align="center">
             <Grid item xs={6}>
               <Button
                 variant="contained"
