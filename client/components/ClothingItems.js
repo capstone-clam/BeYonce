@@ -45,6 +45,7 @@ class ClothingItems extends Component {
 
   render() {
     const {inventories, name} = this.props.selectedCategory
+    console.log('inventories:', inventories)
 
     return (
       <div className="uppercase">
@@ -77,18 +78,32 @@ class ClothingItems extends Component {
             </Grid>
           </Grid>
         </div>
-        {inventories.map(inventory => (
-          <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
-            <div id="closetpics">
-              <img
-                className="closetpics"
-                src={inventory.filePath}
-                id={inventory.id}
-                alt={inventory.item}
-              />
-            </div>
-          </div>
-        ))}
+        {inventories.map(
+          inventory =>
+            inventory.categoryId === 3 ? (
+              <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
+                <div id="closetpics">
+                  <img
+                    className="songPics"
+                    src={inventory.imageFilePath}
+                    id={inventory.id}
+                    alt={inventory.item}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
+                <div id="closetpics">
+                  <img
+                    className="closetpics"
+                    src={inventory.filePath}
+                    id={inventory.id}
+                    alt={inventory.item}
+                  />
+                </div>
+              </div>
+            )
+        )}
       </div>
     )
   }
