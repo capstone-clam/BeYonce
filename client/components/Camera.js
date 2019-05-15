@@ -1,15 +1,15 @@
-import {placeHat} from './hatUtils'
-import {placeBodysuit} from './bodysuitUtils'
-
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
-import {Closet} from '../components'
+import {placeHat} from './hatUtils'
+import {placeBodysuit} from './bodysuitUtils'
+import convertPhoto from './cameraUtils'
+import {Closet, SimpleModalWrapped} from '../components'
 import {connect} from 'react-redux'
 import html2canvas from 'html2canvas'
 import Grid from '@material-ui/core/Grid'
-
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
+import {saveAs} from 'file-saver'
 
 class Camera extends Component {
   static defaultProps = {
@@ -33,7 +33,7 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
-    this.screenShoot = this.screenShoot.bind(this)
+    this.screenshot = this.screenshot.bind(this)
   }
 
   getCanvas = elem => {
@@ -172,16 +172,19 @@ class Camera extends Component {
     findPoseDetectionFrame()
   }
 
-  //CAMERA  SCREENSHOTS HTML2CANVAS
-  screenShoot() {
-    const photo = document.getElementById('photo')
+  screenshot() {
+
+    
+
     html2canvas(document.body).then(function(canvas) {
-      // document.body.appendChild(canvas)
-      const data = canvas.toDataURL('image/png')
-      photo.setAttribute('src', data)
+      const base64image = canvas.toDataURL('image/png')
+      const block = base64image.split(';')
+      const mimeType = block[0].split(':')[1]
+      const realData = block[1].split(',')[1]
+      const canvasBlob = convertPhoto(realData, mimeType)
+      window.saveAs(canvasBlob, 'yourwebsite_screenshot.png')
     })
   }
-  //message pic to text
 
   render() {
     const {selectedBodysuit, selectedHat} = this.props
@@ -194,7 +197,7 @@ class Camera extends Component {
           <Grid container spacing={24}>
             <Grid item xs={6} lg={6}>
               {selectedBodysuit.item ? (
-                <div>
+                <div data-html2canvas-ignore="true">
                   <img
                     id="bodysuit"
                     src={selectedBodysuit.filePath}
@@ -207,7 +210,7 @@ class Camera extends Component {
             </Grid>
             <Grid item xs={6} lg={6}>
               {selectedHat.item ? (
-                <div>
+                <div data-html2canvas-ignore="true">
                   <img
                     id="hat"
                     src={selectedHat.filePath}
@@ -225,16 +228,19 @@ class Camera extends Component {
           <Closet />
         </div>
 
-        <img id="photo" />
-
         <div />
         <div data-html2canvas-ignore="true" id="camerabutton">
-          <Fab size="medium" color="secondary" aria-label="Camera">
-            <CameraIcon
-              onClick={() => {
-                this.screenShoot()
-              }}
-            />
+          <Fab
+            variant="extended"
+            size="small"
+            color="secondary"
+            aria-label="Add"
+            onClick={() => {
+              this.screenshot()
+            }}
+          >
+            <CameraIcon />
+            CAPTURE
           </Fab>
         </div>
       </div>
