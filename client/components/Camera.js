@@ -274,13 +274,13 @@ class Camera extends Component {
         </div>
         {/* <img id="photo" /> */}
         <div data-html2canvas-ignore="true" className="download">
-          <a id="hyper">
+          <a id="hyper" >
             <i className="material-icons">vertical_align_bottom</i>
           </a>
         </div>
-        <div data-html2canvas-ignore="true" >
+       
         <SimplePopover screenshot={this.screenshot} />
-        </div>
+       
       </div>
     )
   }

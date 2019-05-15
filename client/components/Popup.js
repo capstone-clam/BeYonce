@@ -4,6 +4,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Popover from '@material-ui/core/Popover'
+import html2canvas from 'html2canvas'
 
 const styles = theme => ({
   typography: {
@@ -35,7 +36,7 @@ class SimplePopover extends React.Component {
     const open = Boolean(anchorEl)
 
     return (
-      <div id="popup">
+      <div id="popup"  >
         <Button
           aria-owns={open ? 'simple-popper' : undefined}
           aria-haspopup="true"
@@ -58,13 +59,14 @@ class SimplePopover extends React.Component {
             horizontal: 'center'
           }}
         >
-          <a id="hyper">
+          <a id="hyper" onClick={this.screenshot}>
             <i className="material-icons">vertical_align_bottom</i>
           </a>
           <img id="photo" />
+          {()=> <img id="photo" /> }
           <Typography className={classes.typography}>
-            The content of the Popover.
-            <img id="photo" />
+            The content of the Popover!
+            
           </Typography>
         </Popover>
       </div>
