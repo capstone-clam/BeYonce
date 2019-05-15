@@ -7,7 +7,6 @@ import {
   removeAll
 } from '../store'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
@@ -52,7 +51,8 @@ class ClothingItems extends Component {
         <Typography component="h6" variant="h6" align="center" gutterBottom>
           BROWSE & CHOOSE ONE {name.slice(0, -1)}
         </Typography>
-        <div>
+
+        <div className="clearAndHomeButtons">
           <Grid container spacing={16} align="center">
             <Grid item xs={6}>
               <Button

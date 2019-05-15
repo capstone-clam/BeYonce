@@ -53,23 +53,28 @@ const seedCategories = [
     inventories: [
       {
         item: 'Single Ladies',
-        filePath: '/music/SingleLadies.mp3'
+        filePath: '/music/SingleLadies.mp3',
+        imageFilePath: '/icons/SingleLadies-icon.png'
       },
       {
         item: 'Formation',
-        filePath: '/music/Formation.mp3'
+        filePath: '/music/Formation.mp3',
+        imageFilePath: '/icons/Formation-icon.png'
       },
       {
         item: 'Run the World',
-        filePath: '/music/RunTheWorld.mp3'
+        filePath: '/music/RunTheWorld.mp3',
+        imageFilePath: '/icons/RunTheWorld-icon.png'
       },
       {
         item: 'XO',
-        filePath: '/XO.mp3'
+        filePath: '/music/XO.mp3',
+        imageFilePath: '/icons/Xo-icon.png'
       },
       {
         item: 'Love On Top',
-        filePath: '/LoveOnTop.mp3'
+        filePath: '/music/LoveOnTop.mp3',
+        imageFilePath: '/icons/LoveOnTop-icon.png'
       }
     ]
   }

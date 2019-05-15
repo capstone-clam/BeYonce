@@ -31,8 +31,6 @@ class CleanButton extends Component {
   }
 }
 
-
-
 const mapDispatchToProps = dispatch => {
   return {
     removeAll: () => dispatch(removeAll())
