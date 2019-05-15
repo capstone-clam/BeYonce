@@ -48,7 +48,7 @@ const seedCategories = [
     ]
   },
   {
-    name: 'Songs',
+    name: 'Song',
     image: '/icons/musicIcon.png',
     inventories: [
       {

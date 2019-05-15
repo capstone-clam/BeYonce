@@ -7,7 +7,6 @@ import {
   removeAll
 } from '../store'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'

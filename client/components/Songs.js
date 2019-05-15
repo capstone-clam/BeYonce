@@ -1,15 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchSongs} from '../store'
 import Fab from '@material-ui/core/Fab'
 import Icon from '@material-ui/core/Icon'
 
 const audio = document.createElement('audio')
-audio.src = '/music/Formation.mp3'
 
 class Songs extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       isPlaying: false
     }
@@ -18,22 +16,18 @@ class Songs extends Component {
   }
 
   play() {
+    audio.src = this.props.selectedSong.filePath
     audio.play()
     this.setState({isPlaying: true})
   }
 
   pause() {
+    audio.src = this.props.selectedSong.filePath
     audio.pause()
     this.setState({isPlaying: false})
   }
 
-  // componentDidMount() {
-  //   this.props.fetchSongs(3)
-  // }
-
   render() {
-    // const {inventories, loadingSongs} = this.props
-    // if (loadingSongs) return <div>Loading Songs...</div>
     return (
       <div className="musicButton">
         <Fab
@@ -61,15 +55,8 @@ class Songs extends Component {
 
 const mapStateToProps = state => {
   return {
-    songs: state.songs.songs,
-    inventories: state.songs.inventories
+    selectedSong: state.selection.selectedSong
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchSongs: categoryId => dispatch(fetchSongs(categoryId))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Songs)
+export default connect(mapStateToProps, null)(Songs)
