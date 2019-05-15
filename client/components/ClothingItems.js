@@ -37,7 +37,7 @@ class ClothingItems extends Component {
     } else if (mySelection === 'BodySuit') {
       let bodysuitID = ev.target.id
       this.props.addBodysuitThunk(bodysuitID)
-    } else if (mySelection === 'Songs') {
+    } else if (mySelection === 'Song') {
       let songID = ev.target.id
       this.props.addSongThunk(songID)
     }
@@ -51,7 +51,13 @@ class ClothingItems extends Component {
         <Typography component="h6" variant="h6" align="center" gutterBottom>
           BROWSE & CHOOSE A {name}
         </Typography>
-        {name === "Song" ?<p className="songInstructions">Press play in the bottom left corner!</p>:<div></div>}
+        {name === 'Song' ? (
+          <p className="songInstructions">
+            Press play in the bottom left corner!
+          </p>
+        ) : (
+          <div />
+        )}
 
         <div className="clearAndHomeButtons">
           <Grid container spacing={16} align="center">
