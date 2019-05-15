@@ -196,12 +196,12 @@ class Camera extends Component {
   }
 
   screenshot() {
-    var photo = document.createElement('img')
-    var hyper = document.createElement('a')
-    // const photo = document.getElementById('photo')
-    // const hyper = document.getElementById('hyper')
+    // var photo = document.createElement('img')
+    // var hyper = document.createElement('a')
+    const photo = document.getElementById('photo')
+    const hyper = document.getElementById('hyper')
     html2canvas(document.body).then(function(canvas) {
-      // document.body.appendChild(canvas)
+      document.body.appendChild(photo)
       const data = canvas.toDataURL('image/jpeg')
       //make image smaller
       console.log('GOT DATA', data)
@@ -271,12 +271,14 @@ class Camera extends Component {
           </Fab>
         </div>
         {/* <img id="photo" /> */}
-        {/* <div data-html2canvas-ignore="true" className="download">
+        <div data-html2canvas-ignore="true" className="download">
           <a id="hyper">
             <i className="material-icons">vertical_align_bottom</i>
           </a>
-        </div> */}
+        </div>
+        <div data-html2canvas-ignore="true" >
         <SimplePopover screenshot={this.screenshot} />
+        </div>
       </div>
     )
   }

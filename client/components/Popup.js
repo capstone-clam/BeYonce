@@ -1,38 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Popover from '@material-ui/core/Popover';
+import React from 'react'
+import PropTypes from 'prop-types'
+import {withStyles} from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import Popover from '@material-ui/core/Popover'
 
 const styles = theme => ({
   typography: {
-    margin: theme.spacing.unit * 40,
-  },
-});
+    margin: theme.spacing.unit * 40
+  }
+})
 
 class SimplePopover extends React.Component {
   state = {
-    anchorEl: null,
-  };
+    anchorEl: null
+  }
 
   handleClick = event => {
     this.props.screenshot()
     this.setState({
-      anchorEl: event.currentTarget,
-    });
-  };
+      anchorEl: event.currentTarget
+    })
+  }
 
   handleClose = () => {
     this.setState({
-      anchorEl: null,
-    });
-  };
+      anchorEl: null
+    })
+  }
 
   render() {
-    const { classes } = this.props;
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    const {classes} = this.props
+    const {anchorEl} = this.state
+    const open = Boolean(anchorEl)
 
     return (
       <div id="popup">
@@ -43,7 +43,7 @@ class SimplePopover extends React.Component {
           onClick={this.handleClick}
         >
           CAPTURE IAMGE
-        </Button >
+        </Button>
         <Popover
           id="simple-popper"
           open={open}
@@ -51,26 +51,29 @@ class SimplePopover extends React.Component {
           onClose={this.handleClose}
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'center',
+            horizontal: 'center'
           }}
           transformOrigin={{
             vertical: 'top',
-            horizontal: 'center',
+            horizontal: 'center'
           }}
         >
-        <img id="photo"/>
-        <a id="hyper">
+          <a id="hyper">
             <i className="material-icons">vertical_align_bottom</i>
           </a>
-          <Typography className={classes.typography}>The content of the Popover.</Typography>
+          <img id="photo" />
+          <Typography className={classes.typography}>
+            The content of the Popover.
+            <img id="photo" />
+          </Typography>
         </Popover>
       </div>
-    );
+    )
   }
 }
 
 SimplePopover.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+  classes: PropTypes.object.isRequired
+}
 
-export default withStyles(styles)(SimplePopover);
+export default withStyles(styles)(SimplePopover)
