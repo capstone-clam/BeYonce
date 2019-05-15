@@ -160,7 +160,18 @@ form div {
   bottom: 0;
   max-width: 230px;
   max-height: 230px;
-  */border-radius: 50%;
+  border-radius: 50%;
+  align-items: center;
+}
+
+.songPics {
+  padding: 5px;
+  /* padding-bottom: 10px; */
+  left: 0;
+  bottom: 0;
+  max-width: 140px;
+  max-height: 140px;
+  border-radius: 50%;
   align-items: center;
 }
 
@@ -392,6 +403,12 @@ div .uppercase {
 .clearAndHomeButtons {
   padding-left: 8px;
   padding-right: 8px;
-  padding-top: 15px;
+  padding-top: 8px;
   padding-bottom: 20px;
+}
+
+.songInstructions {
+  text-align: center;
+  font-style: italic;
+  text-transform: lowercase;
 }

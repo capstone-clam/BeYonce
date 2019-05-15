@@ -7,7 +7,6 @@ import {
   removeAll
 } from '../store'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
@@ -38,7 +37,7 @@ class ClothingItems extends Component {
     } else if (mySelection === 'BodySuit') {
       let bodysuitID = ev.target.id
       this.props.addBodysuitThunk(bodysuitID)
-    } else if (mySelection === 'Songs') {
+    } else if (mySelection === 'Song') {
       let songID = ev.target.id
       this.props.addSongThunk(songID)
     }
@@ -46,12 +45,20 @@ class ClothingItems extends Component {
 
   render() {
     const {inventories, name} = this.props.selectedCategory
+    console.log('inventories:', inventories)
 
     return (
       <div className="uppercase">
         <Typography component="h6" variant="h6" align="center" gutterBottom>
           BROWSE & CHOOSE A {name}
         </Typography>
+        {name === 'Song' ? (
+          <p className="songInstructions">
+            (& then Press play in the bottom left corner)
+          </p>
+        ) : (
+          <div />
+        )}
 
         <div className="clearAndHomeButtons">
           <Grid container spacing={16} align="center">
@@ -71,18 +78,32 @@ class ClothingItems extends Component {
             </Grid>
           </Grid>
         </div>
-        {inventories.map(inventory => (
-          <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
-            <div id="closetpics">
-              <img
-                className="closetpics"
-                src={inventory.filePath}
-                id={inventory.id}
-                alt={inventory.item}
-              />
-            </div>
-          </div>
-        ))}
+        {inventories.map(
+          inventory =>
+            inventory.categoryId === 3 ? (
+              <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
+                <div id="closetpics">
+                  <img
+                    className="songPics"
+                    src={inventory.imageFilePath}
+                    id={inventory.id}
+                    alt={inventory.item}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
+                <div id="closetpics">
+                  <img
+                    className="closetpics"
+                    src={inventory.filePath}
+                    id={inventory.id}
+                    alt={inventory.item}
+                  />
+                </div>
+              </div>
+            )
+        )}
       </div>
     )
   }
