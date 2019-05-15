@@ -45,12 +45,7 @@ class Category extends Component {
           <Grid container spacing={16} align="center">
             <Grid item xs={6}>
               <Link to="/homepage">
-                <Button
-                  variant="contained"
-                  size="small"
-                  color="secondary"
-                  onClick={this.resetClick}
-                >
+                <Button variant="contained" size="small" color="secondary">
                   <Icon>home</Icon>
                 </Button>
               </Link>
