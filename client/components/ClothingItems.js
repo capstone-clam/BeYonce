@@ -51,6 +51,7 @@ class ClothingItems extends Component {
         <Typography component="h6" variant="h6" align="center" gutterBottom>
           BROWSE & CHOOSE A {name}
         </Typography>
+        {name === "Song" ?<p className="songInstructions">Press play in the bottom left corner!</p>:<div></div>}
 
         <div className="clearAndHomeButtons">
           <Grid container spacing={16} align="center">
