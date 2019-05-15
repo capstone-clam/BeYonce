@@ -1,5 +1,11 @@
 import React, {Component} from 'react'
-import {addBodysuitThunk, addHatThunk, reset, removeAll} from '../store'
+import {
+  addBodysuitThunk,
+  addHatThunk,
+  addSongThunk,
+  reset,
+  removeAll
+} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
@@ -14,7 +20,6 @@ class ClothingItems extends Component {
     super(props)
     this.handleClick = this.handleClick.bind(this)
     this.backClosetClick = this.backClosetClick.bind(this)
-    // this.resetClick = this.resetClick.bind(this)
   }
 
   backClosetClick(ev) {
@@ -22,37 +27,25 @@ class ClothingItems extends Component {
     this.props.reset()
   }
 
-  // resetClick(ev) {
-  //   ev.preventDefault()
-  //   this.props.removeAll()
-  // }
-
-  // eslint-disable-next-line complexity
   handleClick(ev) {
     ev.preventDefault()
-    let mySelection = ev.target.alt
-    if (
-      mySelection === 'flowerHat' ||
-      mySelection === 'finalcrown' ||
-      mySelection === 'beadedCrown' ||
-      mySelection === 'orangeHat'
-    ) {
+
+    let mySelection = this.props.selectedCategory.name
+
+    if (mySelection === 'Hat') {
       let hatID = ev.target.id
       this.props.addHatThunk(hatID)
-    } else if (
-      mySelection === 'barbieBodysuit' ||
-      mySelection === 'redBodysuit' ||
-      mySelection === 'goldBodysuit' ||
-      mySelection === 'pearlBodysuit'
-    ) {
+    } else if (mySelection === 'BodySuit') {
       let bodysuitID = ev.target.id
       this.props.addBodysuitThunk(bodysuitID)
+    } else if (mySelection === 'Songs') {
+      let songID = ev.target.id
+      this.props.addSongThunk(songID)
     }
   }
 
   render() {
     const {inventories, name} = this.props.selectedCategory
-    // if (loadingCategory) return <div>Loading...</div>
 
     return (
       <div className="uppercase">
@@ -106,6 +99,7 @@ const mapDispatchToProps = dispatch => {
   return {
     addBodysuitThunk: bodysuitID => dispatch(addBodysuitThunk(bodysuitID)),
     addHatThunk: hatID => dispatch(addHatThunk(hatID)),
+    addSongThunk: songID => dispatch(addSongThunk(songID)),
     reset: () => dispatch(reset()),
     removeAll: () => dispatch(removeAll())
   }
