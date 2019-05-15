@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-
-import {fetchCategories, fetchCategory} from '../store/closet'
+import {fetchCategories} from '../store/closet'
 import {addCategoryThunk} from '../store/selection'
-
+import {CleanButton} from '../components'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -37,13 +36,17 @@ class Category extends Component {
 
         <div>
           <Grid container spacing={16} align="center">
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <Link to="/homepage">
                 <Button variant="contained" size="small" color="secondary">
                   <Icon>home</Icon>
                   Home
                 </Button>
               </Link>
+            </Grid>
+
+            <Grid item xs={6}>
+              <CleanButton />
             </Grid>
           </Grid>
         </div>

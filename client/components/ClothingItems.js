@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
-import {addBodysuitThunk, addHatThunk, reset} from '../store'
+import {addBodysuitThunk, addHatThunk, reset, removeAll} from '../store'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
+import {CleanButton} from '../components'
 
 import Typography from '@material-ui/core/Typography'
 
@@ -13,12 +14,18 @@ class ClothingItems extends Component {
     super(props)
     this.handleClick = this.handleClick.bind(this)
     this.backClosetClick = this.backClosetClick.bind(this)
+    // this.resetClick = this.resetClick.bind(this)
   }
 
   backClosetClick(ev) {
     ev.preventDefault()
     this.props.reset()
   }
+
+  // resetClick(ev) {
+  //   ev.preventDefault()
+  //   this.props.removeAll()
+  // }
 
   // eslint-disable-next-line complexity
   handleClick(ev) {
@@ -42,8 +49,6 @@ class ClothingItems extends Component {
       this.props.addBodysuitThunk(bodysuitID)
     }
   }
-
-  clearButton() {}
 
   render() {
     const {inventories, name} = this.props.selectedCategory
@@ -69,9 +74,16 @@ class ClothingItems extends Component {
             </Grid>
 
             <Grid item xs={6}>
-              <Button variant="contained" size="small" color="secondary">
+              <CleanButton />
+
+              {/* <Button
+                variant="contained"
+                size="small"
+                color="secondary"
+                onClick={this.resetClick}
+              >
                 Clear
-              </Button>
+              </Button> */}
             </Grid>
           </Grid>
         </div>
@@ -105,7 +117,8 @@ const mapDispatchToProps = dispatch => {
   return {
     addBodysuitThunk: bodysuitID => dispatch(addBodysuitThunk(bodysuitID)),
     addHatThunk: hatID => dispatch(addHatThunk(hatID)),
-    reset: () => dispatch(reset())
+    reset: () => dispatch(reset()),
+    removeAll: () => dispatch(removeAll())
   }
 }
 

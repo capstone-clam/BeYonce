@@ -1,4 +1,4 @@
-import {drawSkeleton, placeHat} from './hatUtils'
+import {placeHat} from './hatUtils'
 import {placeBodysuit} from './bodysuitUtils'
 
 import React, {Component} from 'react'
@@ -17,7 +17,7 @@ class Camera extends Component {
     flipHorizontal: true,
     algorithm: 'single-pose',
     showVideo: true,
-    showSkeleton: true,
+    showSkeleton: false,
     showPoints: true,
     minPoseConfidence: 0.1,
     minPartConfidence: 0.5,
@@ -164,15 +164,6 @@ class Camera extends Component {
               this.props.selectedBodysuit.item
             )
           }
-          if (showSkeleton) {
-            drawSkeleton(
-              keypoints,
-              minPartConfidence,
-              skeletonColor,
-              skeletonLineWidth,
-              canvasContext
-            )
-          }
         }
       })
       requestAnimationFrame(findPoseDetectionFrame)
@@ -244,7 +235,7 @@ class Camera extends Component {
 const mapStateToProps = state => {
   return {
     selectedBodysuit: state.selection.selectedBodysuit,
-    selectedHat: state.selection.selectedHat,
+    selectedHat: state.selection.selectedHat
   }
 }
 
