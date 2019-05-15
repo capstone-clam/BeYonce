@@ -1,20 +1,15 @@
-import {placeHat} from './hatUtils'
-import {placeBodysuit} from './bodysuitUtils'
-
 import React, {Component} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
-import {Closet} from '../components'
+import {placeHat} from './hatUtils'
+import {placeBodysuit} from './bodysuitUtils'
+import convertPhoto from './cameraUtils'
+import {Closet, SimpleModalWrapped} from '../components'
 import {connect} from 'react-redux'
 import html2canvas from 'html2canvas'
-import SimplePopover from './Popup'
 import Grid from '@material-ui/core/Grid'
-
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
-import Modal from '@material-ui/core/Modal'
-import Icon from '@material-ui/core/Icon'
-import Typography from '@material-ui/core/Typography'
-import { AvailablePhoneNumberCountryContext } from 'twilio/lib/rest/api/v2010/account/availablePhoneNumber';
+import {saveAs} from 'file-saver'
 
 class Camera extends Component {
   static defaultProps = {
@@ -38,11 +33,7 @@ class Camera extends Component {
 
   constructor(props) {
     super(props, Camera.defaultProps)
-    this.state = {
-      data: null
-    }
     this.screenshot = this.screenshot.bind(this)
-    this.clearphoto = this.clearphoto.bind(this)
   }
 
   getCanvas = elem => {
@@ -181,36 +172,17 @@ class Camera extends Component {
     findPoseDetectionFrame()
   }
 
-  //CAMERA  SCREENSHOTS HTML2CANVAS
-  clearphoto() {
-    console.log('CLEARPHOTO')
-    const canvas = this.canvas
-    const photo = document.getElementById('photo')
-    var canvasContext = canvas.getContext('2d')
-    canvasContext.fillStyle = '#FFFFFF'
-    canvasContext.fillRect(0, 0, canvas.width, canvas.height)
-    const data = canvas.toDataURL('image/jpg', .8)
-    photo.setAttribute('src', data)
-    // const photo = document.getElementById('photo')
-    // document.body.removeChild(photo)
-  }
-
   screenshot() {
-    const photo = document.createElement('img')
-    const hyper = document.createElement('a')
-    //console.log("PHOTO TOP", photo)
-    // const photo = document.getElementById('photo')
-    // const hyper = document.getElementById('hyper')
+
+    
+
     html2canvas(document.body).then(function(canvas) {
-      document.body.appendChild(canvas)
-      const data = canvas.toDataURL('image/jpeg')
-      //make image smaller
-      console.log('GOT DATA', data)
-      photo.setAttribute('src', data)
-      hyper.setAttribute('href', data, + encodeURIComponent('string'))   
-      hyper.setAttribute('download', 'beyonce.png')
-      console.log("COMPLETED HYPERLINK")
-      console.log("PHOTO BOTTOM", photo)
+      const base64image = canvas.toDataURL('image/png')
+      const block = base64image.split(';')
+      const mimeType = block[0].split(':')[1]
+      const realData = block[1].split(',')[1]
+      const canvasBlob = convertPhoto(realData, mimeType)
+      window.saveAs(canvasBlob, 'yourwebsite_screenshot.png')
     })
   }
 
@@ -225,7 +197,7 @@ class Camera extends Component {
           <Grid container spacing={24}>
             <Grid item xs={6} lg={6}>
               {selectedBodysuit.item ? (
-                <div>
+                <div data-html2canvas-ignore="true">
                   <img
                     id="bodysuit"
                     src={selectedBodysuit.filePath}
@@ -238,7 +210,7 @@ class Camera extends Component {
             </Grid>
             <Grid item xs={6} lg={6}>
               {selectedHat.item ? (
-                <div>
+                <div data-html2canvas-ignore="true">
                   <img
                     id="hat"
                     src={selectedHat.filePath}
@@ -257,31 +229,20 @@ class Camera extends Component {
         </div>
 
         <div />
-        {/* <div data-html2canvas-ignore="true" id="camerabutton">
-          <Fab size="medium" color="secondary" aria-label="Camera">
-            <CameraIcon
-              onClick={() => {
-                this.screenshot()
-              }}
-            />
-          </Fab>
-        </div> */}
-        <div data-html2canvas-ignore="true" className="remove-icon">
-          <Fab size="medium" color="secondary" onClick={this.clearphoto}>
-            <Icon>remove_circle_outline</Icon>
-            <Typography variant="srOnly">clear</Typography>
+        <div data-html2canvas-ignore="true" id="camerabutton">
+          <Fab
+            variant="extended"
+            size="small"
+            color="secondary"
+            aria-label="Add"
+            onClick={() => {
+              this.screenshot()
+            }}
+          >
+            <CameraIcon />
+            CAPTURE
           </Fab>
         </div>
-        {/* <img id="photo" />
-        <div data-html2canvas-ignore="true" className="download">
-          <a id="hyper" >
-            <i className="material-icons">vertical_align_bottom</i>
-          </a>
-        </div> */}
-        <div data-html2canvas-ignore="true" >
-        <SimplePopover screenshot={this.screenshot} />
-        </div> 
-       
       </div>
     )
   }

@@ -2,7 +2,6 @@ const db = require('../db')
 const Inventory = require('./inventory')
 const Category = require('./category')
 const User = require('./user')
-const Message = require('./message')
 const Screenshot = require('./screenshot')
 
 Inventory.belongsTo(Category)
@@ -13,6 +12,5 @@ module.exports = {
   Inventory,
   Category,
   User,
-  Message,
   Screenshot
 }
