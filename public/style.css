@@ -160,7 +160,7 @@ form div {
   bottom: 0;
   max-width: 230px;
   max-height: 230px;
-  */border-radius: 50%;
+  border-radius: 50%;
   align-items: center;
 }
 
@@ -356,7 +356,7 @@ canvas {
   object-fit: cover;
 }
 
-.remove-icon{
+/* .remove-icon{
   position: fixed;
   bottom: 0;
   left: 56%;
@@ -366,6 +366,18 @@ canvas {
   padding: 8px;
   overflow: auto;
   box-sizing: border-box;
+} */
+.removebutton{
+  position: fixed;
+  bottom: 0;
+  left: 56%;
+  width: 20%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0);
+  padding: 8px;
+  overflow: auto;
+  box-sizing: border-box;
+
 }
 .download{
   position: fixed;

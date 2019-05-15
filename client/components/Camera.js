@@ -196,13 +196,13 @@ class Camera extends Component {
   }
 
   screenshot() {
-    const photo = document.createElement('img')
-    const hyper = document.createElement('a')
+    // const photo = document.createElement('img')
+    // const hyper = document.createElement('a')
     //console.log("PHOTO TOP", photo)
-    // const photo = document.getElementById('photo')
-    // const hyper = document.getElementById('hyper')
+    const photo = document.getElementById('photo')
+    const hyper = document.getElementById('hyper')
     html2canvas(document.body).then(function(canvas) {
-      document.body.appendChild(canvas)
+      // document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/jpeg')
       //make image smaller
       console.log('GOT DATA', data)
@@ -256,31 +256,37 @@ class Camera extends Component {
           <Closet />
         </div>
 
-        <div />
-        {/* <div data-html2canvas-ignore="true" id="camerabutton">
-          <Fab size="medium" color="secondary" aria-label="Camera">
-            <CameraIcon
-              onClick={() => {
-                this.screenshot()
-              }}
-            />
-          </Fab>
-        </div> */}
-        <div data-html2canvas-ignore="true" className="remove-icon">
+        <div data-html2canvas-ignore="true" className="camerabutton">
+          <Grid container spacing={16} align="center">
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                size="small"
+                color="secondary"
+                onClick={this.screenshot}
+              >
+                SCREENSHOT
+              </Button>
+            </Grid>
+          </div>
+
+
+
+      
+        <div data-html2canvas-ignore="true" className="removebutton">
           <Fab size="medium" color="secondary" onClick={this.clearphoto}>
-            <Icon>remove_circle_outline</Icon>
-            <Typography variant="srOnly">clear</Typography>
+          <button type="button"onClick={this.clearphoto}>CLEAR IMAGE</button>
           </Fab>
         </div>
-        {/* <img id="photo" />
+        <img id="photo" />
         <div data-html2canvas-ignore="true" className="download">
           <a id="hyper" >
             <i className="material-icons">vertical_align_bottom</i>
           </a>
-        </div> */}
+        </div>
         <div data-html2canvas-ignore="true" >
         <SimplePopover screenshot={this.screenshot} />
-        </div> 
+        </div>  
        
       </div>
     )

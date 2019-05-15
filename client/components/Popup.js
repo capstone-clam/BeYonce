@@ -59,18 +59,18 @@ class SimplePopover extends React.Component {
             horizontal: 'center'
           }}
         >
-        <a id="hyper" onClick={this.screenshot}>
+         <a id="hyper" onClick={this.screenshot}>
             <i className="material-icons">vertical_align_bottom</i>
           </a>
-          {/* <a id="hyper" onClick={this.screenshot}>
+          <a id="hyper" onClick={this.screenshot}>
             <i className="material-icons">vertical_align_bottom</i>
           </a>
-          <img id="photo" />
+          img id="photo" />
           {()=> <img id="photo" /> }
           <Typography className={classes.typography}>
             The content of the Popover!
             
-          </Typography> */}
+          </Typography>
         </Popover>
       </div>
     )
