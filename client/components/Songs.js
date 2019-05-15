@@ -5,24 +5,30 @@ import Fab from '@material-ui/core/Fab'
 import Icon from '@material-ui/core/Icon'
 
 const audio = document.createElement('audio')
-// audio.src = '/music/Formation.mp3'
 
 class Songs extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      isPlaying: false,
+      isPlaying: false
+      // audioSource: ''
     }
     this.play = this.play.bind(this)
     this.pause = this.pause.bind(this)
   }
 
   play() {
+    audio.src = this.props.selectedSong.filePath
+    console.log('audio in play', audio)
+    console.log('audio.src in play', audio.src)
     audio.play()
     this.setState({isPlaying: true})
   }
 
   pause() {
+    audio.src = this.props.selectedSong.filePath
+    console.log('audio in pause', audio)
+    console.log('audio.src in pause', audio.src)
     audio.pause()
     this.setState({isPlaying: false})
   }
@@ -32,11 +38,12 @@ class Songs extends Component {
   // }
 
   render() {
-    console.log('this.props in render', this.props)
-    const {selectedSong} = this.props
-    console.log('selectedSong', selectedSong)
-    const songFilePath = selectedSong.filePath
-    console.log('songFilePath', songFilePath)
+    // console.log('this.props in render', this.props)
+    // const {selectedSong} = this.props
+    // console.log('selectedSong', selectedSong)
+    // const songFilePath = selectedSong.filePath
+    // console.log('songFilePath', songFilePath)
+
     return (
       <div className="musicButton">
         <Fab
