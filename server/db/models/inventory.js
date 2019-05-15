@@ -8,6 +8,10 @@ const Inventory = db.define('inventory', {
   },
   filePath: {
     type: Sequelize.STRING
+  },
+  imageFilePath: {
+    type: Sequelize.STRING,
+    defaultValue: null
   }
 })
 
