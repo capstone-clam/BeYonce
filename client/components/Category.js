@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-
-import {fetchCategories, fetchCategory} from '../store/closet'
-import {addCategoryThunk} from '../store/selection'
-
+import {fetchCategories, addCategoryThunk, removeAll} from '../store'
+import {CleanButton} from '../components'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -14,10 +12,18 @@ class Category extends Component {
   constructor(props) {
     super(props)
     this.pickCategory = this.pickCategory.bind(this)
+    this.resetClick = this.resetClick.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchCategories()
+  }
+
+  resetClick(ev) {
+    ev.preventDefault()
+    console.log('ResetClick')
+
+    this.props.removeAll()
   }
 
   pickCategory(ev) {
@@ -37,13 +43,21 @@ class Category extends Component {
 
         <div>
           <Grid container spacing={16} align="center">
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <Link to="/homepage">
-                <Button variant="contained" size="small" color="secondary">
+                <Button
+                  variant="contained"
+                  size="small"
+                  color="secondary"
+                  onClick={this.resetClick}
+                >
                   <Icon>home</Icon>
-                  Home
                 </Button>
               </Link>
+            </Grid>
+
+            <Grid item xs={6}>
+              <CleanButton />
             </Grid>
           </Grid>
         </div>
@@ -75,7 +89,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchCategories: () => dispatch(fetchCategories()),
-    addCategoryThunk: categoryId => dispatch(addCategoryThunk(categoryId))
+    addCategoryThunk: categoryId => dispatch(addCategoryThunk(categoryId)),
+    removeAll: () => dispatch(removeAll())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Category)
