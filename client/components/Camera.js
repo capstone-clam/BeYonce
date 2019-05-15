@@ -196,10 +196,10 @@ class Camera extends Component {
   }
 
   screenshot() {
-    const photo = document.getElementById('photo')
-    const hyper = document.getElementById('hyper')
-    photo.width = 500
-    photo.height = 273
+    var photo = document.createElement('img')
+    var hyper = document.createElement('a')
+    // const photo = document.getElementById('photo')
+    // const hyper = document.getElementById('hyper')
     html2canvas(document.body).then(function(canvas) {
       // document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/jpeg')
@@ -255,7 +255,7 @@ class Camera extends Component {
         </div>
 
         <div />
-        <div data-html2canvas-ignore="true" id="camerabutton">
+        {/* <div data-html2canvas-ignore="true" id="camerabutton">
           <Fab size="medium" color="secondary" aria-label="Camera">
             <CameraIcon
               onClick={() => {
@@ -263,20 +263,20 @@ class Camera extends Component {
               }}
             />
           </Fab>
-        </div>
+        </div> */}
         <div data-html2canvas-ignore="true" className="remove-icon">
           <Fab size="medium" color="secondary" onClick={this.clearphoto}>
             <Icon>remove_circle_outline</Icon>
             <Typography variant="srOnly">clear</Typography>
           </Fab>
         </div>
-        <img id="photo" />
-        <div data-html2canvas-ignore="true" className="download">
+        {/* <img id="photo" /> */}
+        {/* <div data-html2canvas-ignore="true" className="download">
           <a id="hyper">
             <i className="material-icons">vertical_align_bottom</i>
           </a>
-        </div>
-        <SimplePopover onClick={this.screenshot} />
+        </div> */}
+        <SimplePopover screenshot={this.screenshot} />
       </div>
     )
   }

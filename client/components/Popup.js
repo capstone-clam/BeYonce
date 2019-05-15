@@ -7,7 +7,7 @@ import Popover from '@material-ui/core/Popover';
 
 const styles = theme => ({
   typography: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing.unit * 40,
   },
 });
 
@@ -58,6 +58,10 @@ class SimplePopover extends React.Component {
             horizontal: 'center',
           }}
         >
+        <img id="photo"/>
+        <a id="hyper">
+            <i className="material-icons">vertical_align_bottom</i>
+          </a>
           <Typography className={classes.typography}>The content of the Popover.</Typography>
         </Popover>
       </div>
