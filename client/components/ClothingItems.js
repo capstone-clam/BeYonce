@@ -49,7 +49,7 @@ class ClothingItems extends Component {
     return (
       <div className="uppercase">
         <Typography component="h6" variant="h6" align="center" gutterBottom>
-          BROWSE & CHOOSE ONE {name.slice(0, -1)}
+          BROWSE & CHOOSE ONE {name}
         </Typography>
 
         <div className="clearAndHomeButtons">
