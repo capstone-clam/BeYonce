@@ -115,7 +115,7 @@ export function placeBodysuit(
             hatImg.width, // sourceWidth, crops the image if manipulated, hatImg.width keeps entire image
             hatImg.height, // sourceHeight, crops the image if manipulated, hatImg.height keeps entire image
             x - twoThirds, // destinationX, x on canvas where top left corner of image sits
-            rightShoulderY - forthBtwShoulders, // destinationY, y on canvas where top left corner of image sits
+            rightShoulderY - forthBtwShoulders - 5, // destinationY, y on canvas where top left corner of image sits
             shoulderDistance * 1.5,
             halfwayBtwShoulders * 4.2
           )
