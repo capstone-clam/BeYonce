@@ -32,8 +32,6 @@ class ClothingItems extends Component {
 
     let mySelection = this.props.selectedCategory.name
 
-    console.log(this.props.selectedCategory.name)
-
     if (mySelection === 'Hat') {
       let hatID = ev.target.id
       this.props.addHatThunk(hatID)
