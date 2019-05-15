@@ -8,6 +8,8 @@ const LOADING_DATA = 'LOADING_DATA'
 // const ADD_SELECTION = 'ADD_SELECTION'
 const ADD_BODYSUIT = 'ADD_BODYSUIT'
 const ADD_HAT = 'ADD_HAT'
+const ADD_SONG = 'ADD_SONG'
+
 const ADD_CATEGORY = 'ADD_CATEGORY'
 const REMOVE_CATEGORY = 'REMOVE_CATEGORY'
 const REMOVE_ALL = 'REMOVE_ALL'
@@ -30,6 +32,11 @@ const addBodysuit = selectedBodysuit => ({
 const addHat = selectedHat => ({
   type: ADD_HAT,
   selectedHat
+})
+
+const addSong = selectedSong => ({
+  type: ADD_SONG,
+  selectedSong
 })
 
 const addCategory = selectedCategory => ({
@@ -69,6 +76,18 @@ export const addHatThunk = inventoryId => {
   }
 }
 
+export const addSongThunk = inventoryId => {
+  return async dispatch => {
+    try {
+      dispatch(loadingData())
+      const {data} = await axios.get(`/api/closet/${inventoryId}`)
+      dispatch(addSong(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 export const addCategoryThunk = categoryId => {
   return async dispatch => {
     try {
@@ -88,7 +107,8 @@ const initialState = {
   //add category in arr per each category
   selectedCategory: {},
   selectedBodysuit: {},
-  selectedHat: {}
+  selectedHat: {},
+  selectedSong: {}
 }
 
 /**
@@ -109,6 +129,12 @@ export default function(state = initialState, action) {
         ...state,
         loadingSelection: false,
         selectedHat: action.selectedHat
+      }
+    case ADD_SONG:
+      return {
+        ...state,
+        loadingSelection: false,
+        selectedSong: action.selectedSong
       }
     case ADD_CATEGORY:
       return {
