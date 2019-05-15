@@ -164,6 +164,17 @@ form div {
   align-items: center;
 }
 
+.songPics {
+  padding: 5px;
+  /* padding-bottom: 10px; */
+  left: 0;
+  bottom: 0;
+  max-width: 140px;
+  max-height: 140px;
+  border-radius: 50%;
+  align-items: center;
+}
+
 #singlepic {
   display: flex;
   flex-wrap: wrap;
