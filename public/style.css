@@ -357,4 +357,5 @@ div .uppercase {
 .songInstructions {
   text-align: center;
   font-style: italic;
+  text-transform: lowercase;
 }
