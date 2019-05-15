@@ -54,7 +54,7 @@ class ClothingItems extends Component {
         </Typography>
         {name === 'Song' ? (
           <p className="songInstructions">
-            Press play in the bottom left corner!
+            (& then Press play in the bottom left corner)
           </p>
         ) : (
           <div />
