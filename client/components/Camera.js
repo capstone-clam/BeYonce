@@ -173,9 +173,6 @@ class Camera extends Component {
   }
 
   screenshot() {
-
-    
-
     html2canvas(document.body).then(function(canvas) {
       const base64image = canvas.toDataURL('image/png')
       const block = base64image.split(';')
@@ -184,6 +181,10 @@ class Camera extends Component {
       const canvasBlob = convertPhoto(realData, mimeType)
       window.saveAs(canvasBlob, 'yourwebsite_screenshot.png')
     })
+
+    setTimeout(() => {
+      html2canvas()
+    }, 10000)
   }
 
   render() {
