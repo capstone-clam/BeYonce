@@ -84,7 +84,6 @@ export function placeBodysuit(
 
   switch (type) {
     case 'barbieBodysuit':
-      console.log('Barbie Bodysuit')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position
@@ -105,7 +104,6 @@ export function placeBodysuit(
       break
 
     case 'goldBodysuit':
-      console.log('Gold Bodysuit')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position
@@ -126,7 +124,6 @@ export function placeBodysuit(
       break
 
     case 'redBodysuit':
-      console.log('Red Bodysuit')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position
@@ -147,7 +144,6 @@ export function placeBodysuit(
       break
 
     case 'pearlBodysuit':
-      console.log('Pearl Bodysuit')
       keypoints.forEach(keypoint => {
         if (keypoint.score >= minConfidence && keypoint.part === 'nose') {
           const {x, y} = keypoint.position

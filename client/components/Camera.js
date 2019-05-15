@@ -1,4 +1,4 @@
-import {drawSkeleton, placeHat} from './hatUtils'
+import {placeHat} from './hatUtils'
 import {placeBodysuit} from './bodysuitUtils'
 
 import React, {Component} from 'react'
@@ -7,6 +7,7 @@ import {Closet} from '../components'
 import {connect} from 'react-redux'
 import html2canvas from 'html2canvas'
 import SimplePopover from './Popup'
+import Grid from '@material-ui/core/Grid'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
@@ -22,7 +23,7 @@ class Camera extends Component {
     flipHorizontal: true,
     algorithm: 'single-pose',
     showVideo: true,
-    showSkeleton: true,
+    showSkeleton: false,
     showPoints: true,
     minPoseConfidence: 0.1,
     minPartConfidence: 0.5,
@@ -173,15 +174,6 @@ class Camera extends Component {
               this.props.selectedBodysuit.item
             )
           }
-          if (showSkeleton) {
-            drawSkeleton(
-              keypoints,
-              minPartConfidence,
-              skeletonColor,
-              skeletonLineWidth,
-              canvasContext
-            )
-          }
         }
       })
       requestAnimationFrame(findPoseDetectionFrame)
@@ -222,34 +214,42 @@ class Camera extends Component {
 
   render() {
     const {selectedBodysuit, selectedHat} = this.props
-    console.log('camera props:', this.props)
-    console.log('selectedBodysuit:', selectedBodysuit)
+
     return (
       <div>
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
-
-          {selectedBodysuit.item ? (
-            <div>
-              <img
-                id="bodysuit"
-                src={selectedBodysuit.filePath}
-                alt={selectedBodysuit.item}
-              />
-            </div>
-          ) : (
-            <img id="bodysuit" src="" alt="" />
-          )}
-
-          {selectedHat.item ? (
-            <div>
-              <img id="hat" src={selectedHat.filePath} alt={selectedHat.item} />
-            </div>
-          ) : (
-            <img id="hat" src="" alt="" />
-          )}
+          <Grid container spacing={24}>
+            <Grid item xs={6} lg={6}>
+              {selectedBodysuit.item ? (
+                <div>
+                  <img
+                    id="bodysuit"
+                    src={selectedBodysuit.filePath}
+                    alt={selectedBodysuit.item}
+                  />
+                </div>
+              ) : (
+                <img id="bodysuit" src="" alt="" />
+              )}
+            </Grid>
+            <Grid item xs={6} lg={6}>
+              {selectedHat.item ? (
+                <div>
+                  <img
+                    id="hat"
+                    src={selectedHat.filePath}
+                    alt={selectedHat.item}
+                  />
+                </div>
+              ) : (
+                <img id="hat" src="" alt="" />
+              )}
+            </Grid>
+          </Grid>
         </div>
+
         <div data-html2canvas-ignore="true">
           <Closet />
         </div>

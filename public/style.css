@@ -48,20 +48,100 @@ form div {
   box-sizing: border-box;
 } */
 
-#closet-details {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 13%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.04);
-  padding: 8px;
-  overflow: auto;
-  box-sizing: border-box;
-  color: black;
-  color: black;
-  font-family: 'Fjalla One', sans-serif;
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1300px) {
+  #closet-details {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 40%;
+    min-width: 40%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 8px;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+  }
 }
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 900px) {
+  #closet-details {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 15%;
+    min-width: 12%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 8px;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #closet-details {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 15%;
+    min-width: 12%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 8px;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #closet-details {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 200px;
+    min-width: 200px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 8px;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #closet-details {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 250px;
+    min-width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 8px;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+  }
+}
+
 #closeth1 {
   display: flex;
   align-items: center;
@@ -74,12 +154,13 @@ form div {
 }
 
 .closetpics {
-  padding-bottom: 10px;
+  padding: 5px;
+  /* padding-bottom: 10px; */
   left: 0;
   bottom: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  max-width: 230px;
+  max-height: 230px;
+  */border-radius: 50%;
   align-items: center;
 }
 
@@ -325,3 +406,6 @@ canvas {
   left: 0;
   bottom: 0
 } */
+div .uppercase {
+  text-transform: uppercase;
+}
