@@ -50,10 +50,10 @@ class ClothingItems extends Component {
     return (
       <div className="uppercase">
         <Typography component="h6" variant="h6" align="center" gutterBottom>
-          BROWSE & CHOOSE ONE {name}
+          BROWSE & CHOOSE A {name}
         </Typography>
 
-        <div>
+        <div className="clearAndHomeButtons">
           <Grid container spacing={16} align="center">
             <Grid item xs={6}>
               <Button
