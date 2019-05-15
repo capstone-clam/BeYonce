@@ -75,30 +75,19 @@ class ClothingItems extends Component {
 
             <Grid item xs={6}>
               <CleanButton />
-
-              {/* <Button
-                variant="contained"
-                size="small"
-                color="secondary"
-                onClick={this.resetClick}
-              >
-                Clear
-              </Button> */}
             </Grid>
           </Grid>
         </div>
         {inventories.map(inventory => (
           <div id="singlepic" key={inventory.id} onClick={this.handleClick}>
-            <Link to="/camera">
-              <div id="closetpics">
-                <img
-                  className="closetpics"
-                  src={inventory.filePath}
-                  id={inventory.id}
-                  alt={inventory.item}
-                />
-              </div>
-            </Link>
+            <div id="closetpics">
+              <img
+                className="closetpics"
+                src={inventory.filePath}
+                id={inventory.id}
+                alt={inventory.item}
+              />
+            </div>
           </div>
         ))}
       </div>

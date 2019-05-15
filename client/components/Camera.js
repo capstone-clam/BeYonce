@@ -6,6 +6,7 @@ import * as posenet from '@tensorflow-models/posenet'
 import {Closet} from '../components'
 import {connect} from 'react-redux'
 import html2canvas from 'html2canvas'
+import Grid from '@material-ui/core/Grid'
 
 import Fab from '@material-ui/core/Fab'
 import CameraIcon from '@material-ui/icons/Camera'
@@ -190,27 +191,36 @@ class Camera extends Component {
         <div>
           <video id="videoNoShow" playsInline ref={this.getVideo} />
           <canvas className="webcam" ref={this.getCanvas} />
-
-          {selectedBodysuit.item ? (
-            <div>
-              <img
-                id="bodysuit"
-                src={selectedBodysuit.filePath}
-                alt={selectedBodysuit.item}
-              />
-            </div>
-          ) : (
-            <img id="bodysuit" src="" alt="" />
-          )}
-
-          {selectedHat.item ? (
-            <div>
-              <img id="hat" src={selectedHat.filePath} alt={selectedHat.item} />
-            </div>
-          ) : (
-            <img id="hat" src="" alt="" />
-          )}
+          <Grid container spacing={24}>
+            <Grid item xs={6} lg={6}>
+              {selectedBodysuit.item ? (
+                <div>
+                  <img
+                    id="bodysuit"
+                    src={selectedBodysuit.filePath}
+                    alt={selectedBodysuit.item}
+                  />
+                </div>
+              ) : (
+                <img id="bodysuit" src="" alt="" />
+              )}
+            </Grid>
+            <Grid item xs={6} lg={6}>
+              {selectedHat.item ? (
+                <div>
+                  <img
+                    id="hat"
+                    src={selectedHat.filePath}
+                    alt={selectedHat.item}
+                  />
+                </div>
+              ) : (
+                <img id="hat" src="" alt="" />
+              )}
+            </Grid>
+          </Grid>
         </div>
+
         <div data-html2canvas-ignore="true">
           <Closet />
         </div>
