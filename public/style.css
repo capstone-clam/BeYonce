@@ -177,14 +177,6 @@ form div {
   padding-bottom: 10px;
 }
 
-.title {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  padding-bottom: 50px;
-  font-size: 100px;
-}
-
 .intro {
   display: flex;
   flex-direction: column;
@@ -253,8 +245,8 @@ form div {
   display: flex;
   text-align: center;
   justify-content: center;
-  padding: 50px;
-  padding-top: 70px;
+  /* padding: 50px; */
+  /* padding-top: 70px; */
   font-size: 90px;
 }
 
@@ -291,7 +283,7 @@ form div {
 .namesList {
   /* display: flex; */
   text-align: center;
-  background: #faf9fc;
+  background: #fff9f2;
   justify-content: center;
   padding: 50px;
   flex-direction: row;
