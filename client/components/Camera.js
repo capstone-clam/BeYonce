@@ -196,12 +196,13 @@ class Camera extends Component {
   }
 
   screenshot() {
-    // var photo = document.createElement('img')
-    // var hyper = document.createElement('a')
-    const photo = document.getElementById('photo')
-    const hyper = document.getElementById('hyper')
+    const photo = document.createElement('img')
+    const hyper = document.createElement('a')
+    console.log("PHOTO TOP", photo)
+    // const photo = document.getElementById('photo')
+    // const hyper = document.getElementById('hyper')
     html2canvas(document.body).then(function(canvas) {
-      document.body.appendChild(photo)
+      document.body.appendChild(canvas)
       const data = canvas.toDataURL('image/jpeg')
       //make image smaller
       console.log('GOT DATA', data)
@@ -209,6 +210,7 @@ class Camera extends Component {
       hyper.setAttribute('href', data, + encodeURIComponent('string'))   
       hyper.setAttribute('download', 'beyonce.png')
       console.log("COMPLETED HYPERLINK")
+      console.log("PHOTO BOTTOM", photo)
     })
   }
 
