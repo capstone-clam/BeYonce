@@ -42,7 +42,7 @@ class SimplePopover extends React.Component {
           variant="contained"
           onClick={this.handleClick}
         >
-          CAPTURE IAMGE
+          SCREENSHOT
         </Button>
         <Popover
           id="simple-popper"
