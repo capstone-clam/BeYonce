@@ -50,9 +50,8 @@ class ClothingItems extends Component {
     return (
       <div className="uppercase">
         <Typography component="h6" variant="h6" align="center" gutterBottom>
-          BROWSE & CHOOSE ONE {name}
+          BROWSE & CHOOSE ONE {name.slice(0, -1)}
         </Typography>
-
         <div>
           <Grid container spacing={16} align="center">
             <Grid item xs={6}>
