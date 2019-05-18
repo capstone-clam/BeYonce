@@ -22,7 +22,7 @@ class Camera extends Component {
     showPoints: true,
     minPoseConfidence: 0.1,
     minPartConfidence: 0.5,
-    maxPoseDetections: 2,
+    maxPoseDetections: 5,
     nmsRadius: 20,
     outputStride: 16,
     imageScaleFactor: 0.5,
